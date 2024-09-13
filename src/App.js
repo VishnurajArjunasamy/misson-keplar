@@ -5,7 +5,7 @@ import UsersArea from "./Containers/UsersArea/UsersArea";
 function App() {
   return (
     <div className="App">
-      <h1>Users</h1>
+      <h1 className="">Users</h1>
       {/* <Navbar />
       <UsersArea /> */}
     </div>

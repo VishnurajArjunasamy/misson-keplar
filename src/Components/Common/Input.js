@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Input({ type, onClick, value }) {
-  return <input className="w-full h-full" type={type} value={value} onClick={onClick} />;
+export default function Input({ className,type, onClick, value,placeholder }) {
+  return <input className={className} type={type} value={value} onClick={onClick} placeholder={placeholder}/>;
 }

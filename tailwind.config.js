@@ -15,6 +15,9 @@ module.exports = {
       boxShadow: {
         xl: "0px 8px 23px 0px rgba(218, 224, 249, 0.70)",
       },
+      backgroundImage: {
+        searchIcon: "url('/src/assets/images/search.svg')",
+      },
     },
   },
   plugins: [],

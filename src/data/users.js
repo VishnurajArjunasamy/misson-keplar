@@ -28,7 +28,7 @@ export const usersData = [
     name: "Robert Brower",
     city: "Cincinnati, OH",
     intrests: ["Maintenance", "gears", "frames", "repair"],
-    profiel: robert,
+    profile: robert,
   },
   {
     name: "Amy Campbell",

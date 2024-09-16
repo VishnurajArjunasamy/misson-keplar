@@ -13,9 +13,9 @@ export default function Users() {
         })
       : users;
   return (
-    <div className="flex flex-wrap justify-center content-center w-screen h-screen bg-lavenderMist">
-      <div className="flex flex-col bg-white w-4/5 h-4/5 lg:h-auto lg:p-[100px]  mx-auto rounded-2xl overflow-scroll">
-        <h1 className="font-merri text-4xl font-black text-mirage">Users</h1>
+    <div className="flex flex-wrap content-center justify-center w-screen h-screen bg-lavenderMist">
+      <div className="flex flex-col bg-white w-4/5 lg:min-h-[900px] h-4/5 md:p-5  lg:p-[100px]  mx-auto rounded-2xl overflow-scroll">
+        <h1 className="text-4xl font-black font-merri text-mirage">Users</h1>
         <Navbar setSearch={setSearch} />
         <UsersArea usersData={users} />
       </div>

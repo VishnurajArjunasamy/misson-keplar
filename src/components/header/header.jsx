@@ -1,9 +1,9 @@
 import React from "react";
-import { Home } from "../../constants/app.constant";
+import { HOME } from "../../constants/app.constant";
 import styles from "./header.module.scss";
-import down from "../../assets/caret-down.png"
+import down from "../../assets/caret-down.png";
 
-const { SITBACK, Menus } = Home;
+const { SITBACK, Menus } = HOME;
 
 export default function Header() {
   return (
@@ -16,7 +16,7 @@ export default function Header() {
       </ul>
       <div className={styles["user-profile"]}>
         <p>Vizz</p>
-        <img src={down}/>
+        <img src={down} />
       </div>
     </header>
   );

@@ -2,9 +2,23 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
+    // animation: fade 0.3s ease-out;
+    transition: transform 3s ease;
 
     img {
         width: 100%;
         height: 100%;
+        object-fit: fill;
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.9;
+        }
+
+        to {
+            opacity: 1;
+        }
+
     }
 }

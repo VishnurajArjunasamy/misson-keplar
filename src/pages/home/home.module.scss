@@ -20,12 +20,23 @@
             height: 15px;
             border-radius: 100px;
             background-color: #ffffff80;
-            transition: opacity 0.3s ease;
+            animation: fade 1s linear;
         }
 
         .active {
             background-color: #fff;
         }
+    }
+
+    @keyframes fade {
+        from {
+            opacity: 0.5;
+        }
+
+        to {
+            opacity: 1;
+        }
+
     }
 
 

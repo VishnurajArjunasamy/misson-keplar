@@ -19,10 +19,15 @@ export default function Home() {
 
   // useEffect(() => {
   //   const autoSliderInterval = setInterval(() => {
-  //     setActivePoster((prev) => prev + 1);
+  //     setActivePoster((prev) => {
+  //       if (posters && !(prev === posters.length - 1)) {
+  //         return prev + 1;
+  //       }
+  //       return 0;
+  //     });
   //   }, 3000);
   //   return () => clearInterval(autoSliderInterval);
-  // }, []);
+  // }, [activePoster, posters]);
 
   function handleClick(idx: number) {
     setActivePoster(idx);
@@ -38,11 +43,9 @@ export default function Home() {
             onClick={() => {
               handleClick(idx);
             }}
-            className={
-              `${activePoster == idx ? activeStyle : styles[`carousel-btn`]}`
-              //  `${styles[`carousel-btn`]} ${styles[`active`]}`
-              //  styles[`carousel-btn`]
-            }
+            className={`${
+              activePoster == idx ? activeStyle : styles[`carousel-btn`]
+            }`}
           ></li>
         );
       })}

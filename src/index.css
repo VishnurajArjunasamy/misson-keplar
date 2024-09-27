@@ -1,3 +1,11 @@
 *{
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+@font-face{
+  font-family: 'lemonism';
+  src:local('lemonism'),url('./assets/fonts/lemonism/lemonismDEMO.otf') format("truetype");
 }

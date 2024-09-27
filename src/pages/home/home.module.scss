@@ -1,0 +1,32 @@
+.home {
+
+    .carousel-strip {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        display: flex;
+        list-style-type: none;
+        width: 150px;
+        height: 22px;
+        padding: 0 5px;
+        background-color: #00000080;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-radius: 10px;
+
+        .carousel-btn {
+            width: 15px;
+            height: 15px;
+            border-radius: 100px;
+            background-color: #ffffff80;
+            transition: opacity 0.3s ease;
+        }
+
+        .active {
+            background-color: #fff;
+        }
+    }
+
+
+}

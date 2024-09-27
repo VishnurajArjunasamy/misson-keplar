@@ -1,0 +1,32 @@
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 25px 40px;
+    background-color: aqua;
+    border-radius: 0 0 100px 100px;
+    color: #fff;
+
+
+
+    h1 {
+        min-width: 100px;
+        width: 200px;
+        font-family: 'lemonism';
+        font-weight: 100;
+    }
+
+    ol {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex: 0 1 70%;
+        list-style-type: none;
+        font-family: "Roboto", sans-serif;
+        font-weight: 700;
+    }
+
+    .active {
+        color: #ed742e;
+    }
+}

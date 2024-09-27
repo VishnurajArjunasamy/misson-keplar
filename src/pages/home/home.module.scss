@@ -1,7 +1,9 @@
 .home {
+    position: relative;
 
     .carousel-strip {
         position: absolute;
+        z-index: 20;
         bottom: 50px;
         left: 50%;
         display: flex;

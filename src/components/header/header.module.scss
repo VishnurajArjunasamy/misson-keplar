@@ -1,0 +1,43 @@
+.header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-width: 300px;
+    padding: 22px 50px;
+    // height: 70px;
+    position: fixed;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    h1{
+        font-size: 20px;
+    }
+
+    .menu {
+        display: flex;
+        flex-basis: 350px;
+        justify-content: space-between;
+        // font-size: 16px;
+        font-weight: 500;
+
+        li {
+            list-style-type: none;
+        }
+    }
+
+    .user-profile{
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        gap: 10px;
+        p{
+            flex-shrink:60px ;
+        }
+        img{
+            width: 7px;
+            height: 7px;
+            margin-top: 2px;
+        }
+    }
+}

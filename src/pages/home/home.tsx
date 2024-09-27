@@ -53,7 +53,6 @@ export default function Home() {
   );
   return (
     <div className={styles.home}>
-      {/* {<NavBar />} */}
       {posters?.map((poster, key) => {
         if (key == activePoster) {
           return <PosterRender key={key} poster={poster} />;

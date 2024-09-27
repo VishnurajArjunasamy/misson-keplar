@@ -1,9 +1,11 @@
 .nav {
+    position: fixed;
+    z-index: 10;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    padding: 25px 40px;
-    background-color: aqua;
+    padding: 25px 60px;
+    background: #5D5D5D4D;
     border-radius: 0 0 100px 100px;
     color: #fff;
 
@@ -13,20 +15,23 @@
         min-width: 100px;
         width: 200px;
         font-family: 'Amatic SC';
-        font-weight: 100;
+        font-size: 30px;
+        font-weight: 700;
     }
 
     ol {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        align-items: center;
         flex: 0 1 70%;
         list-style-type: none;
-        font-family: "Poppins";
-        font-weight: 700;
+        font-size: 20px;
+        font-family: "Lato";
+        font-weight: 800;
     }
 
     .active {
-        color: #ed742e;
+        color: #FF6B00;
     }
 }

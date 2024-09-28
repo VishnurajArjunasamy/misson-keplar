@@ -1,6 +1,6 @@
 import React from "react";
-import { Poster } from "../../types/restaurant";
-import styles from "./poster.module.scss"
+import { Poster } from "../../types/restaurantType";
+import styles from "./poster.module.scss";
 
 interface Props {
   poster: Poster;

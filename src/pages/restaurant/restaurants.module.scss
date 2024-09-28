@@ -4,11 +4,17 @@
     background-image: url('../../assets/images/restaurant-bg.webp');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    overflow-y: scroll;
 
     .res-card-container{
         position: relative;
         top:20%;
         width: 80%;
         margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 5rem;
+        padding-bottom: 5rem;
     }
 }

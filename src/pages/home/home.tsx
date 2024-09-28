@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/navbar/navbar.tsx";
 import styles from "./home.module.scss";
-import { getPosters } from "../../services/restaurant.ts";
-import { Poster } from "../../types/restaurant.ts";
+import { getPosters } from "../../services/restaurantService.ts";
+import { Poster } from "../../types/restaurantType.ts";
 import PosterRender from "../../components/poster/poster.tsx";
 
 export default function Home() {

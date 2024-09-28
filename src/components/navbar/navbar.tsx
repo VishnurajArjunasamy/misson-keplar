@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./navbar.module.scss";
 import { NAVBAR } from "../../constants/app.constants.ts";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { isEqual } from "../../utils/commonUtils.tsx";
 
 const { MENU, SHOP_NAME } = NAVBAR;
 
@@ -9,16 +10,14 @@ export default function NavBar() {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const isActive = (path: string): boolean => {
-    return path === currentPath;
-  };
-
   const linkItems = MENU.map((menu) => {
     return (
       <Link
         key={menu.path}
         to={menu.path}
-        className={isActive(menu.path) ? styles["active"] : undefined}
+        className={
+          isEqual(menu.path, currentPath) ? styles["active"] : undefined
+        }
       >
         {menu.name}
       </Link>
@@ -28,7 +27,7 @@ export default function NavBar() {
     <>
       <nav
         className={
-          currentPath === MENU[0].path
+          isEqual(MENU[0].path, currentPath)
             ? `${styles["nav"]} ${styles["nav-curved"]}`
             : styles["nav"]
         }

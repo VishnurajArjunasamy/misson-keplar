@@ -3,31 +3,40 @@ import styles from "./navbar.module.scss";
 import { NAVBAR } from "../../constants/app.constants.ts";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
+const { MENU, SHOP_NAME } = NAVBAR;
+
 export default function NavBar() {
-  // const location = useLocation();
-  const currentPath = "location.pathname";
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isActive = (path: string): boolean => {
+    return path === currentPath;
+  };
+
+  const linkItems = MENU.map((menu) => {
+    return (
+      <Link
+        key={menu.path}
+        to={menu.path}
+        className={isActive(menu.path) ? styles["active"] : undefined}
+      >
+        {menu.name}
+      </Link>
+    );
+  });
   return (
     <>
-      <nav className={styles.nav}>
+      <nav
+        className={
+          currentPath === MENU[0].path
+            ? `${styles["nav"]} ${styles["nav-curved"]}`
+            : styles["nav"]
+        }
+      >
         <h1>
-          <Link to={"/"}>{NAVBAR.SHOP_NAME}</Link>
+          <Link to={MENU[0].path}>{SHOP_NAME}</Link>
         </h1>
-        <ol>
-          <Link to={"/"} className={`${currentPath === "/" ? `active` : null}`}>
-            {NAVBAR.HOME}
-          </Link>
-
-          <li className={`${currentPath === "/restaurants" ? `active` : null}`}>
-            <Link to={"/restaurants"}>{NAVBAR.RESTAURANTS}</Link>
-          </li>
-
-          <Link
-            to={"/reserve"}
-            className={`${currentPath === "/reserve" ? `active` : null}`}
-          >
-            {NAVBAR.RESERVE}
-          </Link>
-        </ol>
+        <ol>{linkItems}</ol>
       </nav>
       <Outlet />
     </>

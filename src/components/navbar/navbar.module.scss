@@ -5,8 +5,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 25px 60px;
-    background: #5D5D5D4D;
-    border-radius: 0 0 100px 100px;
+    background-color: #131416;
     color: #fff;
 
 
@@ -34,4 +33,9 @@
     .active {
         color: #FF6B00;
     }
+}
+
+.nav-curved {
+    background-color: #5D5D5D4D;
+    border-radius: 0 0 100px 100px;
 }

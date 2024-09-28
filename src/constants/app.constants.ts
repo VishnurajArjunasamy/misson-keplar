@@ -1,6 +1,17 @@
 export const NAVBAR = {
   SHOP_NAME: "DINEDASH",
-  HOME: "HOME",
-  RESTAURANTS: "RESTAURANTS",
-  RESERVE: "RESERVE A TABLE",
+  MENU:[
+    {
+      name:"Home",
+      path:"/"
+    },
+    {
+      name:"RESTAURANTS",
+      path:"/restaurants"
+    },
+    {
+      name:"RESERVE A TABLE",
+      path:"/reserve"
+    }
+  ],
 };

@@ -11,3 +11,12 @@ export async function getPosters():Promise<Poster[]|undefined> {
      console.log(err);
   }
 }
+
+export async function getRestaurants (){
+  try {
+    const response = await axios.get("https://nijin-server.vercel.app/api/dinedash/restaurants")
+    return response.data.data
+  } catch (error) {
+    console.log(error)
+  }
+}

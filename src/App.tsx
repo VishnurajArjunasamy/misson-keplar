@@ -8,7 +8,6 @@ import Reserve from "./pages/reserve/reserve.js";
 function App() {
   return (
     <>
-      <NavBar />
       <Routes>
         <Route element={<NavBar />}>
           {/* <Route index element={} /> */}

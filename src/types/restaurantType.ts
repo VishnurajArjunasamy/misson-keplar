@@ -25,5 +25,5 @@ export interface Dish{
   name:string,
   imageSrc:string,
   description:string,
-  price:string
+  Price:string
 }

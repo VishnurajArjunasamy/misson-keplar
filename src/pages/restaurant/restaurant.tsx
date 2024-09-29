@@ -17,8 +17,6 @@ export default function Restaurant() {
   const restaurantList = restaurants?.map((restaurant: RestaurantIF) => {
     return <RestaurantCard key={restaurant.id} data={restaurant} />;
   });
-
-  console.log(restaurants);
   return (
     <div className={styles["restaurant"]}>
       <section className={styles["res-card-container"]}>

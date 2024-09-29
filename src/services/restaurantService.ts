@@ -20,3 +20,4 @@ export async function getRestaurants (){
     console.log(error)
   }
 }
+

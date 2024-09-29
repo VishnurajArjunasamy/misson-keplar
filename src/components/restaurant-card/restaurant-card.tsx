@@ -22,7 +22,7 @@ export default function RestaurantCard({ data }: PropsIF) {
           <Rating />
         </div>
         <div>{data?.cuisine.join(",")}</div>
-        <Link to={`/restaurants/:${data?.id}`} state={data}>VIEW MORE DETAILS</Link>
+        <Link to={`/restaurants/${data?.id}`} state={data}>VIEW MORE DETAILS</Link>
       </div>
     </div>
   );

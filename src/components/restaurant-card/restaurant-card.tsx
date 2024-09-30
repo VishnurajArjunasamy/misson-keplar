@@ -5,6 +5,7 @@ import Rating from "../rating/rating";
 import certfiedImg from "../../assets/images/certify.png";
 import styles from "./restaurant-card.module.scss";
 import FoodType from "../food-type-icon/food-type";
+import rightArrow from "../../assets/images/arrow-right.png";
 
 interface PropsIF {
   data?: RestaurantIF;
@@ -39,7 +40,10 @@ export default function RestaurantCard({ data }: PropsIF) {
         </div>
         <div className={styles["cuisine-txt"]}>{data?.cuisine.join(",")}</div>
         <Link to={`/restaurants/${data?.id}`} className={styles["link-txt"]}>
-          <p>VIEW MORE DETAILS</p> <i>{">"}</i>
+          <p>VIEW MORE DETAILS</p>
+          <i className={styles['right-arrow']}>
+            <img src={rightArrow} />
+          </i>
         </Link>
       </div>
     </div>

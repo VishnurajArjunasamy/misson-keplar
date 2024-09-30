@@ -103,11 +103,25 @@
 
         .link-txt {
             display: flex;
-            font-size: 12px;
-            font-style: italic;
-            font-weight: 700;
+            gap: 2px;
+            align-items: center;
 
-            p {}
+            p {
+                font-size: 12px;
+                font-style: italic;
+                font-weight: 700;
+                
+            }
+
+            .right-arrow {
+                width: 12px;
+                height: 12px;
+
+                img {
+                    width: 12px;
+                    height: 12px;
+                }
+            }
         }
 
     }

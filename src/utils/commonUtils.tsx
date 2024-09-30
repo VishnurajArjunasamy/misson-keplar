@@ -1,7 +1,7 @@
 import { RestaurantIF } from "../types/restaurantType";
 
 export const isEqual = (path: string, currentPath: string): boolean => {
-  return path === currentPath;
+  return path.includes(currentPath);
 };
 
 export const getRestaurant = (

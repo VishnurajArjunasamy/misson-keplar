@@ -1,7 +1,7 @@
 import "./App.css";
 import NavBar from "./components/navbar/navbar.js";
 import Home from "./pages/home/home.js";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Restaurant from "./pages/restaurant/restaurant.js";
 import Reserve from "./pages/reserve/reserve.js";
 import RestaurantItem from "./components/restaurant-item/restaurant-item.js";
@@ -11,8 +11,8 @@ function App() {
     <>
       <Routes>
         <Route element={<NavBar />}>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/restaurants" element={<Restaurant />} /> */}
+          <Route path="/" element={<Navigate to={"/home"} />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/restaurants">
             <Route index element={<Restaurant />} />
             <Route path=":id" element={<RestaurantItem />} />

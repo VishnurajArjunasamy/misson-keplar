@@ -3,7 +3,7 @@ export const NAVBAR = {
   MENU:[
     {
       name:"Home",
-      path:"/"
+      path:"/home"
     },
     {
       name:"RESTAURANTS",

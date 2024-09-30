@@ -15,7 +15,6 @@ export default function RestaurantItem() {
     resName = restaurant?.name;
     resItems = restaurant?.items;
   }
-  console.log(resItems);
 
   useEffect(() => {
     async function fetchData() {

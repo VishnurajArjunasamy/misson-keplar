@@ -8,8 +8,7 @@ const { MENU, SHOP_NAME } = NAVBAR;
 
 export default function NavBar() {
   const location = useLocation();
-  const currentPath = location.pathname;
-
+  const currentPath = location.pathname.split("/")[1];
   const linkItems = MENU.map((menu) => {
     return (
       <Link

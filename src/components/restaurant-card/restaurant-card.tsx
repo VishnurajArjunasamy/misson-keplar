@@ -3,8 +3,6 @@ import { RestaurantIF } from "../../types/restaurantType";
 import { Link } from "react-router-dom";
 import Rating from "../rating/rating";
 import certfiedImg from "../../assets/images/certify.png";
-import vegIcon from "../../assets/images/veg-icon.png";
-import nonVegIcon from "../../assets/images/non-veg-icon.png";
 import styles from "./restaurant-card.module.scss";
 import FoodType from "../food-type-icon/food-type";
 
@@ -25,19 +23,19 @@ export default function RestaurantCard({ data }: PropsIF) {
             </i>
             <>
               {data?.type.map((type) => (
-                <i>
-                  <img src={type == "Veg" ? vegIcon : nonVegIcon} />
+                <i key={type}>
+                  <FoodType type={type} />
                 </i>
               ))}
             </>
           </div>
         </div>
         <div className={styles["info-content"]}>
-          <div>
+          <div className={styles["info-section"]}>
             <h2>{data?.location}</h2>
             <h3>{data?.timings}</h3>
           </div>
-          <Rating />
+          <Rating rating={data?.rating} />
         </div>
         <div className={styles["cuisine-txt"]}>{data?.cuisine.join(",")}</div>
         <Link to={`/restaurants/${data?.id}`} className={styles["link-txt"]}>

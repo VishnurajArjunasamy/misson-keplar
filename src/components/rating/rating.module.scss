@@ -1,3 +1,44 @@
-.rating{
-    
+@mixin rating-layout($color) {
+    background-color: $color;
+}
+
+.rating {
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    p {
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    i {
+        width: 10px;
+        height: 10px;
+
+        img {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+}
+
+.red {
+    @include rating-layout(#FF0000)
+}
+
+.orange {
+    @include rating-layout(#ffa500)
+}
+
+.green {
+    @include rating-layout(#008000)
 }

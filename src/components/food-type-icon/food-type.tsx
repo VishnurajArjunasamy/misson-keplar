@@ -9,7 +9,7 @@ export default function FoodType({ type }: TypeProp) {
     <div
       className={type == "Veg" ? styles["veg-logo"] : styles["non-veg-logo"]}
     >
-      <div></div>
+      <div className={styles["ciricle"]}></div>
     </div>
   );
 }

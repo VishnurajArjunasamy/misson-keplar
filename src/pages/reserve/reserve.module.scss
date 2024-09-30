@@ -1,0 +1,16 @@
+.reserve {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../assets/images/restaurant-bg.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    overflow-y: scroll;
+
+    .reserve-form {
+        margin: 130px auto 0;
+        width: 30vw;
+        height: 80vh;
+        min-height: 750px;
+        background-color: bisque;
+    }
+}

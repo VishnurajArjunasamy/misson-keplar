@@ -11,7 +11,6 @@ export default function Input({
   value,
   name,
   onChange,
-  pattern,
 }: InputIF) {
   return (
     <label className={styles["input-card"]}>
@@ -21,7 +20,6 @@ export default function Input({
         value={value}
         name={name}
         onChange={onChange}
-        pattern={pattern}
       />
     </label>
   );

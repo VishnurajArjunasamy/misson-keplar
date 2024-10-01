@@ -6,6 +6,7 @@ import { DishResIF, RestaurantIF } from "../../types/restaurantType";
 import { getAvailableCategory } from "../../utils/commonUtils";
 import Dropdown from "../../components/common/dropdown/dropdown";
 import Checkbox from "../../components/common/checkbox/checkbox";
+import NumberInput from "../../components/common/number-input/number-input";
 
 export default function Reserve() {
   const [restaurants, setRestaurants] = useState<RestaurantIF[] | null>(null);
@@ -61,6 +62,14 @@ export default function Reserve() {
       ...prev,
       preference: { ...prev.preference, [type]: e.target.checked },
     }));
+  }
+
+  function handleNumberIncrement() {
+    setOrder((prev) => ({ ...prev, totalPersons: +prev.totalPersons + 1 }));
+  }
+
+  function handleNumberDecrement() {
+    setOrder((prev) => ({ ...prev, totalPersons: +prev.totalPersons - 1 }));
   }
 
   console.log(order);
@@ -134,6 +143,15 @@ export default function Reserve() {
           value={order.restaurant}
           options={setRestaurantOptions()}
           onChange={(e) => handleChange(e, "category")}
+        />
+        <NumberInput
+          label="No of persons"
+          value={order.totalPersons}
+          onChange={(e) => {
+            handleChange(e, "totalPersons");
+          }}
+          handleNumberIncrement={handleNumberIncrement}
+          handleNumberDecrement={handleNumberDecrement}
         />
       </form>
     </div>

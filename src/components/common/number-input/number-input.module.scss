@@ -1,6 +1,6 @@
-.input-card {
+.number-input{
     font-family: Lato;
-    width: 100%;
+    width: 30%;
     height: auto;
 
     p {
@@ -25,13 +25,5 @@
         color: #fff;
         caret-color: #fff;
         color-scheme: #fff;
-    }
-
-    input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(99deg) brightness(107%) contrast(101%);
-    }
-
-    input[type="time"] {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(99deg) brightness(107%) contrast(101%);
     }
 }

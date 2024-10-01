@@ -13,5 +13,18 @@
         min-height: 750px;
         background-color: #0A0A0AB2;
         padding: 85px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .split-container {
+            width: 100%;
+            display: flex;
+            gap: 20px;
+
+            .splits {
+                width: 50%;
+            }
+        }
     }
 }

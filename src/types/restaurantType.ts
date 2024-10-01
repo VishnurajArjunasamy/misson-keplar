@@ -27,3 +27,7 @@ export interface Dish{
   description:string,
   Price:string
 }
+
+export interface DishResIF {
+  [key: string]: string[];
+}

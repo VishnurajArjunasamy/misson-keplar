@@ -1,0 +1,28 @@
+.checkbox {
+    width: 40%;
+    height: auto;
+
+    p {
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .align {
+        display: flex;
+        justify-content: space-between;
+
+        input[type='checkbox']{
+            margin-right:10px ;
+        }
+
+        label {
+            font-family: Lato;
+            font-size: 14px;
+            font-weight: 400;
+            color: #fff;
+        }
+    }
+}

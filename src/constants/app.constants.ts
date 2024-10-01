@@ -2,7 +2,7 @@ export const NAVBAR = {
   SHOP_NAME: "DINEDASH",
   MENU:[
     {
-      name:"Home",
+      name:"HOME",
       path:"/home"
     },
     {

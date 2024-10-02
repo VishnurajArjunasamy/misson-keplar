@@ -10,6 +10,7 @@ export default function Input({
   type,
   value,
   name,
+  required,
   onChange,
 }: InputIF) {
   return (
@@ -20,6 +21,7 @@ export default function Input({
         value={value}
         name={name}
         onChange={onChange}
+        required={required}
       />
     </label>
   );

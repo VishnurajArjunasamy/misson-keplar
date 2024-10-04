@@ -26,15 +26,81 @@
         text-align: center;
         line-height: 75px;
         letter-spacing: 0.04em;
+        animation: topToBtm 300ms ease-out 800ms;
     }
 
-    @keyframes fade {
+    .bottomRightToCentre {
+        animation: btmRightToCentre 400ms ease-out;
+    }
+
+    .topLeftToCentre {
+        animation: topLeftToCentre 400ms ease-out;
+    }
+
+    .leftToCentre {
+        animation: leftToCentre 400ms ease-out;
+
+    }
+
+    .bottomToCentre {
+        animation: bottomToCentre 400ms ease-out;
+    }
+
+    .topToCentre {
+        animation: topToCentre 400ms ease-out;
+    }
+
+    @keyframes btmRightToCentre {
         from {
-            opacity: 0.9;
+            top: 70%;
+            left: 70%;
         }
 
         to {
-            opacity: 1;
+            top: 50%;
+            left: 50%
+        }
+    }
+
+    @keyframes topLeftToCentre {
+        from {
+            top: 30%;
+            left: 30%;
+        }
+
+        to {
+            top: 50%;
+            left: 50%
+        }
+    }
+
+    @keyframes leftToCentre {
+        from {
+            left: 70%;
+        }
+
+        to {
+            left: 50%;
+        }
+    }
+
+    @keyframes bottomToCentre {
+        from {
+            top: 70%;
+        }
+
+        to {
+            top: 50%;
+        }
+    }
+
+    @keyframes topToCentre {
+        from {
+            top: 30%;
+        }
+
+        to {
+            top: 50%;
         }
 
     }

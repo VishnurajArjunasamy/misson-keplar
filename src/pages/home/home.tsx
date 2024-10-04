@@ -5,6 +5,14 @@ import { getPosters } from "../../services/restaurantService.ts";
 import { Poster } from "../../types/restaurantType.ts";
 import PosterRender from "../../components/poster/poster.tsx";
 
+const animations: string[] = [
+  "bottomRightToCentre",
+  "topLeftToCentre",
+  "leftToCentre",
+  "bottomToCentre",
+  "topToCentre",
+];
+
 export default function Home() {
   const [posters, setPosters] = useState<undefined | Poster[]>(undefined);
   const [activePoster, setActivePoster] = useState<number>(0);
@@ -17,17 +25,17 @@ export default function Home() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const autoSliderInterval = setInterval(() => {
-  //     setActivePoster((prev) => {
-  //       if (posters && !(prev === posters.length - 1)) {
-  //         return prev + 1;
-  //       }
-  //       return 0;
-  //     });
-  //   }, 3000);
-  //   return () => clearInterval(autoSliderInterval);
-  // }, [activePoster, posters]);
+  useEffect(() => {
+    const autoSliderInterval = setInterval(() => {
+      setActivePoster((prev) => {
+        if (posters && !(prev === posters.length - 1)) {
+          return prev + 1;
+        }
+        return 0;
+      });
+    }, 3000);
+    return () => clearInterval(autoSliderInterval);
+  }, [activePoster, posters]);
 
   function handleClick(idx: number) {
     setActivePoster(idx);
@@ -55,7 +63,13 @@ export default function Home() {
     <div className={styles.home}>
       {posters?.map((poster, key) => {
         if (key == activePoster) {
-          return <PosterRender key={key} poster={poster} />;
+          return (
+            <PosterRender
+              key={key}
+              poster={poster}
+              animationType={animations[key]}
+            />
+          );
         }
       })}
       {carouselStrip}

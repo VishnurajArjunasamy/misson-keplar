@@ -3,7 +3,8 @@ import styles from "./reserve.module.scss";
 
 import ReserveForm from "../../components/reserve-form/reserve-form";
 import ConfirmationBox from "../../components/confirmation-box/confirmation-box";
-import { OrderIF } from "../../types/restaurantType";
+import { OrderIF } from "../../models/orderModel";
+import DimBackground from "../../components/dim-background/dim-bacground";
 
 export default function Reserve() {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -25,6 +26,7 @@ export default function Reserve() {
 
   return (
     <div className={styles["reserve"]}>
+      <DimBackground />
       <div className={styles["reserve-container"]}>
         {!isSubmitted && (
           <ReserveForm

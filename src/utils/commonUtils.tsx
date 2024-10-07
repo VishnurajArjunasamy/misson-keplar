@@ -1,4 +1,5 @@
-import { DishResIF, RestaurantIF } from "../types/restaurantType";
+import { RestaurantIF } from "../models/restaurantModel";
+import { DishResIF } from "../models/dishModel";
 
 export const isEqual = (path: string, currentPath: string): boolean => {
   return path.includes(currentPath);

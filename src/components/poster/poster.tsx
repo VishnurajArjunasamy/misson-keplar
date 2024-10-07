@@ -1,12 +1,11 @@
 import React from "react";
-import { Poster } from "../../types/restaurantType";
+import { Poster } from "../../models/posterModel";
 import styles from "./poster.module.scss";
 
 interface Props {
   poster: Poster;
   animationType?: string;
 }
-
 
 export default function PosterRender({ poster, animationType = "" }: Props) {
   return (

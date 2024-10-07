@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { DishResIF, OrderIF, RestaurantIF } from "../../types/restaurantType";
+import { RestaurantIF } from "../../models/restaurantModel";
+import { DishResIF } from "../../models/dishModel";
+import { OrderIF } from "../../models/orderModel";
 import { getAvailableCategory } from "../../utils/commonUtils";
 import { getRestaurants } from "../../services/restaurantService";
 import styles from "./reserve-form.module.scss";
@@ -7,6 +9,22 @@ import Input from "../common/input/input";
 import Checkbox from "../common/checkbox/checkbox";
 import Dropdown from "../common/dropdown/dropdown";
 import NumberInput from "../common/number-input/number-input";
+import { RESERVE } from "../../constants/app.constants";
+
+const { ORDER_FORM } = RESERVE;
+const {
+  FIRST_NAME,
+  LAST_NAME,
+  MOBILE,
+  EMAIL,
+  DATE,
+  TIME,
+  PREFERENCE,
+  PERSONS,
+  CATEGORY,
+  RESTAURANT,
+  RESERVE_TABLE,
+} = ORDER_FORM;
 
 interface FormProps {
   order: OrderIF;
@@ -19,7 +37,9 @@ export default function ReserveForm({
   setOrder,
   setIsSubmitted,
 }: FormProps) {
-  const [restaurants, setRestaurants] = useState<RestaurantIF[] | null>(null);
+  const [restaurants, setRestaurants] = useState<RestaurantIF[] | undefined>(
+    undefined
+  );
 
   let availableCategory: DishResIF;
   if (restaurants) {
@@ -76,96 +96,95 @@ export default function ReserveForm({
     console.log("submitted");
   }
 
-  console.log(order);
   return (
     <form className={styles["reserve-form"]} onSubmit={(e) => handleSubmit(e)}>
       <div className={styles["split-container"]}>
         <div className={styles["splits"]}>
           <Input
-            label="First name"
+            label={FIRST_NAME.label}
             value={order.firstName}
-            onChange={(e) => handleChange(e, "firstName")}
+            onChange={(e) => handleChange(e, FIRST_NAME.key)}
             required
           />
         </div>
         <div className={styles["splits"]}>
           <Input
-            label="Last name"
+            label={LAST_NAME.label}
             value={order.lastName}
-            onChange={(e) => handleChange(e, "lastName")}
+            onChange={(e) => handleChange(e, LAST_NAME.key)}
             required
           />
         </div>
       </div>
 
       <Input
-        label="Email address"
+        label={EMAIL.label}
         type="email"
         value={order.email}
-        onChange={(e) => handleChange(e, "email")}
+        onChange={(e) => handleChange(e, EMAIL.key)}
         required
       />
       <Input
-        label="Mobile number"
+        label={MOBILE.label}
         type="tel"
         value={order.mobile}
-        onChange={(e) => handleChange(e, "mobile")}
+        onChange={(e) => handleChange(e, MOBILE.key)}
         required
       />
 
       <div className={styles["split-container"]}>
         <div className={styles["splits"]}>
           <Input
-            label="Date you want to book"
+            label={DATE.label}
             type="date"
             value={order.date}
-            onChange={(e) => handleChange(e, "date")}
+            onChange={(e) => handleChange(e, DATE.key)}
             required
           />
         </div>
         <div className={styles["splits"]}>
           <Input
-            label="Time"
+            label={DATE.label}
             type="time"
             value={order.time}
-            onChange={(e) => handleChange(e, "time")}
+            onChange={(e) => handleChange(e, DATE.key)}
             required
           />
         </div>
       </div>
 
       <Checkbox
-        label="Choose your preference"
+        label={PREFERENCE.label}
         preference={order.preference}
         handleChange={(e, type: string) => handleCheckChange(e, type)}
       />
 
       <Dropdown
-        label="Choose a category"
+        label={CATEGORY.label}
         value={order.category}
         options={availableCategory && Object.keys(availableCategory)}
-        onChange={(e) => handleChange(e, "category")}
+        onChange={(e) => handleChange(e, CATEGORY.key)}
         required
       />
       <Dropdown
-        label="Choose a restaurant"
+        label={RESTAURANT.label}
         value={order.restaurant}
         options={setRestaurantOptions()}
-        onChange={(e) => handleChange(e, "restaurant")}
+        onChange={(e) => handleChange(e, RESTAURANT.key)}
         required
       />
       <NumberInput
-        label="No of persons"
+        label={PERSONS.label}
         value={order.totalPersons}
         onChange={(e) => {
-          handleChange(e, "totalPersons");
+          handleChange(e, PERSONS.key);
         }}
         handleNumberIncrement={handleNumberIncrement}
         handleNumberDecrement={handleNumberDecrement}
         required
       />
       <button type={"submit"} className={styles["submit-btn"]}>
-        RESERVE MY TABLE
+        {RESERVE_TABLE}
       </button>
     </form>
   );

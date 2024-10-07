@@ -1,5 +1,6 @@
 import axios,{AxiosResponse} from "axios";
-import { Poster,PosterResponse } from "../types/restaurantType";
+import { Poster,PosterResponse } from "../models/posterModel";
+import { RestaurantIF } from "../models/restaurantModel";
 
 export async function getPosters():Promise<Poster[]|undefined> {
   try {
@@ -12,7 +13,7 @@ export async function getPosters():Promise<Poster[]|undefined> {
   }
 }
 
-export async function getRestaurants (){
+export async function getRestaurants ():Promise<RestaurantIF[]|undefined>{
   try {
     const response = await axios.get("https://nijin-server.vercel.app/api/dinedash/restaurants")
     return response.data

@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./confirmation-box.module.scss";
 import { formatDate, getTimeofDay } from "../../utils/commonUtils";
+import { RESERVE } from "../../constants/app.constants";
+
+const { ORDER_CONFIRM } = RESERVE;
 
 interface ConfrimMsgIF {
   tPersons: number;
@@ -17,19 +20,19 @@ export default function ConfirmationBox({
   return (
     <div className={styles["confirm-box"]}>
       <p className={styles["confirm-txt"]}>
-        We have reserved a table for
-        <span className={styles["styled-txt"]}> {tPersons}</span> at the
-        <span className={styles["styled-txt"]}> {resName}</span> for the
+        {ORDER_CONFIRM.STRING_ONE}
+        <span className={styles["styled-txt"]}> {tPersons}</span>{" "}
+        {ORDER_CONFIRM.STRING_TWO}
+        <span className={styles["styled-txt"]}> {resName}</span>{" "}
+        {ORDER_CONFIRM.STRING_THREE}
         <span className={styles["styled-txt"]}> {getTimeofDay(time)} </span>
-        of{" "}
+        {ORDER_CONFIRM.STRING_FOUR}
         <span className={styles["styled-txt"]}>
           {formatDate(new Date(date))}
         </span>
-        . You will receive an email and a text message with the details.
+        {ORDER_CONFIRM.STRING_FIVE}
       </p>
-      <p className={styles["queries-txt"]}>
-        For cancellation or further queries contact contact the restaurants{" "}
-      </p>
+      <p className={styles["queries-txt"]}>{ORDER_CONFIRM.STRING_SIX}</p>
     </div>
   );
 }

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./restaurant-item.module.scss";
 import { useParams } from "react-router-dom";
 import { getRestaurants } from "../../services/restaurantService";
-import { RestaurantIF } from "../../types/restaurantType";
+import { RestaurantIF } from "../../models/restaurantModel";
 import { getRestaurant } from "../../utils/commonUtils";
+import DimBackground from "../dim-background/dim-bacground";
 
 export default function RestaurantItem() {
   const [resData, setResData] = useState<RestaurantIF[] | undefined>(undefined);
@@ -26,6 +27,7 @@ export default function RestaurantItem() {
   }, []);
   return (
     <div className={styles["items"]}>
+      <DimBackground />
       <h1 className={styles["title"]}>{resName?.toUpperCase()}</h1>
       <section className={styles["items-container"]}>
         {resItems?.map((item, idx) => (

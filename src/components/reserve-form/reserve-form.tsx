@@ -122,7 +122,6 @@ export default function ReserveForm({
           />
         </div>
       </div>
-
       <Input
         label={EMAIL.label}
         type="email"

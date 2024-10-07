@@ -40,7 +40,7 @@ export default function Checkbox({
             <label key={fType.id}>
               <input
                 type="checkbox"
-                name={name}
+                name={fType.id}
                 // checked={preference[fType.id]}
                 // onChange={(e) => handleChange(e, fType.id)}
               />

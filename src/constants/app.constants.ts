@@ -44,6 +44,7 @@ export const RESERVE = {
     },
     PREFERENCE: {
       label: "Choose your preference",
+      key:"preference"
     },
     CATEGORY: {
       label: "Choose a catrgory",

@@ -14,6 +14,7 @@ export default function NumberInput({
   value,
   onChange,
   required,
+  name,
   handleNumberIncrement,
   handleNumberDecrement,
 }: NumberInputIF) {
@@ -26,6 +27,7 @@ export default function NumberInput({
         </button>
         <input
           type="number"
+          name={name}
           value={value == 0 ? "" : value}
           required={required}
           onChange={onChange}

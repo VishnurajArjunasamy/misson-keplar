@@ -5,6 +5,7 @@ interface DropdownIF {
   label: string;
   value: string;
   options: string[] | undefined;
+  name: string;
   required?: boolean;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
@@ -14,6 +15,7 @@ export default function Dropdown({
   value,
   options,
   onChange,
+  name,
   required,
 }: DropdownIF) {
   return (
@@ -22,6 +24,7 @@ export default function Dropdown({
       <select
         value={value}
         onChange={onChange}
+        name={name}
         required={required}
         className={styles["select"]}
       >

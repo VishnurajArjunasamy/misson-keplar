@@ -7,6 +7,7 @@ interface CheckboxIF {
     veg: boolean;
     nonVeg: boolean;
   };
+  name: string;
   handleChange: (
     event: React.ChangeEvent<HTMLInputElement>,
     type: string
@@ -27,6 +28,7 @@ const foodTypes = [
 export default function Checkbox({
   label,
   preference,
+  name,
   handleChange,
 }: CheckboxIF) {
   return (
@@ -38,8 +40,9 @@ export default function Checkbox({
             <label key={fType.id}>
               <input
                 type="checkbox"
-                checked={preference[fType.id]}
-                onChange={(e) => handleChange(e, fType.id)}
+                name={name}
+                // checked={preference[fType.id]}
+                // onChange={(e) => handleChange(e, fType.id)}
               />
               {fType.name}
             </label>

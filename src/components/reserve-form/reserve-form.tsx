@@ -93,7 +93,11 @@ export default function ReserveForm({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitted(true);
-    console.log("submitted");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+    console.log(formJson);
+    setOrder(formJson)
   }
 
   return (
@@ -102,16 +106,18 @@ export default function ReserveForm({
         <div className={styles["splits"]}>
           <Input
             label={FIRST_NAME.label}
-            value={order.firstName}
-            onChange={(e) => handleChange(e, FIRST_NAME.key)}
+            // value={order.firstName}
+            name={FIRST_NAME.key}
+            // onChange={(e) => handleChange(e, FIRST_NAME.key)}
             required
           />
         </div>
         <div className={styles["splits"]}>
           <Input
             label={LAST_NAME.label}
-            value={order.lastName}
-            onChange={(e) => handleChange(e, LAST_NAME.key)}
+            // value={order.lastName}
+            name={LAST_NAME.key}
+            // onChange={(e) => handleChange(e, LAST_NAME.key)}
             required
           />
         </div>
@@ -120,15 +126,17 @@ export default function ReserveForm({
       <Input
         label={EMAIL.label}
         type="email"
-        value={order.email}
-        onChange={(e) => handleChange(e, EMAIL.key)}
+        // value={order.email}
+        name={EMAIL.key}
+        // onChange={(e) => handleChange(e, EMAIL.key)}
         required
       />
       <Input
         label={MOBILE.label}
         type="tel"
-        value={order.mobile}
-        onChange={(e) => handleChange(e, MOBILE.key)}
+        // value={order.mobile}
+        name={MOBILE.key}
+        // onChange={(e) => handleChange(e, MOBILE.key)}
         required
       />
 
@@ -137,17 +145,19 @@ export default function ReserveForm({
           <Input
             label={DATE.label}
             type="date"
-            value={order.date}
-            onChange={(e) => handleChange(e, DATE.key)}
+            // value={order.date}
+            name={DATE.key}
+            // onChange={(e) => handleChange(e, DATE.key)}
             required
           />
         </div>
         <div className={styles["splits"]}>
           <Input
-            label={DATE.label}
+            label={TIME.label}
             type="time"
-            value={order.time}
-            onChange={(e) => handleChange(e, DATE.key)}
+            // value={order.time}
+            name={TIME.key}
+            // onChange={(e) => handleChange(e, TIME.key)}
             required
           />
         </div>
@@ -155,13 +165,15 @@ export default function ReserveForm({
 
       <Checkbox
         label={PREFERENCE.label}
+        name={PREFERENCE.key}
         preference={order.preference}
-        handleChange={(e, type: string) => handleCheckChange(e, type)}
+        // handleChange={(e, type: string) => handleCheckChange(e, type)}
       />
 
       <Dropdown
         label={CATEGORY.label}
         value={order.category}
+        name={CATEGORY.key}
         options={availableCategory && Object.keys(availableCategory)}
         onChange={(e) => handleChange(e, CATEGORY.key)}
         required
@@ -169,6 +181,7 @@ export default function ReserveForm({
       <Dropdown
         label={RESTAURANT.label}
         value={order.restaurant}
+        name={RESTAURANT.key}
         options={setRestaurantOptions()}
         onChange={(e) => handleChange(e, RESTAURANT.key)}
         required
@@ -176,6 +189,7 @@ export default function ReserveForm({
       <NumberInput
         label={PERSONS.label}
         value={order.totalPersons}
+        name={PERSONS.key}
         onChange={(e) => {
           handleChange(e, PERSONS.key);
         }}

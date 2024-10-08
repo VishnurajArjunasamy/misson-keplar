@@ -15,14 +15,19 @@ export default function Reserve() {
     mobile: "",
     date: "",
     time: "",
-    preference: {
-      veg: false,
-      nonVeg: false,
-    },
+    // preference: {
+    //   veg: false,
+    //   nonVeg: false,
+    // },
+    veg: false,
+    nonVeg: false,
     category: "",
     restaurant: "",
     totalPersons: 0,
   });
+
+  console.log(order);
+  
 
   return (
     <div className={styles["reserve"]}>

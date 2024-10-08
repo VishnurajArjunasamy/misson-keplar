@@ -17,6 +17,21 @@ export const NAVBAR = {
 };
 
 export const RESERVE = {
+  FORM_ERRORS: {
+    FIRST_NAME_REQ: "First name is required",
+    LAST_NAME_REQ: "Last name is required",
+    EMAIL_ERR: "Should be a valid email",
+    MOBILE_ERR: "Should be a valid number",
+    DATE_ERR: "Booking date required",
+    TIME_ERR: "Booking time required",
+    CATEGORY_ERR: "Dish type is required",
+    RES_ERR: "Restaurant  is required",
+    NO_OF_PS: {
+      REQUIRED: "No of persons is required",
+      COUNT_EXCEEDING: "No of persons should be less than 100",
+    },
+  },
+  MOBILE_REGEX: /^[6-9]\d{9}$/,
   ORDER_FORM: {
     FIRST_NAME: {
       label: "First name",
@@ -44,7 +59,7 @@ export const RESERVE = {
     },
     PREFERENCE: {
       label: "Choose your preference",
-      key:"preference"
+      key: "preference",
     },
     CATEGORY: {
       label: "Choose a catrgory",

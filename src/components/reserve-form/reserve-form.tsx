@@ -73,16 +73,6 @@ export default function ReserveForm({
     setOrder((prev) => ({ ...prev, [key]: e.target.value }));
   }
 
-  function handleCheckChange(
-    e: React.ChangeEvent<HTMLInputElement>,
-    type: string
-  ) {
-    setOrder((prev) => ({
-      ...prev,
-      preference: { ...prev.preference, [type]: e.target.checked },
-    }));
-  }
-
   function handleNumberIncrement() {
     setOrder((prev) => ({ ...prev, totalPersons: +prev.totalPersons + 1 }));
   }
@@ -121,38 +111,16 @@ export default function ReserveForm({
           <Input
             label={FIRST_NAME.label}
             errors={error}
-            // value={order.firstName}
             name={FIRST_NAME.key}
-            // onChange={(e) => handleChange(e, FIRST_NAME.key)}
           />
         </div>
         <div className={styles["splits"]}>
-          <Input
-            label={LAST_NAME.label}
-            errors={error}
-            // value={order.lastName}
-            name={LAST_NAME.key}
-            // onChange={(e) => handleChange(e, LAST_NAME.key)}
-          />
+          <Input label={LAST_NAME.label} errors={error} name={LAST_NAME.key} />
         </div>
       </div>
-      <Input
-        label={EMAIL.label}
-        type="email"
-        errors={error}
-        // value={order.email}
-        name={EMAIL.key}
-        // onChange={(e) => handleChange(e, EMAIL.key)}
-      />
+      <Input label={EMAIL.label} errors={error} type="email" name={EMAIL.key} />
 
-      <Input
-        label={MOBILE.label}
-        type="tel"
-        errors={error}
-        // value={order.mobile}
-        name={MOBILE.key}
-        // onChange={(e) => handleChange(e, MOBILE.key)}
-      />
+      <Input label={MOBILE.label} type="tel" errors={error} name={MOBILE.key} />
 
       <div className={styles["split-container"]}>
         <div className={styles["splits"]}>
@@ -160,10 +128,11 @@ export default function ReserveForm({
             label={DATE.label}
             errors={error}
             type=""
+            onBlur={(e) =>
+              e.target.value == "" ? (e.target.type = "") : undefined
+            }
             onFocus={(e) => (e.target.type = "date")}
-            // value={order.date}
             name={DATE.key}
-            // onChange={(e) => handleChange(e, DATE.key)}
           />
         </div>
         <div className={styles["splits"]}>
@@ -171,10 +140,13 @@ export default function ReserveForm({
             label={TIME.label}
             errors={error}
             type=""
-            onFocus={(e) => (e.target.type = "time")}
-            // value={order.time}
+            onBlur={(e) =>
+              e.target.value == "" ? (e.target.type = "") : undefined
+            }
+            onFocus={(e) => {
+              return (e.target.type = "time");
+            }}
             name={TIME.key}
-            // onChange={(e) => handleChange(e, TIME.key)}
           />
         </div>
       </div>
@@ -184,7 +156,6 @@ export default function ReserveForm({
           label={PREFERENCE.label}
           name={PREFERENCE.key}
           preference={order.preference}
-          // handleChange={(e, type: string) => handleCheckChange(e, type)}
         />
         {error.preference && (
           <p className={styles["error-txt"]}>{error.preference}</p>

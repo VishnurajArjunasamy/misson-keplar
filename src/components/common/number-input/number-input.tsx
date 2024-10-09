@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./number-input.module.scss";
 
 interface NumberInputIF extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -21,6 +21,14 @@ export default function NumberInput({
   handleNumberDecrement,
 }: NumberInputIF) {
   const [isFocus, setIsFocus] = useState(false);
+
+  useEffect(() => {
+    const autoHideInterval = setInterval(() => {
+      setIsFocus((prev) => !prev);
+    }, 5000);
+    return () => clearInterval(autoHideInterval);
+  }, []);
+
   return (
     <label className={styles["number-input"]}>
       <p>{label}</p>
@@ -36,6 +44,7 @@ export default function NumberInput({
           type="number"
           name={name}
           onFocus={() => setIsFocus(true)}
+          onClick={() => setIsFocus(true)}
           value={value == 0 ? "" : value}
           required={required}
           onChange={onChange}

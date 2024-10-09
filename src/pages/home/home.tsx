@@ -39,6 +39,7 @@ export default function Home() {
   function handleClick(idx: number) {
     setActivePoster(idx);
   }
+console.log("Home");
 
   const activeStyle = `${styles[`carousel-btn`]} ${styles[`active`]}`;
   const carouselStrip = (

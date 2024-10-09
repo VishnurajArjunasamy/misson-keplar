@@ -6,7 +6,7 @@ import { RestaurantIF } from "../../models/restaurantModel";
 import DimBackground from "../../components/dim-background/dim-bacground";
 
 export default function Restaurant() {
-  const [restaurants, setRestaurants] = useState<RestaurantIF[] | un>(
+  const [restaurants, setRestaurants] = useState<RestaurantIF[] | undefined>(
     undefined
   );
   useEffect(() => {
@@ -16,6 +16,7 @@ export default function Restaurant() {
     }
     fetchData();
   }, []);
+  console.log("Res");
 
   const restaurantList = restaurants?.map((restaurant: RestaurantIF) => {
     return <RestaurantCard key={restaurant.id} data={restaurant} />;

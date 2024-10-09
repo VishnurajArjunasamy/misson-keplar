@@ -89,6 +89,15 @@ export function getTimeofDay(time: string): string {
   }
 }
 
+/**
+ * The function `isValidDate` checks if a given date is valid by comparing it to the current date.
+ * @param selectedDate - Thank you for providing the code snippet. Could you please provide an example
+ * of the `selectedDate` parameter so that I can assist you better with testing the `isValidDate`
+ * function?
+ * @returns The function `isValidDate` checks if the `selectedDate` is a valid date and if it is
+ * greater than or equal to the current date. If the `selectedDate` is valid and greater than or equal
+ * to the current date, the function returns `true`. Otherwise, it returns `false`.
+ */
 function isValidDate(selectedDate) {
   const currentDate = new Date().setHours(0, 0, 0, 0);
   const givenDate = new Date(selectedDate);
@@ -99,6 +108,16 @@ function isValidDate(selectedDate) {
   return false;
 }
 
+
+/**
+ * The function `validate` checks a form data object for various required fields and formats, returning
+ * an object containing any errors found.
+ * @param formData - The `validate` function takes a `formData` object as a parameter and checks for
+ * various validation rules. It checks if the `formData` object has the following properties:
+ * @returns errors - The `validate` function returns an object containing any errors found in the form data.
+ * Each key in the object corresponds to a field in the form that has an error, and the value is the
+ * error message associated with that field.
+ */
 export function validate(formData) {
   const errors = {};
   if (!formData.firstName) {

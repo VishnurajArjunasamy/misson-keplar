@@ -24,17 +24,17 @@ export default function Home() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   const autoSliderInterval = setInterval(() => {
-  //     setActivePoster((prev) => {
-  //       if (posters && !(prev === posters.length - 1)) {
-  //         return prev + 1;
-  //       }
-  //       return 0;
-  //     });
-  //   }, 3000);
-  //   return () => clearInterval(autoSliderInterval);
-  // }, [activePoster, posters]);
+  useEffect(() => {
+    const autoSliderInterval = setInterval(() => {
+      setActivePoster((prev) => {
+        if (posters && !(prev === posters.length - 1)) {
+          return prev + 1;
+        }
+        return 0;
+      });
+    }, 3000);
+    return () => clearInterval(autoSliderInterval);
+  }, [activePoster, posters]);
 
   function handleClick(idx: number) {
     setActivePoster(idx);

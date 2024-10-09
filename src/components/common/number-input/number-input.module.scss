@@ -1,6 +1,6 @@
 .number-input {
     font-family: Lato;
-    width: 22%;
+    width: 33%;
     height: auto;
 
     p {
@@ -40,5 +40,13 @@
             caret-color: #fff;
             color-scheme: #fff;
         }
+    }
+
+    .error-txt {
+        font-size: 10px;
+        color: #eb482f;
+        font-family: Lato;
+        margin-top: 5px;
+        font-weight: 400;
     }
 }

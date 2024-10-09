@@ -29,9 +29,22 @@
 
     input[type="date"]::-webkit-calendar-picker-indicator {
         filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(99deg) brightness(107%) contrast(101%);
+        background: url('../../../assets/images/calander.png') no-repeat;
+        background-size: 21px 21px;
     }
 
-    input[type="time"] {
+    input[type="time"]::-webkit-calendar-picker-indicator {
         filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(99deg) brightness(107%) contrast(101%);
+        background: url('../../../assets/images/clock.png') no-repeat;
+        background-size: 21px 21px;
+    }
+
+
+    .error-txt {
+        font-size: 10px;
+        color: #eb482f;
+        font-family: Lato;
+        margin-top: 5px;
+        font-weight: 400;
     }
 }

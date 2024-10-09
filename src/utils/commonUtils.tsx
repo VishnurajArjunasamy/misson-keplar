@@ -1,5 +1,8 @@
 import { RestaurantIF } from "../models/restaurantModel";
 import { DishResIF } from "../models/dishModel";
+import { RESERVE } from "../constants/app.constants";
+
+const { MOBILE_REGEX, EMAIL_REGEX, FORM_ERRORS } = RESERVE;
 
 export const isEqual = (path: string, currentPath: string): boolean => {
   return path.includes(currentPath);
@@ -84,4 +87,63 @@ export function getTimeofDay(time: string): string {
   } else {
     return "Night";
   }
+}
+
+function isValidDate(selectedDate) {
+  const currentDate = new Date().setHours(0, 0, 0, 0);
+  const givenDate = new Date(selectedDate);
+
+  if (givenDate >= currentDate) {
+    return true;
+  }
+  return false;
+}
+
+export function validate(formData) {
+  const errors = {};
+  if (!formData.firstName) {
+    errors.firstName = FORM_ERRORS.FIRST_NAME_REQ;
+  }
+
+  if (!formData.lastName) {
+    errors.lastName = FORM_ERRORS.LAST_NAME_REQ;
+  }
+
+  if (!(formData.email && EMAIL_REGEX.test(formData.email))) {
+    errors.email = FORM_ERRORS.EMAIL_ERR;
+  }
+
+  if (!(formData.mobile && MOBILE_REGEX.test(formData.mobile))) {
+    errors.mobile = FORM_ERRORS.MOBILE_ERR;
+  }
+
+  if (!formData.date) {
+    errors.date = FORM_ERRORS.DATE_ERR.REQUIRED;
+  } else if (!isValidDate(formData.date)) {
+    errors.date = FORM_ERRORS.DATE_ERR.VALID;
+  }
+
+  if (!formData.time) {
+    errors.time = FORM_ERRORS.TIME_ERR;
+  }
+
+  if (!formData.veg && !formData.nonVeg) {
+    errors.preference = FORM_ERRORS.PREFERENCE_ERR;
+  }
+
+  if (!formData.category) {
+    errors.category = FORM_ERRORS.CATEGORY_ERR;
+  }
+
+  if (!formData.restaurant) {
+    errors.restaurant = FORM_ERRORS.RES_ERR;
+  }
+
+  if (!formData.totalPersons) {
+    errors.totalPersons = FORM_ERRORS.NO_OF_PS.REQUIRED;
+  } else if (formData.totalPersons > 100) {
+    errors.totalPersons = FORM_ERRORS.NO_OF_PS.VALID;
+  }
+
+  return errors;
 }

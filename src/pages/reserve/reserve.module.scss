@@ -1,6 +1,7 @@
 .reserve {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     overflow-y: scroll;
     position: relative;
 
@@ -8,9 +9,12 @@
         margin: 130px auto 0;
         width: 35vw;
         height: 85vh;
+        // height: auto;
         min-height: 750px;
         background-color: #0A0A0AB2;
-        padding: 85px;
+        padding: 70px;
+        overflow-y: scroll;
+
     }
 
 }

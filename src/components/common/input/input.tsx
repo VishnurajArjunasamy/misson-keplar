@@ -3,6 +3,7 @@ import styles from "./input.module.scss";
 
 interface InputIF extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  errors?: object;
 }
 
 export default function Input({
@@ -10,6 +11,8 @@ export default function Input({
   type,
   value,
   name,
+  onFocus,
+  errors,
   required,
   onChange,
 }: InputIF) {
@@ -22,7 +25,9 @@ export default function Input({
         name={name}
         onChange={onChange}
         required={required}
+        onFocus={onFocus}
       />
+      {errors[name] && <p className={styles["error-txt"]}>{errors[name]}</p>}
     </label>
   );
 }

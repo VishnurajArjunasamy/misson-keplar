@@ -21,17 +21,22 @@ export const RESERVE = {
     FIRST_NAME_REQ: "First name is required",
     LAST_NAME_REQ: "Last name is required",
     EMAIL_ERR: "Should be a valid email",
-    MOBILE_ERR: "Should be a valid number",
-    DATE_ERR: "Booking date required",
+    MOBILE_ERR: "Should be a valid Mobile number",
+    DATE_ERR: {
+      REQUIRED: "Booking date required",
+      VALID: "Booking Date must not be a past date",
+    },
     TIME_ERR: "Booking time required",
+    PREFERENCE_ERR: "Choose a preference",
     CATEGORY_ERR: "Dish type is required",
     RES_ERR: "Restaurant  is required",
     NO_OF_PS: {
       REQUIRED: "No of persons is required",
-      COUNT_EXCEEDING: "No of persons should be less than 100",
+      VALID: "No of persons should be less than 100",
     },
   },
-  MOBILE_REGEX: /^[6-9]\d{9}$/,
+  MOBILE_REGEX: /^[7-9][0-9]{9}$/,
+  EMAIL_REGEX: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   ORDER_FORM: {
     FIRST_NAME: {
       label: "First name",

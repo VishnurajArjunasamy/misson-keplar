@@ -37,14 +37,15 @@ export default function Checkbox({
       <div className={styles["align"]}>
         {foodTypes.map((fType) => {
           return (
-            <label key={fType.id}>
+            <label key={fType.id} className={styles['label']}>
               <input
                 type="checkbox"
                 name={fType.id}
                 // checked={preference[fType.id]}
                 // onChange={(e) => handleChange(e, fType.id)}
               />
-              {fType.name}
+              <span className={styles["checkbox"]} />
+              <p>{fType.name}</p>
             </label>
           );
         })}

@@ -21,7 +21,7 @@
         font-weight: 400;
         color: #fff;
 
-        background-image: url('../../../assets//images/down-arrow.png' );
+        background-image: url('../../../assets//images/down-arrow.png');
         background-repeat: no-repeat;
         background-size: 35px auto;
         background-position: 98% center;
@@ -30,5 +30,13 @@
     select:focus {
         outline: 2px dashed #fff;
         border: 0;
+    }
+
+    .error-txt {
+        font-size: 10px;
+        color: #eb482f;
+        font-family: Lato;
+        margin-top: 5px;
+        font-weight: 400;
     }
 }

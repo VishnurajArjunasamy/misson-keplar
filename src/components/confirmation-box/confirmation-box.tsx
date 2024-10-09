@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./confirmation-box.module.scss";
 import { formatDate, getTimeofDay } from "../../utils/commonUtils";
 import { RESERVE } from "../../constants/app.constants";
+import { ToWords } from "to-words";
 
 const { ORDER_CONFIRM } = RESERVE;
 
@@ -17,11 +18,15 @@ export default function ConfirmationBox({
   time,
   date,
 }: ConfrimMsgIF) {
+  const toWords = new ToWords();
   return (
     <div className={styles["confirm-box"]}>
       <p className={styles["confirm-txt"]}>
         {ORDER_CONFIRM.STRING_ONE}
-        <span className={styles["styled-txt"]}> {tPersons}</span>{" "}
+        <span className={styles["styled-txt"]}>
+          {" "}
+          {toWords.convert(tPersons)}
+        </span>{" "}
         {ORDER_CONFIRM.STRING_TWO}
         <span className={styles["styled-txt"]}> {resName}</span>{" "}
         {ORDER_CONFIRM.STRING_THREE}

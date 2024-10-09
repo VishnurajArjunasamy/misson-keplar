@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { RestaurantIF } from "../../models/restaurantModel";
 import { DishResIF } from "../../models/dishModel";
 import { OrderIF } from "../../models/orderModel";
-import { getAvailableCategory } from "../../utils/commonUtils";
+import { getAvailableCategory, validate } from "../../utils/commonUtils";
 import { getRestaurants } from "../../services/restaurantService";
 import styles from "./reserve-form.module.scss";
 import Input from "../common/input/input";
@@ -10,10 +10,9 @@ import Checkbox from "../common/checkbox/checkbox";
 import Dropdown from "../common/dropdown/dropdown";
 import NumberInput from "../common/number-input/number-input";
 import { RESERVE } from "../../constants/app.constants";
-import { object, string, number, date } from "yup";
 
 //Constants import
-const { ORDER_FORM, MOBILE_REGEX, FORM_ERRORS } = RESERVE;
+const { ORDER_FORM } = RESERVE;
 const {
   FIRST_NAME,
   LAST_NAME,
@@ -35,23 +34,6 @@ interface FormProps {
   setOrder: React.Dispatch<React.SetStateAction<OrderIF>>;
 }
 
-//form schema
-// const formSchema = object({
-//   firstName: string().required(FORM_ERRORS.FIRST_NAME_REQ),
-//   lastName: string().required(FORM_ERRORS.LAST_NAME_REQ),
-//   email: string().email(FORM_ERRORS.EMAIL_ERR).required(FORM_ERRORS.EMAIL_ERR),
-//   mobile: string().matches(MOBILE_REGEX, FORM_ERRORS.MOBILE_ERR),
-//   date: date().required(FORM_ERRORS.DATE_ERR),
-//   time: string().required(FORM_ERRORS.TIME_ERR),
-//   category: string().required(FORM_ERRORS.CATEGORY_ERR),
-//   restaurant: string().required(FORM_ERRORS.RES_ERR),
-//   totalPersons: number()
-//     .integer()
-//     .max(99)
-//     .min(1)
-//     .required(FORM_ERRORS.NO_OF_PS.REQUIRED),
-// });
-
 export default function ReserveForm({
   order,
   setOrder,
@@ -63,11 +45,6 @@ export default function ReserveForm({
 
   const [error, setError] = useState({});
 
-  let availableCategory: DishResIF;
-  if (restaurants) {
-    availableCategory = getAvailableCategory(restaurants);
-  }
-
   useEffect(() => {
     async function fetchData() {
       const result = await getRestaurants();
@@ -75,6 +52,11 @@ export default function ReserveForm({
     }
     fetchData();
   }, []);
+
+  let availableCategory: DishResIF;
+  if (restaurants) {
+    availableCategory = getAvailableCategory(restaurants);
+  }
 
   function setRestaurantOptions() {
     let restaurantOptions;
@@ -112,70 +94,6 @@ export default function ReserveForm({
     }));
   }
 
-  function isValidDate(selectedDate) {
-    const currentDate = new Date();
-    const givenDate = new Date(selectedDate);
-
-    if (givenDate >= currentDate) {
-      return true;
-    }
-
-    return false;
-  }
-
-  function validate(formData) {
-    const errors = {};
-    if (!formData.firstName) {
-      errors.firstName = "Name is required";
-    } else if (formData.name.length < 2) {
-      errors.firstName = "Name must be at least 2 characters";
-    }
-
-    if (!formData.lastName) {
-      errors.lastName = "Name is required";
-    } else if (formData.name.length < 2) {
-      errors.lastName = "Name must be at least 2 characters";
-    }
-
-    if (!formData.email) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Email is invalid";
-    }
-
-    if (!formData.mobile) {
-      errors.mobile = "Mobile Number is required";
-    } else if (!MOBILE_REGEX.test(formData.email)) {
-      errors.mobile = "Mobile Number is invalid";
-    }
-
-    if (!formData.date) {
-      errors.date = "Booking Date is required";
-    } else if (isValidDate(formData.date)) {
-      errors.date = " Booking Date must not be a past date";
-    }
-
-    if (!formData.time) {
-      errors.date = "Booking Time is required";
-    }
-
-    if (!formData.category) {
-      errors.category = "Category is required";
-    }
-
-    if (!formData.restaurant) {
-      errors.restaurant = "Restaurant name is required";
-    }
-
-    if (!formData.totalPersons) {
-      errors.totalPersons = "No. of Persons is required";
-    } else if (formData.totalPersons > 100) {
-      errors.totalPersons = "Booking for more than 100 people is not possible";
-    }
-
-    return errors;
-  }
-
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -185,45 +103,52 @@ export default function ReserveForm({
     const validationErrors: object = validate(formJson);
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form Data:", formData);
-      // setOrder(formJson);
-      // setIsSubmitted(true);
+      setOrder(formJson);
+      setIsSubmitted(true);
     } else {
       setError(validationErrors);
     }
   }
 
   return (
-    <form className={styles["reserve-form"]} onSubmit={(e) => handleSubmit(e)}>
+    <form
+      className={styles["reserve-form"]}
+      onSubmit={(e) => handleSubmit(e)}
+      noValidate
+    >
       <div className={styles["split-container"]}>
         <div className={styles["splits"]}>
           <Input
             label={FIRST_NAME.label}
+            errors={error}
             // value={order.firstName}
             name={FIRST_NAME.key}
             // onChange={(e) => handleChange(e, FIRST_NAME.key)}
           />
-          {error.firstName && <p>{error.firstName}</p>}
         </div>
         <div className={styles["splits"]}>
           <Input
             label={LAST_NAME.label}
+            errors={error}
             // value={order.lastName}
             name={LAST_NAME.key}
             // onChange={(e) => handleChange(e, LAST_NAME.key)}
           />
-          {error.lastName && <p>{error.lastName}</p>}
         </div>
       </div>
       <Input
         label={EMAIL.label}
         type="email"
+        errors={error}
         // value={order.email}
         name={EMAIL.key}
         // onChange={(e) => handleChange(e, EMAIL.key)}
       />
+
       <Input
         label={MOBILE.label}
         type="tel"
+        errors={error}
         // value={order.mobile}
         name={MOBILE.key}
         // onChange={(e) => handleChange(e, MOBILE.key)}
@@ -233,7 +158,9 @@ export default function ReserveForm({
         <div className={styles["splits"]}>
           <Input
             label={DATE.label}
-            type="date"
+            errors={error}
+            type=""
+            onFocus={(e) => (e.target.type = "date")}
             // value={order.date}
             name={DATE.key}
             // onChange={(e) => handleChange(e, DATE.key)}
@@ -242,7 +169,9 @@ export default function ReserveForm({
         <div className={styles["splits"]}>
           <Input
             label={TIME.label}
-            type="time"
+            errors={error}
+            type=""
+            onFocus={(e) => (e.target.type = "time")}
             // value={order.time}
             name={TIME.key}
             // onChange={(e) => handleChange(e, TIME.key)}
@@ -250,16 +179,22 @@ export default function ReserveForm({
         </div>
       </div>
 
-      <Checkbox
-        label={PREFERENCE.label}
-        name={PREFERENCE.key}
-        preference={order.preference}
-        // handleChange={(e, type: string) => handleCheckChange(e, type)}
-      />
+      <div>
+        <Checkbox
+          label={PREFERENCE.label}
+          name={PREFERENCE.key}
+          preference={order.preference}
+          // handleChange={(e, type: string) => handleCheckChange(e, type)}
+        />
+        {error.preference && (
+          <p className={styles["error-txt"]}>{error.preference}</p>
+        )}
+      </div>
 
       <Dropdown
         label={CATEGORY.label}
         value={order.category}
+        errors={error}
         name={CATEGORY.key}
         options={availableCategory && Object.keys(availableCategory)}
         onChange={(e) => handleChange(e, CATEGORY.key)}
@@ -267,6 +202,7 @@ export default function ReserveForm({
       <Dropdown
         label={RESTAURANT.label}
         value={order.restaurant}
+        errors={error}
         name={RESTAURANT.key}
         options={setRestaurantOptions()}
         onChange={(e) => handleChange(e, RESTAURANT.key)}
@@ -274,6 +210,7 @@ export default function ReserveForm({
       <NumberInput
         label={PERSONS.label}
         value={order.totalPersons}
+        errors={error}
         name={PERSONS.key}
         onChange={(e) => {
           handleChange(e, PERSONS.key);

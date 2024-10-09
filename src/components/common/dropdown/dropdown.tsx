@@ -4,6 +4,7 @@ import styles from "./dropdown.module.scss";
 interface DropdownIF {
   label: string;
   value: string;
+  errors?: object;
   options: string[] | undefined;
   name: string;
   required?: boolean;
@@ -15,6 +16,7 @@ export default function Dropdown({
   value,
   options,
   onChange,
+  errors,
   name,
   required,
 }: DropdownIF) {
@@ -41,6 +43,7 @@ export default function Dropdown({
           })}
         </>
       </select>
+      {errors[name] && <p className={styles["error-txt"]}>{errors[name]}</p>}
     </label>
   );
 }

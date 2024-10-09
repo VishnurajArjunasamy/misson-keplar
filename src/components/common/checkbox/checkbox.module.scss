@@ -13,16 +13,37 @@
     .align {
         display: flex;
         justify-content: space-between;
+        position: relative;
 
-        input[type='checkbox']{
-            margin-right:10px ;
-        }
-
-        label {
+        .label {
+            display: flex;
             font-family: Lato;
             font-size: 14px;
             font-weight: 400;
             color: #fff;
+
+
+            input[type="checkbox"] {
+                appearance: none;
+                position: relative;
+            }
+
+            .checkbox {
+                position: absolute;
+                height: 15px;
+                background: #fff;
+                width: 15px;
+                transition: 100ms ease-in;
+                cursor: pointer;
+            }
+
+            input:checked+.checkbox {
+                background: #FF6B00;
+            }
+
+            p {
+                margin-left: 25px;
+            }
         }
     }
 }

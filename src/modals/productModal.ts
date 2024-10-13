@@ -1,11 +1,11 @@
-export interface ProductCategory {
+export interface ProductCategoryI {
   id: string;
   photo: string;
   category: string;
   description: string;
 }
 
-export interface Product {
+export interface ProductI {
   id: number;
   name: string;
   photo: string;

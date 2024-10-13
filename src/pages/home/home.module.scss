@@ -1,22 +1,21 @@
 .home-page {
     width: 100vw;
-
+    height: auto;
     .quotes {
-        // margin-top: 70px;
         width: 80%;
-        margin: 70px auto 0;
+        margin: 150px auto 0;
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         gap: 3px;
-        // background-color: rgb(127, 202, 255);
         font-family: Poppins;
 
-        h1{
+        h1 {
             font-size: 48px;
             font-weight: 400;
         }
-        h2{
+
+        h2 {
             font-size: 34px;
             font-weight: 400;
         }

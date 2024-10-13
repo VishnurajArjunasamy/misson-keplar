@@ -8,8 +8,11 @@
     padding: 30px 50px;
     font-family: Poppins;
     // height: 70px;
-    // position: fixed;
+    z-index: 10;
+    position: fixed;
+    top: 0;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #fff;
 
     h1 {
         font-size: 20px;

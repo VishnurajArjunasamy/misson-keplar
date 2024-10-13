@@ -1,7 +1,7 @@
 import React from "react";
 import { HOME } from "../../constants/app.constant";
 import styles from "./header.module.scss";
-import down from "../../assets/caret-down.png";
+import down from "../../assets/logos/caret-down.png";
 
 const { SITBACK, Menus } = HOME;
 

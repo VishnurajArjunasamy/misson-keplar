@@ -8,8 +8,8 @@ const { QUOTE_1, QUOTE_2 } = HOME;
 export default function Home() {
   return (
     <div className={styles["home-page"]}>
-      {/* <Header /> */}
-      <p className={styles["quote"]}>
+      <Header />
+      <p className={styles["quotes"]}>
         <h1>{QUOTE_1}</h1>
         <h2>{QUOTE_2}</h2>
       </p>

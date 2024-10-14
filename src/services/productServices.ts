@@ -1,5 +1,4 @@
 import axios from "axios";
-import { HttpResponse } from "../modals/httpResponseModal";
 import { ProductI, ProductCategoryI } from "../modals/productModal";
 
 /**
@@ -27,12 +26,13 @@ export async function getProductCategories() {
  *
  */
 
-export async function getProducts(catId: string) {
+export async function getProducts(catId: string | undefined) {
   try {
-    const data = await axios.get<HttpResponse<ProductI>>(
+    const data = await axios.get<ProductI[]>(
       `https://jsonmockserver.vercel.app/api/shopping/furniture/products?category=${catId}`
     );
-    return data.data.data;
+
+    return data.data;
   } catch (error) {
     console.log(error);
   }

@@ -53,4 +53,12 @@
             margin-top: 2px;
         }
     }
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: inherit;
+    }
 }

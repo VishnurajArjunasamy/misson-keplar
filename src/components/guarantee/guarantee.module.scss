@@ -1,0 +1,16 @@
+.guarantee-box {
+    display: flex;
+    gap: 5px;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+    p {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        color: #3b8624;
+    }
+}

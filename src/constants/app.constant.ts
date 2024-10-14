@@ -10,3 +10,9 @@ export const HOME = {
   FOOTER_TXT: "COPYRIGHTS 2020",
   SHOP_NOW: "SHOP NOW",
 };
+
+export const PRODUCTS = {
+  ADD_TO_WISHLIST: "ADD TO WISHLIST",
+  ADD_TO_CART: "ADD TO CART",
+  CURRENCY_TYPE: "₹",
+};

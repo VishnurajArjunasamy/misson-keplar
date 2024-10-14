@@ -2,16 +2,25 @@ import React from "react";
 import { HOME } from "../../constants/app.constant";
 import styles from "./header.module.scss";
 import down from "../../assets/logos/caret-down.png";
+import { useParams } from "react-router-dom";
 
 const { SITBACK, MENUS } = HOME;
 
 export default function Header() {
+  const { categoryId } = useParams();
   return (
     <header className={styles.header}>
       <h1>{SITBACK}</h1>
       <ul className={styles.menu}>
         {Object.values(MENUS).map((menu) => (
-          <li key={menu} className={styles["category-active"]}>
+          <li
+            key={menu}
+            className={
+              menu.toLocaleLowerCase() == categoryId
+                ? styles["category-active"]
+                : undefined
+            }
+          >
             {menu}
           </li>
         ))}

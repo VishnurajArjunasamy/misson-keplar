@@ -6,17 +6,17 @@ import { CartItemI } from "../../modals/cartModal";
 
 interface ProductsContainerPropsI {
   products: ProductI[] | undefined;
-  isEmptyCart: boolean;
-  cart: CartItemI[]|undefined;
+  cart: CartItemI[] | undefined;
   setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
 }
 
 export default function ProductsContainer({
   products,
-  isEmptyCart = true,
   setCart,
   cart,
 }: ProductsContainerPropsI) {
+  const isEmptyCart = cart == undefined || cart.length < 1;
+
   const style = isEmptyCart
     ? styles["products-container"]
     : `${styles["products-container"]} ${styles["shrink-container"]}`;

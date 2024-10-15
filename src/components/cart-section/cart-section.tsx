@@ -6,12 +6,14 @@ import CartItemCard from "../cart-item-card/cart-item-cad";
 import { CART } from "../../constants/app.constant";
 
 interface CartSectionPropsI {
-  cart: CartItemI[];
+  cart: CartItemI[] | undefined;
+  setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
+
 }
 
 const { CART_TABS } = CART;
 
-export default function CartSection({ cart }: CartSectionPropsI) {
+export default function CartSection({ cart,setCart }: CartSectionPropsI) {
   const [activeTab, setActiveTab] = useState(CART_TABS.myCart.id);
   const wishList = ["wish 1", "wish 2"];
   const items = activeTab == CART_TABS.myCart.id ? cart : wishList;
@@ -30,12 +32,18 @@ export default function CartSection({ cart }: CartSectionPropsI) {
       </ul>
       <div className={styles["cart-items-container"]}>
         {items?.map((item) => (
-          <CartItemCard data={item} type={activeTab}/>
+          <CartItemCard
+            key={item.id}
+            data={item}
+            type={activeTab}
+            cart={cart}
+            setCart={setCart}
+          />
         ))}
       </div>
       {
         <div className={styles["price-section"]}>
-          <PriceCard />
+          <PriceCard cart={cart}/>
         </div>
       }
     </div>

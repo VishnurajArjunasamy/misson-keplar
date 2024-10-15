@@ -20,7 +20,13 @@
         }
     }
 
-    .cart-items-container {}
+    .cart-items-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: 30px;
+        gap: 30px;
+    }
 
     .price-section {
         position: absolute;

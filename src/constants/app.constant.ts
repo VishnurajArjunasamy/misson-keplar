@@ -28,4 +28,5 @@ export const CART = {
       name: "MY WISHLIST",
     },
   },
+  TOTAL_AMOUNT: "TOTAL AMOUNT",
 };

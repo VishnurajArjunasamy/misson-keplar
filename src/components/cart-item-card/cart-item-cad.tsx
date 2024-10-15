@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./cart-item.module.scss";
-import { CartItemI } from "../../modals/cartModal";
+import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 import CounterBtn from "../counter-btn/counter-btn";
-import { PRODUCTS } from "../../constants/app.constant";
+import { CART, PRODUCTS } from "../../constants/app.constant";
+import Button from "../button/button";
 
 interface CartItemCardPropsI {
   cart: CartItemI[] | undefined;
   setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
-  data: CartItemI;
+  data: CartItemI | WishlistItemI;
   type: string;
 }
 
@@ -48,6 +49,28 @@ export default function CartItemCard({
     }
   }
 
+  function handleAddCart() {
+    const isItemInCart = cart?.find((item) => item.id == data.id);
+    if (isItemInCart) {
+      setCart(
+        cart?.map((item) =>
+          item.id == data.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      setCart([
+        ...(cart || []),
+        {
+          id: data.id,
+          name: data.name,
+          photo: data.photo,
+          price: data.price,
+          quantity: 1,
+        },
+      ]);
+    }
+  }
+
   if (type == "myCart" && data.quantity == 0) {
     return;
   }
@@ -62,12 +85,20 @@ export default function CartItemCard({
           {data.price}
         </span>
       </div>
-      <div className={styles["cart-quantity-btn"]}>
-        <CounterBtn
-          quantity={data.quantity}
-          handleCartIncrement={() => handleCartIncrement(data.id)}
-          handleCartDecrement={() => handleCartDecrement(data.id)}
-        />
+      <div className={styles["cart-function-btn"]}>
+        {type == CART.CART_TABS.myCart.id ? (
+          <CounterBtn
+            quantity={data.quantity}
+            handleCartIncrement={() => handleCartIncrement(data.id)}
+            handleCartDecrement={() => handleCartDecrement(data.id)}
+          />
+        ) : (
+          <Button
+            name={PRODUCTS.ADD_TO_CART}
+            type="sm"
+            onClick={handleAddCart}
+          />
+        )}
       </div>
     </div>
   );

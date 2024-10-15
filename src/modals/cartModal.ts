@@ -5,3 +5,10 @@ export interface CartItemI {
   price: string;
   quantity: number;
 }
+
+export interface WishlistItemI {
+  id: number;
+  name: string;
+  photo: string;
+  price: string;
+}

@@ -29,4 +29,5 @@ export const CART = {
     },
   },
   TOTAL_AMOUNT: "TOTAL AMOUNT",
+  
 };

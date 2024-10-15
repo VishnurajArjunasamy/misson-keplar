@@ -4,13 +4,17 @@ import styles from "./product-card.module.scss";
 import Guarantee from "../guarantee/guarantee";
 import { PRODUCTS } from "../../constants/app.constant";
 import Button from "../button/button";
-import { CartItemI } from "../../modals/cartModal";
+import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 
 interface ProductCardPropsI {
   productData: ProductI;
   isEmptyCart: boolean;
   cart: CartItemI[] | undefined;
   setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
+  wishlist: WishlistItemI[] | undefined;
+  setWishlist: React.Dispatch<
+    React.SetStateAction<WishlistItemI[] | undefined>
+  >;
 }
 
 export default function ProductCard({
@@ -18,12 +22,15 @@ export default function ProductCard({
   isEmptyCart,
   setCart,
   cart,
+  wishlist,
+  setWishlist,
 }: ProductCardPropsI) {
   const style = isEmptyCart
     ? styles["product-card"]
     : `${styles["product-card"]} ${styles["shrink-card"]}`;
 
   const isItemInCart = cart?.find((item) => item.id == productData.id);
+  const isItemInWishlist = wishlist?.find((item) => item.id == productData.id);
 
   function handleAddCart() {
     if (isItemInCart) {
@@ -47,6 +54,20 @@ export default function ProductCard({
       ]);
     }
   }
+  
+  function handleAddWishList() {
+    if (!isItemInWishlist) {
+      setWishlist([
+        ...(wishlist || []),
+        {
+          id: productData.id,
+          name: productData.name,
+          photo: productData.photo,
+          price: productData.price,
+        },
+      ]);
+    }
+  }
 
   return (
     <div className={style}>
@@ -62,7 +83,11 @@ export default function ProductCard({
       <Guarantee years={productData.guarantee} />
       <div className={styles["line"]}></div>
       <div className={styles["btns-container"]}>
-        <Button type="no-bg" name={PRODUCTS.ADD_TO_WISHLIST} />
+        <Button
+          type="no-bg"
+          name={PRODUCTS.ADD_TO_WISHLIST}
+          onClick={handleAddWishList}
+        />
         <Button type="l" name={PRODUCTS.ADD_TO_CART} onClick={handleAddCart} />
       </div>
     </div>

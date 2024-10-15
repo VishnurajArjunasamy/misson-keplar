@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import styles from "./cart-section.module.scss";
 import PriceCard from "../price-card/price-card";
-import { CartItemI } from "../../modals/cartModal";
+import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 import CartItemCard from "../cart-item-card/cart-item-cad";
 import { CART } from "../../constants/app.constant";
 
 interface CartSectionPropsI {
   cart: CartItemI[] | undefined;
+  wishlist: WishlistItemI[] | undefined;
+  setWishlist: React.Dispatch<
+    React.SetStateAction<WishlistItemI[] | undefined>
+  >;
   setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
-
 }
 
 const { CART_TABS } = CART;
 
-export default function CartSection({ cart,setCart }: CartSectionPropsI) {
+export default function CartSection({
+  cart,
+  setCart,
+  wishlist,
+}: CartSectionPropsI) {
   const [activeTab, setActiveTab] = useState(CART_TABS.myCart.id);
-  const wishList = ["wish 1", "wish 2"];
-  const items = activeTab == CART_TABS.myCart.id ? cart : wishList;
+  const items = activeTab == CART_TABS.myCart.id ? cart : wishlist;
   return (
     <div className={styles["cart-section"]}>
       <ul className={styles["cart-tab"]}>
@@ -43,7 +49,7 @@ export default function CartSection({ cart,setCart }: CartSectionPropsI) {
       </div>
       {
         <div className={styles["price-section"]}>
-          <PriceCard cart={cart}/>
+          <PriceCard cart={cart} />
         </div>
       }
     </div>

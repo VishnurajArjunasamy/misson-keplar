@@ -38,7 +38,7 @@ export default function Shopping() {
         setCart={setCart}
         cart={cart}
       />
-      <CartContainer />
+      <CartContainer cart={cart}/>
     </div>
   );
 }

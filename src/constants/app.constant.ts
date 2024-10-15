@@ -16,3 +16,16 @@ export const PRODUCTS = {
   ADD_TO_CART: "ADD TO CART",
   CURRENCY_TYPE: "₹",
 };
+
+export const CART = {
+  CART_TABS: {
+    myCart: {
+      id: "myCart",
+      name: "MY CART",
+    },
+    myWishlist: {
+      id: "myWishlist",
+      name: "MY WISHLIST",
+    },
+  },
+};

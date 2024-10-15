@@ -12,13 +12,17 @@
         li {
             font-size: 17px;
             font-weight: 500;
+            cursor: pointer;
+        }
+
+        .active {
             border-bottom: 2px solid #000;
         }
     }
 
     .cart-items-container {}
 
-    .price-section{
+    .price-section {
         position: absolute;
         bottom: 0;
         left: 0;

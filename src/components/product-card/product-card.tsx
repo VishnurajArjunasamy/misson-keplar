@@ -4,19 +4,49 @@ import styles from "./product-card.module.scss";
 import Guarantee from "../guarantee/guarantee";
 import { PRODUCTS } from "../../constants/app.constant";
 import Button from "../button/button";
+import { CartItemI } from "../../modals/cartModal";
 
 interface ProductCardPropsI {
   productData: ProductI;
   isEmptyCart: boolean;
+  cart: CartItemI[] | undefined;
+  setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
 }
 
 export default function ProductCard({
   productData,
   isEmptyCart,
+  setCart,
+  cart,
 }: ProductCardPropsI) {
   const style = isEmptyCart
     ? styles["product-card"]
     : `${styles["product-card"]} ${styles["shrink-card"]}`;
+
+  const isItemInCart = cart?.find((item) => item.id == productData.id);
+
+  function handleAddCart() {
+    if (isItemInCart) {
+      setCart(
+        cart?.map((item) =>
+          item.id == productData.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCart([
+        ...(cart || []),
+        {
+          id: productData.id,
+          name: productData.name,
+          photo: productData.photo,
+          price: productData.price,
+          quantity: 1,
+        },
+      ]);
+    }
+  }
 
   return (
     <div className={style}>
@@ -33,7 +63,7 @@ export default function ProductCard({
       <div className={styles["line"]}></div>
       <div className={styles["btns-container"]}>
         <Button type="no-bg" name={PRODUCTS.ADD_TO_WISHLIST} />
-        <Button type="l" name={PRODUCTS.ADD_TO_CART} />
+        <Button type="l" name={PRODUCTS.ADD_TO_CART} onClick={handleAddCart} />
       </div>
     </div>
   );

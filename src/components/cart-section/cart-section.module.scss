@@ -1,0 +1,28 @@
+.cart-section {
+    padding: 150px 30px 30px;
+    background-color: #f7f7f7;
+    height: 100%;
+
+    .cart-tab {
+        display: flex;
+        gap: 40px;
+        list-style-type: none;
+        font-family: Poppins;
+
+        li {
+            font-size: 17px;
+            font-weight: 500;
+            border-bottom: 2px solid #000;
+        }
+    }
+
+    .cart-items-container {}
+
+    .price-section{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10%;
+    }
+}

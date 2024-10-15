@@ -1,0 +1,15 @@
+.price-container {
+    height: 100%;
+    padding: 0px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: #00000059 2px 5px 10px;
+
+    .price-info {
+        font-family: Poppins;
+        font-size: 13px;
+        font-weight: 300;
+    }
+}

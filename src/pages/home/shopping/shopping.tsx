@@ -4,10 +4,15 @@ import { useParams } from "react-router-dom";
 import { ProductI } from "../../../modals/productModal";
 import ProductsContainer from "../../../containers/products-container/products-container";
 import { getProducts } from "../../../services/productServices";
+import SplitContainer from "../../../containers/split-container/split-container";
+import CartContainer from "../../../containers/cart-container/cart-container";
 
 export default function Shopping() {
   const { categoryId } = useParams();
   const [prodcuts, setProducts] = useState<ProductI[] | undefined>(undefined);
+  const [cart] = useState([6]);
+
+  const isEmptyCart = cart.length == 0;
 
   useEffect(() => {
     async function fetchData() {
@@ -19,7 +24,13 @@ export default function Shopping() {
 
   return (
     <div className={styles["shopping-page"]}>
-      <ProductsContainer products={prodcuts} />
+      {/* <SplitContainer
+        leftContainer={<ProductsContainer products={prodcuts} />}
+        rightContainer={<></>}
+        isEmptyCart={isEmptyCart}
+      /> */}
+      <ProductsContainer products={prodcuts} isEmptyCart={isEmptyCart} />
+      <CartContainer />
     </div>
   );
 }

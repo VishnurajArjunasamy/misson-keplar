@@ -1,6 +1,6 @@
 .product-card {
-    width: 380px;
-    // max-height: 400px;
+    flex: 0 1 calc(100%/4 - 26.5px);
+    // min-width: 380px;
     font-family: Poppins;
     display: flex;
     flex-direction: column;
@@ -53,4 +53,9 @@
         justify-content: flex-end;
         gap: 25px;
     }
+
+}
+
+.shrink-card {
+    flex: 0 1 calc(100%/3 - 24px);
 }

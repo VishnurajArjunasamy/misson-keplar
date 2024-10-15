@@ -1,3 +1,12 @@
-.prodcuts-container{
-    
+.products-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 35px;
+    row-gap: 45px;
+    padding: 0 50px 45px;
+}
+
+.shrink-container {
+    width: 75%;
 }

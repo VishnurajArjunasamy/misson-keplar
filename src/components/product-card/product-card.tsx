@@ -7,11 +7,19 @@ import Button from "../button/button";
 
 interface ProductCardPropsI {
   productData: ProductI;
+  isEmptyCart: boolean;
 }
 
-export default function ProductCard({ productData }: ProductCardPropsI) {
+export default function ProductCard({
+  productData,
+  isEmptyCart,
+}: ProductCardPropsI) {
+  const style = isEmptyCart
+    ? styles["product-card"]
+    : `${styles["product-card"]} ${styles["shrink-card"]}`;
+
   return (
-    <div className={styles["product-card"]}>
+    <div className={style}>
       <img src={productData.photo} alt={productData.name} />
       <div className={styles["split-container"]}>
         <h2>{productData.name}</h2>

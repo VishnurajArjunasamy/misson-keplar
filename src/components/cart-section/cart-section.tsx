@@ -20,8 +20,12 @@ export default function CartSection({
   cart,
   setCart,
   wishlist,
+  setWishlist,
 }: CartSectionPropsI) {
-  const [activeTab, setActiveTab] = useState(CART_TABS.myCart.id);
+  const active =
+    cart?.length > 0 ? CART_TABS.myCart.id : CART_TABS.myWishlist.id;
+
+  const [activeTab, setActiveTab] = useState(active);
   const items = activeTab == CART_TABS.myCart.id ? cart : wishlist;
   return (
     <div className={styles["cart-section"]}>
@@ -44,14 +48,16 @@ export default function CartSection({
             type={activeTab}
             cart={cart}
             setCart={setCart}
+            wishlist={wishlist}
+            setWishlist={setWishlist}
           />
         ))}
       </div>
-      {
+      {activeTab == CART_TABS.myCart.id && cart?.length > 0 && (
         <div className={styles["price-section"]}>
           <PriceCard cart={cart} />
         </div>
-      }
+      )}
     </div>
   );
 }

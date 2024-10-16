@@ -17,7 +17,10 @@ export default function CartItemCard({
   type,
   cart,
   setCart,
+  wishlist,
+  setWishlist,
 }: CartItemCardPropsI) {
+  //Decrease cart item quantity
   function handleCartIncrement(id: number) {
     setCart(
       cart?.map((item) => {
@@ -31,6 +34,7 @@ export default function CartItemCard({
     );
   }
 
+  //Increase cart item quantity
   function handleCartDecrement(id: number) {
     const item = cart?.find((item) => item.id == id);
     if (item?.quantity <= 1) {
@@ -49,6 +53,7 @@ export default function CartItemCard({
     }
   }
 
+  //adding Item to cart form wishlist
   function handleAddCart() {
     const isItemInCart = cart?.find((item) => item.id == data.id);
     if (isItemInCart) {
@@ -69,6 +74,9 @@ export default function CartItemCard({
         },
       ]);
     }
+
+    //remove wishlisted item from wishlist
+    setWishlist(wishlist.filter((wish) => wish.id != data.id));
   }
 
   if (type == "myCart" && data.quantity == 0) {

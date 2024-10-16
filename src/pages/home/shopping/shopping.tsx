@@ -15,7 +15,8 @@ export default function Shopping() {
     undefined
   );
 
-  console.log(cart);
+  console.log("cart ->", cart);
+  console.log("wishlist ->", whishlist);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,6 +25,9 @@ export default function Shopping() {
     }
     fetchData();
   }, [categoryId]);
+
+  const showCartContainer =
+    (cart && cart.length > 0) || (whishlist && whishlist.length > 0);
 
   return (
     <div className={styles["shopping-page"]}>
@@ -34,7 +38,7 @@ export default function Shopping() {
         wishlist={whishlist}
         setWishlist={setWishlist}
       />
-      {cart && cart?.length > 0 && (
+      {showCartContainer && (
         <CartContainer
           cart={cart}
           setCart={setCart}

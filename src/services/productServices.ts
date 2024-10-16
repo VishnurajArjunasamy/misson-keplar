@@ -26,10 +26,14 @@ export async function getProductCategories() {
  *
  */
 
-export async function getProducts(catId: string | undefined) {
+export async function getProducts(
+  catId: string | undefined,
+  abortController: AbortController
+) {
   try {
     const data = await axios.get<ProductI[]>(
-      `https://jsonmockserver.vercel.app/api/shopping/furniture/products?category=${catId}`
+      `https://jsonmockserver.vercel.app/api/shopping/furniture/products?category=${catId}`,
+      { signal: abortController.signal }
     );
 
     return data.data;

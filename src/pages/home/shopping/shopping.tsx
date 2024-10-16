@@ -19,11 +19,15 @@ export default function Shopping() {
   console.log("wishlist ->", whishlist);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     async function fetchData() {
-      const result = await getProducts(categoryId);
+      const result = await getProducts(categoryId, abortController);
       setProducts(result);
     }
     fetchData();
+
+    return () => abortController.abort();
   }, [categoryId]);
 
   const showCartContainer =

@@ -14,7 +14,7 @@ export default function PriceCard({ cart }: PriceCardPropsI) {
       return acc + +item.price * item.quantity;
     }, 0);
     console.log(totalPrice);
-    return totalPrice;
+    return totalPrice?.toLocaleString("en-IN");
   }
 
   return (

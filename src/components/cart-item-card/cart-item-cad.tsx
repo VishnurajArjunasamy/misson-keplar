@@ -90,7 +90,7 @@ export default function CartItemCard({
         <h2>{data.name}</h2>
         <span>
           <i className={styles["currency-txt"]}>{PRODUCTS.CURRENCY_TYPE}</i>
-          {data.price}
+          {(+data.price).toLocaleString("en-IN")}
         </span>
       </div>
       <div className={styles["cart-function-btn"]}>

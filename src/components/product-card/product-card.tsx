@@ -54,7 +54,7 @@ export default function ProductCard({
       ]);
     }
   }
-  
+
   function handleAddWishList() {
     if (!isItemInWishlist) {
       setWishlist([
@@ -76,7 +76,7 @@ export default function ProductCard({
         <h2>{productData.name}</h2>
         <span>
           <i className={styles["currency-txt"]}>{PRODUCTS.CURRENCY_TYPE}</i>
-          {productData.price}
+          {(+productData.price).toLocaleString("en-IN")}
         </span>
       </div>
       <p>{productData.description}</p>

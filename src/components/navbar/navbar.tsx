@@ -1,12 +1,12 @@
 import React from "react";
 import { HOME } from "../../constants/app.constant";
-import styles from "./header.module.scss";
+import styles from "./navbar.module.scss";
 import down from "../../assets/logos/caret-down.png";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 const { SITBACK, MENUS } = HOME;
 
-export default function Header() {
+export default function Navbar() {
   const { categoryId } = useParams();
   return (
     <>
@@ -27,9 +27,6 @@ export default function Header() {
               <Link to={`categories/${menu.toLocaleLowerCase()}`}>{menu}</Link>
             </li>
           ))}
-          {/* <li className={styles['category-active']}>{Menus.COUCHES}</li>
-        <li>{Menus.CHAIRS}</li>
-        <li>{Menus.DINING}</li> */}
         </ul>
         <div className={styles["user-profile"]}>
           <p>Vizz</p>

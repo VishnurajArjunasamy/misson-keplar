@@ -11,8 +11,8 @@ export default function OrderItemsContainer() {
 
   return (
     <div className={styles["order-items-container"]}>
-      <h1>{ORDER.TITLE}</h1>
-      <p>{ORDER.ORDER_DETAIL}</p>
+      <h1 className={styles['order-title']}>{ORDER.TITLE}</h1>
+      <p className={styles['order-detail-txt']}>{ORDER.ORDER_DETAIL}</p>
       <div className={styles["order-items-section"]}>
         {orders?.map((order) => (
           <ProductCard key={order.id} productData={order} />

@@ -1,0 +1,19 @@
+.quotes {
+    width: 80%;
+    margin: 0 auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 3px;
+    font-family: Poppins;
+
+    h1 {
+        font-size: 48px;
+        font-weight: 400;
+    }
+
+    h2 {
+        font-size: 34px;
+        font-weight: 400;
+    }
+}

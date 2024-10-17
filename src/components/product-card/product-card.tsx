@@ -75,9 +75,7 @@ export default function ProductCard({
   }
 
   function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
-    e.target.src = fallbackImage;
-    // console.log(e.target.src);
-    
+    e.target.src = fallbackImage;    
   }
 
   return (

@@ -5,6 +5,7 @@ import Guarantee from "../guarantee/guarantee";
 import { PRODUCTS } from "../../constants/app.constant";
 import Button from "../button/button";
 import { CartItemI, WishlistItemI } from "../../modals/cartModal";
+import fallbackImage from "../../assets/images/broekn-image.jpg";
 
 interface ProductCardPropsI {
   productData: ProductI | CartItemI;
@@ -67,14 +68,25 @@ export default function ProductCard({
           name: productData.name,
           photo: productData.photo,
           price: productData.price,
+          description: productData.description,
         },
       ]);
     }
   }
 
+  function handleImageError(e: React.SyntheticEvent<HTMLImageElement, Event>) {
+    e.target.src = fallbackImage;
+    // console.log(e.target.src);
+    
+  }
+
   return (
     <div className={style}>
-      <img src={productData.photo} alt={productData.name} />
+      <img
+        src={productData.photo}
+        alt={productData.name}
+        onError={(e) => handleImageError(e)}
+      />
       <div className={styles["split-container"]}>
         <h2>{productData.name}</h2>
         <span>

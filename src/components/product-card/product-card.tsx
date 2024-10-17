@@ -7,19 +7,19 @@ import Button from "../button/button";
 import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 
 interface ProductCardPropsI {
-  productData: ProductI;
-  isEmptyCart: boolean;
-  cart: CartItemI[] | undefined;
-  setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
-  wishlist: WishlistItemI[] | undefined;
-  setWishlist: React.Dispatch<
+  productData: ProductI | CartItemI;
+  isEmptyCart?: boolean;
+  cart?: CartItemI[] | undefined;
+  setCart?: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
+  wishlist?: WishlistItemI[] | undefined;
+  setWishlist?: React.Dispatch<
     React.SetStateAction<WishlistItemI[] | undefined>
   >;
 }
 
 export default function ProductCard({
   productData,
-  isEmptyCart,
+  isEmptyCart = true,
   setCart,
   cart,
   wishlist,
@@ -32,6 +32,7 @@ export default function ProductCard({
   const isItemInCart = cart?.find((item) => item.id == productData.id);
   const isItemInWishlist = wishlist?.find((item) => item.id == productData.id);
 
+  //To add items to cart
   function handleAddCart() {
     if (isItemInCart) {
       setCart(
@@ -49,12 +50,14 @@ export default function ProductCard({
           name: productData.name,
           photo: productData.photo,
           price: productData.price,
+          description: productData.description,
           quantity: 1,
         },
       ]);
     }
   }
 
+  // To add items to wishlist
   function handleAddWishList() {
     if (!isItemInWishlist) {
       setWishlist([
@@ -79,17 +82,31 @@ export default function ProductCard({
           {(+productData.price).toLocaleString("en-IN")}
         </span>
       </div>
+      {productData.quantity && (
+        <h3>
+          {PRODUCTS.QUANTITY} : {productData.quantity}
+        </h3>
+      )}
       <p>{productData.description}</p>
-      <Guarantee years={productData.guarantee} />
-      <div className={styles["line"]}></div>
-      <div className={styles["btns-container"]}>
-        <Button
-          type="no-bg"
-          name={PRODUCTS.ADD_TO_WISHLIST}
-          onClick={handleAddWishList}
-        />
-        <Button type="l" name={PRODUCTS.ADD_TO_CART} onClick={handleAddCart} />
-      </div>
+
+      {!productData.quantity && (
+        <>
+          <Guarantee years={productData.guarantee} />
+          <div className={styles["line"]}></div>
+          <div className={styles["btns-container"]}>
+            <Button
+              type="no-bg"
+              name={PRODUCTS.ADD_TO_WISHLIST}
+              onClick={handleAddWishList}
+            />
+            <Button
+              type="l"
+              name={PRODUCTS.ADD_TO_CART}
+              onClick={handleAddCart}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

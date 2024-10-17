@@ -15,6 +15,7 @@ export const PRODUCTS = {
   ADD_TO_WISHLIST: "ADD TO WISHLIST",
   ADD_TO_CART: "ADD TO CART",
   CURRENCY_TYPE: "₹",
+  QUANTITY:'Quantity'
 };
 
 export const CART = {
@@ -29,5 +30,10 @@ export const CART = {
     },
   },
   TOTAL_AMOUNT: "TOTAL AMOUNT",
-  
+
 };
+
+export const ORDER ={
+  TITLE:'Order Confirmation',
+  ORDER_DETAIL:'Thank you for shopping with us. The items will  be delivered within 7 days.'
+}

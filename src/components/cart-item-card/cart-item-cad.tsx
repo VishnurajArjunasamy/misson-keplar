@@ -8,6 +8,10 @@ import Button from "../button/button";
 interface CartItemCardPropsI {
   cart: CartItemI[] | undefined;
   setCart: React.Dispatch<React.SetStateAction<CartItemI[] | undefined>>;
+  wishlist: WishlistItemI[] | undefined;
+  setWishlist: React.Dispatch<
+    React.SetStateAction<WishlistItemI[] | undefined>
+  >;
   data: CartItemI | WishlistItemI;
   type: string;
 }
@@ -37,7 +41,7 @@ export default function CartItemCard({
   //Increase cart item quantity
   function handleCartDecrement(id: number) {
     const item = cart?.find((item) => item.id == id);
-    if (item?.quantity <= 1) {
+    if (item && item?.quantity <= 1) {
       setCart(cart?.filter((item) => item.id != id));
     } else {
       setCart(
@@ -70,6 +74,7 @@ export default function CartItemCard({
           name: data.name,
           photo: data.photo,
           price: data.price,
+          description:data.description,
           quantity: 1,
         },
       ]);

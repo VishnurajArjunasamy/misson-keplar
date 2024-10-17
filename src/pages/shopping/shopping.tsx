@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./shopping.module.scss";
 import { useParams } from "react-router-dom";
-import { ProductI } from "../../../modals/productModal";
-import ProductsContainer from "../../../containers/products-container/products-container";
-import { getProducts } from "../../../services/productServices";
-import CartContainer from "../../../containers/cart-container/cart-container";
-import { CartItemI, WishlistItemI } from "../../../modals/cartModal";
+import { ProductI } from "../../modals/productModal";
+import ProductsContainer from "../../containers/products-container/products-container";
+import { getProducts } from "../../services/productServices";
+import CartContainer from "../../containers/cart-container/cart-container";
+import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 
 export default function Shopping() {
   const { categoryId } = useParams();

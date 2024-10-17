@@ -1,0 +1,15 @@
+.order-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    height: auto;
+    padding: 170px 160px 80px;
+    background-color: #f7f7f7;
+
+    .order-items-section {
+        display: flex;
+        flex-direction: row;
+        gap: 35px;
+    }
+}

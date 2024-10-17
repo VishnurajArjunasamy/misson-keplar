@@ -1,6 +1,6 @@
 .product-card {
     flex: 0 1 calc(100%/4 - 26.5px);
-    // min-width: 380px;
+    min-width: 380px;
     font-family: Poppins;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,11 @@
             }
         }
 
+    }
 
+    h3 {
+        font-size: 13px;
+        font-weight: 400;
     }
 
     p {
@@ -59,4 +63,6 @@
 
 .shrink-card {
     flex: 0 1 calc(100%/3 - 24px);
+    min-width: 375px;
+
 }

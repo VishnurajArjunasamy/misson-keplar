@@ -17,7 +17,6 @@ export default function CategoryContainer() {
       setCatagories(response);
       setIsLoading(false);
     }
-
     fetchData();
   }, []);
 

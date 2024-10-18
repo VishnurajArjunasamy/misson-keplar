@@ -5,7 +5,6 @@ import { ProductI } from "../../modals/productModal";
 import ProductsContainer from "../../containers/products-container/products-container";
 import { getProducts } from "../../services/productServices";
 import CartContainer from "../../containers/cart-container/cart-container";
-import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 import Loader from "../../components/loader/loader";
 import useLocalStorage from "../../customHooks/useLocalStorage";
 
@@ -16,8 +15,6 @@ export default function Shopping() {
   const [whishlist, setWishlist] = useLocalStorage("wishlist");
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  console.log("cart ->", cart);
-  console.log("wishlist ->", whishlist);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -34,10 +31,6 @@ export default function Shopping() {
       abortController.abort();
     };
   }, [categoryId]);
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
   const showCartContainer =
     (cart && cart.length > 0) || (whishlist && whishlist.length > 0);

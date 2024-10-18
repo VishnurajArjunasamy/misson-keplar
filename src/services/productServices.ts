@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ProductI, ProductCategoryI } from "../modals/productModal";
+import { ROOT_PATH, ROUTE } from "../constants/route.constants";
 
 /**
  *
@@ -9,7 +10,7 @@ import { ProductI, ProductCategoryI } from "../modals/productModal";
 export async function getProductCategories() {
   try {
     const data = await axios.get<ProductCategoryI[]>(
-      "https://jsonmockserver.vercel.app/api/shopping/furniture/categories"
+      `${ROOT_PATH}/${ROUTE.CATEGORIES}`
     );
 
     return data.data;
@@ -32,7 +33,7 @@ export async function getProducts(
 ) {
   try {
     const data = await axios.get<ProductI[]>(
-      `https://jsonmockserver.vercel.app/api/shopping/furniture/products?category=${catId}`,
+      `${ROOT_PATH}/${ROUTE.PRODUCTS}?${ROUTE.CATEGORY}=${catId}`,
       { signal: abortController.signal }
     );
 

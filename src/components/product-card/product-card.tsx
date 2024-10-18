@@ -26,6 +26,7 @@ export default function ProductCard({
   wishlist,
   setWishlist,
 }: ProductCardPropsI) {
+
   const style = isEmptyCart
     ? styles["product-card"]
     : `${styles["product-card"]} ${styles["shrink-card"]}`;

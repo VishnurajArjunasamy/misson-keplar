@@ -4,6 +4,7 @@ import { ProductCategoryI } from "../../modals/productModal";
 import Button from "../button/button";
 import { HOME } from "../../constants/app.constant";
 import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../constants/route.constants";
 
 interface CatCardPropsI {
   category: ProductCategoryI;
@@ -13,7 +14,7 @@ export default function CategoryCard({ category }: CatCardPropsI) {
   const navigate = useNavigate();
 
   function handleCategoryClick() {
-    navigate(`/categories/${category.category.toLocaleLowerCase()}`);
+    navigate(`/${ROUTE.CATEGORIES}/${category.category.toLocaleLowerCase()}`);
   }
   return (
     <div className={styles["category-card"]}>

@@ -10,7 +10,7 @@ export default function CategoryContainer() {
     undefined
   );
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
+  
   useEffect(() => {
     async function fetchData() {
       const response = await getProductCategories();

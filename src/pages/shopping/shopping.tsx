@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./shopping.module.scss";
 import { useParams } from "react-router-dom";
 import { ProductI } from "../../modals/productModal";
@@ -14,7 +14,6 @@ export default function Shopping() {
   const [cart, setCart] = useLocalStorage("cart");
   const [whishlist, setWishlist] = useLocalStorage("wishlist");
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
 
   useEffect(() => {
     const abortController = new AbortController();

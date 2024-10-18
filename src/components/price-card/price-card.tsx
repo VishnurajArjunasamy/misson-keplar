@@ -4,6 +4,7 @@ import Button from "../button/button";
 import { CartItemI } from "../../modals/cartModal";
 import { CART, PRODUCTS } from "../../constants/app.constant";
 import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../constants/route.constants";
 
 interface PriceCardPropsI {
   cart: CartItemI[] | undefined;
@@ -22,7 +23,8 @@ export default function PriceCard({ cart }: PriceCardPropsI) {
 
   //handle place order button click
   function handlePlaceOrder() {
-    navigate("/confirmOrder", { state: cart });
+    localStorage.clear();
+    navigate(`/${ROUTE.CONFIRM_ORDER}`, { state: cart });
   }
 
   return (
@@ -34,7 +36,7 @@ export default function PriceCard({ cart }: PriceCardPropsI) {
           {getCartPriceTotal()}
         </span>
       </div>
-      <Button name={"PLACE ORDER"} type="l" onClick={handlePlaceOrder} />
+      <Button name={CART.PLACE_ORDER} type="l" onClick={handlePlaceOrder} />
     </div>
   );
 }

@@ -31,6 +31,8 @@ export const CART = {
   },
   TOTAL_AMOUNT: "TOTAL AMOUNT",
   PLACE_ORDER: "PLACE ORDER",
+  CART_EMPTY: "Cart is Empty",
+  WISHLIST_EMPTY: "Wishlist is Empty",
 };
 
 export const ORDER = {

@@ -29,6 +29,26 @@
         align-items: flex-end;
         margin-top: 30px;
         gap: 30px;
+        height: 100%;
+
+        .empty-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-self: center;
+            height: 100%;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+            h1{
+                font-family: Poppins;
+                font-size: 22px;
+                font-weight: 600;
+                text-align: center;
+            }
+
+        }
     }
 
     .price-section {

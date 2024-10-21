@@ -4,6 +4,7 @@ import PriceCard from "../price-card/price-card";
 import { CartItemI, WishlistItemI } from "../../modals/cartModal";
 import CartItemCard from "../cart-item-card/cart-item-cad";
 import { CART } from "../../constants/app.constant";
+import emptyItem from "../../assets/images/empty-cart.png";
 
 interface CartSectionPropsI {
   cart: CartItemI[] | undefined;
@@ -52,6 +53,18 @@ export default function CartSection({
             setWishlist={setWishlist}
           />
         ))}
+        {activeTab == CART_TABS.myCart.id && cart?.length < 1 && (
+          <div className={styles["empty-item"]}>
+            <img src={emptyItem} />
+            <h1>{CART.CART_EMPTY}</h1>
+          </div>
+        )}
+        {activeTab == CART_TABS.myWishlist.id && wishlist?.length < 1 && (
+          <div className={styles["empty-item"]}>
+            <img src={emptyItem} />
+            <h1>{CART.WISHLIST_EMPTY}</h1>
+          </div>
+        )}
       </div>
       {activeTab == CART_TABS.myCart.id && cart && cart?.length > 0 && (
         <div className={styles["price-section"]}>

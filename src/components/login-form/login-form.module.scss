@@ -1,0 +1,19 @@
+.login-form {
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .inpBox {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .err-msg {
+        color: #94792c;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+}

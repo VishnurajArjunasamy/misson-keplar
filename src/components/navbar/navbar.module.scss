@@ -1,0 +1,28 @@
+.navbar {
+    width: 100%;
+    padding: 20px 45px;
+    background-color: #000;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 600;
+
+    img {
+        width: 12%;
+        height: 100%;
+    }
+
+    .menus {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap:50px
+    }
+
+    .session{
+        display: flex;
+
+    }
+}

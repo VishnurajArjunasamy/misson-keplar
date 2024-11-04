@@ -1,0 +1,36 @@
+.login {
+    background-image: url('../../assets/images/sindel-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    position: relative;
+
+    section {
+        position: absolute;
+        width: 450px;
+        height: 615px;
+        padding: 120px 45px 45px;
+        border-top: 5px solid #94792c;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        right: 100px;
+        top: 100px;
+        font-family: Roboto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        h1 {
+            color: #fff;
+            font-size: 38px;
+            font-weight: 300;
+        }
+
+        p {
+            color: #7d7d7e;
+            line-height: 26px;
+            text-align: justify;
+        }
+    }
+
+}

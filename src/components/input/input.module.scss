@@ -1,0 +1,19 @@
+.input {
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 1px;
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid #7d7d7e;
+    border-radius: 0;
+    outline: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+}

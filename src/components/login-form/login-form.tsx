@@ -39,13 +39,18 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
     <form onSubmit={handleSubmit} noValidate className={styles["login-form"]}>
       <div className={styles["inpBox"]}>
         <Label htmlFor="email" name={LOGIN.FORM.EMAIL.NAME} />
-        <Input id="email" type="email" name="email" />
+        <Input id="email" type="email" name="email" variant="styled-inp" />
         {err.email && <span className={styles["err-msg"]}>{err.email}</span>}
       </div>
 
       <div className={styles["inpBox"]}>
         <Label htmlFor="password" name={LOGIN.FORM.PASSWORD.NAME} />
-        <Input id="password" type="password" name="password" />
+        <Input
+          id="password"
+          type="password"
+          name="password"
+          variant="styled-inp"
+        />
         {err.password && (
           <span className={styles["err-msg"]}>{err.password}</span>
         )}

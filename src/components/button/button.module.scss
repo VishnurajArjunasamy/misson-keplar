@@ -1,13 +1,20 @@
-.styled-btn {
+@mixin styled-btn {
     border: none;
     cursor: pointer;
-    background-image: linear-gradient(to right, rgb(238, 154, 28), #a48831);
+    color: #fff;
+    font-weight: 500;
 }
 
 .lg-btn {
-    padding: 20px 0;
+    @include styled-btn;
+    background-image: linear-gradient(to right, rgb(238, 154, 28), #a48831);
+    padding: 20px 35px;
     font-size: 24px;
-    color: #fff;
-    font-weight: 500;
+}
 
+.sm-btn {
+    @include styled-btn;
+    background-color: rgba(191, 40, 40, );
+    padding: 16px 28px;
+    font-size: 20px;
 }

@@ -7,7 +7,7 @@ import { SESSION } from "../../constants/app-constants";
 const Navbar = () => {
   const menus = Object.values(MENUS).map((menu) => {
     return (
-      <Link to={`${menu.ROUTE}`} key={menu.NAME}>
+      <Link to={`/${menu.ROUTE}`} key={menu.NAME}>
         {menu.NAME}
       </Link>
     );

@@ -3,7 +3,7 @@
     padding: 20px 45px;
     background-color: #000;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     font-family: Roboto;
     font-size: 24px;
@@ -18,11 +18,15 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap:50px
+        gap: 50px
     }
 
-    .session{
+    .session {
         display: flex;
 
+    }
+
+    a {
+        color: #fff;
     }
 }

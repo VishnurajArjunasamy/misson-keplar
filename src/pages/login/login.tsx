@@ -3,7 +3,7 @@ import { LOGIN } from "../../constants/app-constants";
 import styles from "./login.module.scss";
 import LoginForm from "../../components/login-form/login-form";
 
-export const Login = () => {
+const Login = () => {
   const [err, setErr] = useState({
     email: undefined,
     password: undefined,
@@ -20,3 +20,5 @@ export const Login = () => {
     </div>
   );
 };
+
+export default Login;

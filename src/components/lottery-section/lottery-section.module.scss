@@ -1,0 +1,25 @@
+.lottery-section {
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to right, rgb(240, 205, 46), #a48831);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    p {
+        font-family: Roboto;
+        font-size: 26px;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .lottery-msg {
+
+        font-family: Roboto;
+        font-size: 26px;
+        color: #fff;
+        font-weight: 300;
+    }
+
+}

@@ -1,0 +1,55 @@
+.trailer-section {
+    font-family: Roboto;
+    color: #fff;
+    width: 80%;
+
+    h1 {
+        font-size: 32px;
+        font-weight: 500;
+    }
+
+    .sign-in-prmt {
+        font-size: 18px;
+        padding-top: 5px;
+        font-weight: 300;
+
+        a {
+            // color: rgb(86, 128, 200);
+            color: #5c8edc;
+        }
+    }
+
+    .split-container {
+        display: flex;
+        gap: 40px;
+        padding-top: 30px;
+
+        .trailer-img {
+            width: 425px;
+            height: 285px;
+            background-image: url('../../assets//images/sindel-background.png');
+            background-repeat: no-repeat;
+            background-size: 150%;
+            background-position: 60% 0;
+        }
+
+        .trailer-des {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 25px;
+
+            h1 {
+                font-size: 34px;
+            }
+
+            p {
+                font-size: 24px;
+                font-weight: 300;
+                line-height: 30px;
+                text-align: justify;
+            }
+        }
+    }
+}

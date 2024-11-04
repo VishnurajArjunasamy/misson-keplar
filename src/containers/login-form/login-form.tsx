@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import styles from "./login-form.module.scss";
 import { loginService } from "../../services/loginService";
 import { validate } from "../../utils/formUtils";
-import Label from "../label/label";
-import Input from "../input/input";
+import Label from "../../components/label/label";
+import Input from "../../components/input/input";
 import { LOGIN } from "../../constants/app-constants";
-import Button from "../button/button";
+import Button from "../../components/button/button";
 
 interface LoginFormProps {
   err: object;
@@ -64,4 +64,4 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
   );
 };
 
-export default LoginForm;
+export default memo(LoginForm);

@@ -1,0 +1,14 @@
+.lang-box {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #5c8edc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        color: #fff;
+        cursor: pointer;
+    }
+
+}

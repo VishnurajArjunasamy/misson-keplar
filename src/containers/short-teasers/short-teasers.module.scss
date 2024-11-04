@@ -1,0 +1,17 @@
+.short-teasers {
+    width: 80%;
+    font-family: Roboto;
+    color: #fff;
+
+    h1 {
+        font-size: 32px;
+        font-weight: 500;
+    }
+
+    .teasers-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 30px;
+    }
+}

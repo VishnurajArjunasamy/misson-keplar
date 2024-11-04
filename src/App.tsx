@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./containers/navbar/navbar";
 import { MENUS } from "./constants/app-constants";
 import { SESSION } from "./constants/app-constants";
 import Login from "./pages/login/login";

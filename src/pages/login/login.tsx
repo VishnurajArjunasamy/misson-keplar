@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LOGIN } from "../../constants/app-constants";
 import styles from "./login.module.scss";
-import LoginForm from "../../components/login-form/login-form";
+import LoginForm from "../../containers/login-form/login-form";
 
 const Login = () => {
   const [err, setErr] = useState({

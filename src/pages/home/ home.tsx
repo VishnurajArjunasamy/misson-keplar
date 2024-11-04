@@ -1,5 +1,7 @@
 import banner from "../../assets/images/sindel-background.png";
 import LotterySection from "../../components/lottery-section/lottery-section";
+import OtherLanguages from "../../containers/other-languages/other-languages";
+import ShortTeasers from "../../containers/short-teasers/short-teasers";
 import TrailerSection from "../../containers/trailer-section/trailer-section";
 import styles from "./home.module.scss";
 const Home = () => {
@@ -10,6 +12,8 @@ const Home = () => {
       </section>
       <LotterySection />
       <TrailerSection />
+      <ShortTeasers />
+      <OtherLanguages />
     </div>
   );
 };

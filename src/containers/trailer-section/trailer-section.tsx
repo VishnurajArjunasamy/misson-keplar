@@ -2,6 +2,7 @@ import styles from "./trailer-section.module.scss";
 import { Link } from "react-router-dom";
 import { SESSION, TRAILERS } from "../../constants/app-constants";
 import Button from "../../components/button/button";
+import { memo } from "react";
 
 const TrailerSection = () => {
   const handleClick = () => {};
@@ -26,4 +27,4 @@ const TrailerSection = () => {
   );
 };
 
-export default TrailerSection;
+export default memo(TrailerSection);

@@ -18,6 +18,7 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
   ({ teaserData, timer, startTimer, stopTimer }) => {
     const [isVideoPlaying, setVideoIsPlaying] = useState(false);
     const [isAdPlaying, setIsAdPlaying] = useState(false);
+    const [showTimer, setShowTimer] = useState(false);
     const videoRef = useRef();
 
     /**
@@ -61,6 +62,7 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
      */
     const toggleVideo = () => {
       if (videoRef.current) {
+        setShowTimer(true);
         if (isVideoPlaying) {
           videoRef.current.pause();
           stopTimer();
@@ -104,11 +106,13 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
           )}
         </div>
         <h1>{teaserData.movieName}</h1>
-        <p className={styles["timer"]}>
-          {isAdPlaying
-            ? `${SHORT_TEASERS.VIDEO_TXT} ${timer}`
-            : `${SHORT_TEASERS.ADVERTISEMENT_TXT} ${timer}`}
-        </p>
+        {showTimer && (
+          <p className={styles["timer"]}>
+            {isAdPlaying
+              ? `${SHORT_TEASERS.VIDEO_TXT} ${timer}`
+              : `${SHORT_TEASERS.ADVERTISEMENT_TXT} ${timer}`}
+          </p>
+        )}
       </div>
     );
   }

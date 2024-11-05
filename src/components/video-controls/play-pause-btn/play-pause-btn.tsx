@@ -6,18 +6,22 @@ interface PlayPauseBtnProps {
   type: "play" | "pause";
 }
 
-const PlayPauseBtn: FC<PlayPauseBtnProps> = ({ type }) => {
+const PlayPauseBtn: FC<PlayPauseBtnProps> = ({ type, onClick }) => {
   let icon;
   if (type === "play") {
+    icon = <i className={styles["play-icon"]}></i>;
+  } else {
     icon = (
       <i className={styles["pause-icon"]}>
         <img src={pauseBtn} />
       </i>
     );
-  } else {
-    icon = <i className={styles["play-icon"]}></i>;
   }
-  return <div className={styles["outer-circle"]}>{icon}</div>;
+  return (
+    <div className={styles["outer-circle"]} onClick={onClick}>
+      {icon}
+    </div>
+  );
 };
 
 export default PlayPauseBtn;

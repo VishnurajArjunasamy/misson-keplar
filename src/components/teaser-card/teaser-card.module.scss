@@ -1,6 +1,9 @@
 .teaser-card {
     width: 430px;
     height: 330px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     .video-section {
         position: relative;
@@ -16,5 +19,27 @@
             top: 50%;
             transform: translate(-50%, -50%);
         }
+
+        .ad-poster{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            img{
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: 400;
+    }
+
+    .timer {
+        font-size: 18px;
+        color: #5c8edc;
     }
 }

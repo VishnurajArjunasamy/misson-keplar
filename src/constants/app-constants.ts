@@ -61,6 +61,8 @@ export const TRAILERS = {
 
 export const SHORT_TEASERS = {
   HEADING: "Short Teasers",
+  ADVERTISEMENT_TXT: "Advertisement in",
+  VIDEO_TXT: "Video Resumes in",
 };
 
 export const OTHER_LANGUAGES = {

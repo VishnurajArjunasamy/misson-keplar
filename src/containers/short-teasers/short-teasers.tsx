@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from "react";
 import styles from "./short-teasers.module.scss";
 import { SHORT_TEASERS } from "../../constants/app-constants";
-import TeaserCard from "../../components/teaser-card/teaser-card";
+import { TeaserCard } from "../../components/teaser-card/teaser-card";
 import { ShortTeasersIF } from "../../modals/teaserModal";
 import { getShortTeasers } from "../../services/getShortTeasers";
 import withAdvertisement from "../../helper/withAdvertisement";

@@ -1,0 +1,33 @@
+.outer-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+}
+
+.play-icon {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-35%, -50%);
+}
+
+.pause-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+
+}

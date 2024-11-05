@@ -4,6 +4,7 @@ import { SHORT_TEASERS } from "../../constants/app-constants";
 import TeaserCard from "../../components/teaser-card/teaser-card";
 import { ShortTeasersIF } from "../../modals/teaserModal";
 import { getShortTeasers } from "../../services/getShortTeasers";
+import withAdvertisement from "../../helper/withAdvertisement";
 
 const ShortTeasers = () => {
   const [teasers, setTeasers] = useState<ShortTeasersIF[]>([]);

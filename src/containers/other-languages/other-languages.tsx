@@ -9,8 +9,8 @@ const OtherLanguages = () => {
     <section className={styles["other-lang-container"]}>
       <h1>{OTHER_LANGUAGES.HEADING}</h1>
       <div className={styles["languages"]}>
-        {languages.map((lang) => (
-          <Langbox lang={lang} />
+        {languages.map((lang, idx) => (
+          <Langbox lang={lang} key={idx} />
         ))}
       </div>
     </section>

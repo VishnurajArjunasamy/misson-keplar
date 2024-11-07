@@ -68,3 +68,7 @@ export const SHORT_TEASERS = {
 export const OTHER_LANGUAGES = {
   HEADING: "View in Other Languages",
 };
+
+export const NOW_SHOWING = {
+  HEADING: "Now Showing",
+};

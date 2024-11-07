@@ -13,7 +13,6 @@ const Video: FC<VideoProps> = React.forwardRef(({ src, poster }, ref) => {
       src={src}
       poster={poster}
       ref={ref}
-      controls
       className={styles["video"]}
     ></video>
   );

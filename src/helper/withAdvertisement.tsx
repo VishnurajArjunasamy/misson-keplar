@@ -12,6 +12,10 @@ export function withAdvertisement(WrappedComponent) {
       //     else return duration;
       //   });
       setSeconds(duration);
+      console.log(duration);
+      console.log(seconds);
+      
+      
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;

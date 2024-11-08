@@ -19,19 +19,23 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
     const formCreds = Object.fromEntries(formData.entries());
     const validationErrors = validate(formCreds);
 
-    if (Object.keys(validationErrors).length === 0) {
-      setErr({});
-      const isValidUser = loginService(formCreds);
-      if (isValidUser === true) {
-        console.log("Logged in");
-      } else {
-        console.log("Invalid User");
-        setErr((prev) => {
-          return { ...prev, validCred: isValidUser };
-        });
-      }
-    } else {
+    if (Object.keys(validationErrors).length > 0) {
+      console.log(validationErrors);
       setErr(validationErrors);
+      return;
+    }
+
+    /**
+     * Clearing the prvious error
+     */
+    setErr({});
+
+    try {
+      const user = loginService(formCreds);
+      console.log("Logged in user", user);
+    } catch (err) {
+      setErr({ validCred: err.message });
+      console.log("Invalid User");
     }
   };
 

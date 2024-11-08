@@ -1,6 +1,7 @@
 const creds = {
   email: "vish@gmail.com",
   password: "qwertyuiop",
+  userName: "Vizz",
 };
 
 interface LoginServiceIF {
@@ -9,11 +10,9 @@ interface LoginServiceIF {
 }
 
 export const loginService = ({ email, password }: LoginServiceIF) => {
-    console.log('here');
-    
   if (email == creds.email && password == creds.password) {
-    return true;
+    return creds.userName;
   }
 
-  return "Invalid Username or Password";
+  throw new Error("Invalid Username or Password");
 };

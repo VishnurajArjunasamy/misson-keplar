@@ -11,8 +11,8 @@ interface LoginServiceIF {
 
 export const loginService = ({ email, password }: LoginServiceIF) => {
   if (email == creds.email && password == creds.password) {
-    return creds.userName;
+    return { status: "success", user: creds.userName };
   }
 
-  throw new Error("Invalid Username or Password");
+  return { status: "fail", message: "Invalid Username or Password" };
 };

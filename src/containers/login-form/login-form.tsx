@@ -4,15 +4,20 @@ import { loginService } from "../../services/loginService";
 import { validate } from "../../utils/formUtils";
 import Label from "../../components/label/label";
 import Input from "../../components/input/input";
-import { LOGIN } from "../../constants/app-constants";
+import { LOGIN, MENUS } from "../../constants/app-constants";
 import Button from "../../components/button/button";
+import { useAuth } from "../../context/auth-context";
+import { useNavigate } from "react-router-dom";
+
 
 interface LoginFormProps {
   err: object;
   setErr: React.Dispatch<React.SetStateAction<object>>;
 }
-
+const HOME_ROUTE = MENUS.HOME.ROUTE;
 const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
+  const auth = useAuth();
+  const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -31,8 +36,13 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
     setErr({});
 
     try {
-      const user = loginService(formCreds);
-      console.log("Logged in user", user);
+      const response = loginService(formCreds);
+      if (response.status == "success") {
+        auth.saveUser(response.user);
+        navigate(HOME_ROUTE != "" ? HOME_ROUTE : "/");
+        return;
+      }
+      throw new Error("Invalid UserName or Password");
     } catch (err) {
       setErr({ validCred: err.message });
       console.log("Invalid User");

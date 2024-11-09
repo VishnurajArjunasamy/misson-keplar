@@ -7,10 +7,12 @@ import styles from "./home.module.scss";
 const Home = () => {
   return (
     <div className={styles["home"]}>
-      <section className={styles["banner-section"]}>
-        <img src={banner} />
-      </section>
-      <LotterySection />
+      <div className={styles["banner-wrapper"]}>
+        <section className={styles["banner-section"]}>
+          <img src={banner} />
+        </section>
+        <LotterySection />
+      </div>
       <TrailerSection />
       <ShortTeasers />
       <OtherLanguages />

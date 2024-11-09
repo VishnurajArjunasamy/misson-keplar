@@ -14,13 +14,13 @@ export const MENUS = {
 };
 
 export const SESSION = {
+  GREETINGS:'Hi',
   LOGIN: {
     NAME: "LOGIN",
     ROUTE: "login",
   },
   LOGOUT: {
     NAME: "LOGOUT",
-    ROUTE: "",
   },
 };
 

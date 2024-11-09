@@ -9,10 +9,15 @@
     font-size: 24px;
     font-weight: 600;
 
+
     img {
-        width: 12%;
+        // width: 12%;
+        width: 200px;
         height: 100%;
     }
+
+
+
 
     .menus {
         display: flex;
@@ -24,9 +29,19 @@
     .session {
         display: flex;
 
+        .user-info {
+            font-size: 22px;
+            font-weight: 300;
+            color: #fff;
+        }
+
     }
 
     a {
         color: #fff;
+    }
+
+    .active {
+        color: #5c8edc
     }
 }

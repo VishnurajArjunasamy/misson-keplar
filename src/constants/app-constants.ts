@@ -14,7 +14,7 @@ export const MENUS = {
 };
 
 export const SESSION = {
-  GREETINGS:'Hi',
+  GREETINGS: "Hi",
   LOGIN: {
     NAME: "LOGIN",
     ROUTE: "login",
@@ -71,4 +71,8 @@ export const OTHER_LANGUAGES = {
 
 export const NOW_SHOWING = {
   HEADING: "Now Showing",
+};
+
+export const ALL_MOVIES = {
+  HEADING: "All Movies",
 };

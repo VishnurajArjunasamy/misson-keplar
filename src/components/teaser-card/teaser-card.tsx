@@ -1,4 +1,4 @@
-import { FC, useMemo, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { ShortTeasersIF } from "../../modals/teaserModal";
 import styles from "./teaser-card.module.scss";
 import Video from "../video/video";
@@ -7,19 +7,35 @@ import PlayPauseBtn from "../video-controls/play-pause-btn/play-pause-btn";
 import { SHORT_TEASERS } from "../../constants/app-constants";
 import { getRandomShortAd } from "../../utils/adsUtils";
 
-const shortAdDuration = 2;
-const videoDuration = 3;
+const shortAdDuration = 1;
+const videoDuration = 2;
 
 interface TeaserCardProps {
   teaserData: ShortTeasersIF;
 }
 
 export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
-  ({ teaserData, timer, startTimer, stopTimer }) => {
+  ({ teaserData, timer, startTimer, stopTimer, seconds, setSeconds }) => {
     const [isVideoPlaying, setVideoIsPlaying] = useState(false);
     const [isAdPlaying, setIsAdPlaying] = useState(false);
     const [showTimer, setShowTimer] = useState(false);
     const videoRef = useRef();
+
+    useEffect(() => {
+      console.log(seconds);
+      if (seconds < 1 && isVideoPlaying == true && isAdPlaying == false) {
+        console.log("Start Ad");
+        setVideoIsPlaying(false);
+        videoRef.current.pause();
+        startAdTimer();
+      }
+      if (seconds < 1 && isVideoPlaying == false && isAdPlaying == true) {
+        console.log("Start video");
+        setVideoIsPlaying(true);
+        videoRef.current.play();
+        startVideoTimer();
+      }
+    }, [seconds, isAdPlaying, isVideoPlaying]);
 
     /**
      * Strats timer for Video and once the timer is about to finish
@@ -28,11 +44,7 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
     const startVideoTimer = () => {
       setVideoIsPlaying(true);
       setIsAdPlaying(false);
-      startTimer(videoDuration, () => {
-        setVideoIsPlaying(false);
-        videoRef.current.pause();
-        startAdTimer();
-      });
+      startTimer(videoDuration, () => {});
     };
 
     /**
@@ -42,20 +54,8 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
     const startAdTimer = () => {
       setVideoIsPlaying(false);
       setIsAdPlaying(true);
-      startTimer(shortAdDuration, () => {
-        setVideoIsPlaying(true);
-        videoRef.current.play();
-        startVideoTimer();
-      });
+      startTimer(shortAdDuration, () => {});
     };
-
-    // const handlePlayVideo = () => {
-    //   setVideoIsPlaying(true);
-    //   if (videoRef.current) {
-    //     videoRef.current.play();
-    //     startVideoTimer();
-    //   }
-    // };
 
     /**
      * Toggles between playing and pausing the video

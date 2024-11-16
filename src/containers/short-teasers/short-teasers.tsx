@@ -4,7 +4,7 @@ import { SHORT_TEASERS } from "../../constants/app-constants";
 import { TeaserCard } from "../../components/teaser-card/teaser-card";
 import { ShortTeasersIF } from "../../modals/teaserModal";
 import { getShortTeasers } from "../../services/getShortTeasers";
-import withAdvertisement from "../../helper/withAdvertisement";
+import { withAdvertisement } from "../../helper/withAdvertisement";
 
 const ShortTeasers = () => {
   const [teasers, setTeasers] = useState<ShortTeasersIF[]>([]);
@@ -27,16 +27,20 @@ const ShortTeasers = () => {
     throw new Error("Error fetching Teasers");
   }
 
+  const teaserContainer = (
+    <div className={styles["teasers-container"]}>
+      {teasers.map((teaser) => (
+        <TeaserCard teaserData={teaser} key={teaser.movieName} />
+      ))}
+    </div>
+  );
+
   return (
     <section className={styles["short-teasers"]}>
       <h1>{SHORT_TEASERS.HEADING}</h1>
-      <div className={styles["teasers-container"]}>
-        {teasers.map((teaser) => (
-          <TeaserCard teaserData={teaser} key={teaser.movieName} />
-        ))}
-      </div>
+      {teaserContainer}
     </section>
   );
 };
 
-export default memo(ShortTeasers);
+export default ShortTeasers;

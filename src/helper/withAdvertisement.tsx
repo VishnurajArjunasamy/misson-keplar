@@ -2,11 +2,16 @@ import { useEffect, useRef, useState } from "react";
 
 export function withAdvertisement(WrappedComponent) {
   return function EnhancedComp(props) {
-    const [seconds, setSeconds] = useState(3);
+    const [seconds, setSeconds] = useState(null);
     const intervalRef = useRef();
 
     function startTimer(duration) {
-      setSeconds(duration);
+      setSeconds((prev) => {
+        if (prev != null && prev > 1) {
+          return prev;
+        }
+        return duration;
+      });
 
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -15,7 +20,7 @@ export function withAdvertisement(WrappedComponent) {
 
       intervalRef.current = setInterval(() => {
         setSeconds((prev) => {
-          if (prev < 1) {
+          if (prev != null && prev < 1) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
             return 0;

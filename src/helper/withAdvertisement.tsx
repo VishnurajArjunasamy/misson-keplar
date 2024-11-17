@@ -28,7 +28,6 @@ export function withAdvertisement(WrappedComponent) {
     function stopTimer() {
       if (intervalRef.current) clearInterval(intervalRef.current);
       intervalRef.current = null;
-      setSeconds(0);
     }
 
     useEffect(() => {
@@ -50,7 +49,6 @@ export function withAdvertisement(WrappedComponent) {
         startTimer={startTimer}
         stopTimer={stopTimer}
         seconds={seconds}
-        setSeconds={setSeconds}
       />
     );
   };

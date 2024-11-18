@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { ShortTeasersIF } from "../modals/teaserModal";
 import { SHORT_TEASERS_URL } from "../constants/url-constants";
 

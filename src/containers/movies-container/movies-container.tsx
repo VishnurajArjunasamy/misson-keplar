@@ -1,11 +1,35 @@
+import MovieCard from "../../components/movie-card/movie-card";
+import { ALL_MOVIES } from "../../constants/app-constants";
+import { AllMoviesIF } from "../../modals/allMoviesModal";
 import styles from "./movies-container.module.scss";
-const MoviesContainer = () => {
-  const moviesSection = <></>;
+
+import { FC } from "react";
+
+interface MoviesContainerProps {
+  movies: AllMoviesIF[] | undefined;
+  setSelectedMovie: React.Dispatch<
+    React.SetStateAction<AllMoviesIF | undefined>
+  >;
+}
+
+const MoviesContainer: FC<MoviesContainerProps> = ({
+  movies,
+  setSelectedMovie,
+}) => {
+  function handleMovieSelect(id: number) {
+    const movie = movies?.find((movie) => movie.id == id);
+    setSelectedMovie(movie);
+  }
   return (
-    <div className={styles["movie-container"]}>
-      <section className={styles["movies-section"]}>{moviesSection}</section>
-      <section className={styles["info-section"]}></section>
-    </div>
+    <section className={styles["movie-container"]}>
+      {movies?.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movieData={movie}
+          onMovieSelect={() => handleMovieSelect(movie.id)}
+        />
+      ))}
+    </section>
   );
 };
 

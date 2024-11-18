@@ -75,4 +75,5 @@ export const NOW_SHOWING = {
 
 export const ALL_MOVIES = {
   HEADING: "All Movies",
+  LIKES_TXT:'Likes'
 };

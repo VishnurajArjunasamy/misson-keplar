@@ -1,10 +1,11 @@
-.movie-container {
-    display: flex;
 
-    .movies-section {
+
+
+
+    .movie-container {
         display: flex;
-        
+        flex-wrap: wrap;
+        gap: 30px;
+        width: 50%;
     }
 
-    .info-section {}
-}

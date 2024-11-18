@@ -1,11 +1,13 @@
+ .movie-container {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 40px;
+     width: 60%;
+     height: calc(100vh - 77px - 155px);
+     padding: 0 5% 5%;
+     overflow-y: scroll;
+ }
 
-
-
-
-    .movie-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        width: 50%;
-    }
-
+ .movie-container::-webkit-scrollbar {
+     display: none;
+ }

@@ -3,7 +3,7 @@ import { ALL_MOVIES } from "../../constants/app-constants";
 import { AllMoviesIF } from "../../modals/allMoviesModal";
 import styles from "./movies-container.module.scss";
 
-import { FC } from "react";
+import { FC, memo } from "react";
 
 interface MoviesContainerProps {
   movies: AllMoviesIF[] | undefined;
@@ -33,4 +33,4 @@ const MoviesContainer: FC<MoviesContainerProps> = ({
   );
 };
 
-export default MoviesContainer;
+export default memo(MoviesContainer);

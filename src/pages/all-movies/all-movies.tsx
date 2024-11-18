@@ -16,6 +16,7 @@ const AllMovies = () => {
       try {
         const result = await getAllMovies();
         setMovies(result);
+        setSelectedMovie(result[0]);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -30,7 +31,7 @@ const AllMovies = () => {
   return (
     <section className={styles["all-movies-page"]}>
       <h1 className={styles["all-movies-heading"]}>{ALL_MOVIES.HEADING}</h1>
-      <div className={styles['movie-and-desc']}>
+      <div className={styles["movie-and-desc"]}>
         <MoviesContainer movies={movies} setSelectedMovie={setSelectedMovie} />
         <MoviesDescContainer selectedMovie={selectedMovie} />
       </div>

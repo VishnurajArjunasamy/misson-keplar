@@ -31,7 +31,11 @@ export function withAdvertisement(WrappedComponent) {
     }
 
     function stopTimer() {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        console.log("hhhh");
+      }
+
       intervalRef.current = null;
     }
 

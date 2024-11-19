@@ -29,6 +29,10 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   useEffect(() => {
     showInfo();
     console.info("Info showing");
+    setIsInfoShwoing(true);
+    setIsAdPlaying(false);
+    setShowTimer(true);
+    isAdPlayedRef.current = false;
   }, [selectedMovie]);
 
   useEffect(() => {

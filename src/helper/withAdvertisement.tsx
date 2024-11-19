@@ -32,6 +32,8 @@ export function withAdvertisement(WrappedComponent) {
     }
 
     function stopTimer() {
+      console.log("Stopping timer");
+
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
@@ -58,6 +60,7 @@ export function withAdvertisement(WrappedComponent) {
         startTimer={startTimer}
         stopTimer={stopTimer}
         seconds={seconds}
+        intervalRef={intervalRef}
       />
     );
   };

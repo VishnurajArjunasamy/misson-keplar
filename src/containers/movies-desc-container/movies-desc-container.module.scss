@@ -1,14 +1,21 @@
 .long-ad-container {
     width: 50%;
     padding: 0 5% 5%;
-    // height: 800px;
+    height: 770px;
 
     .long-ad-image {
         width: 100%;
         height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     .timer {
+        padding-top: 20px;
+        font-family: Roboto;
         font-size: 18px;
         color: #5c8edc;
     }
@@ -76,6 +83,7 @@
     }
 
     .timer {
+        padding-top: 20px;
         font-size: 18px;
         color: #5c8edc;
     }

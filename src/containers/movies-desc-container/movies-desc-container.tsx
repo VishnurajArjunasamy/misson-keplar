@@ -7,7 +7,7 @@ import { ALL_MOVIES, SHORT_TEASERS } from "../../constants/app-constants";
 import { withAdvertisement } from "../../helper/withAdvertisement";
 import { getRandomLongAd } from "../../utils/adsUtils";
 
-const longAdDuration = 3;
+const longAdDuration = 2;
 const infoDuration = 5;
 
 interface MoviesDescContainerProps {
@@ -31,21 +31,21 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     console.info("Info showing");
   }, [selectedMovie]);
 
-  // useEffect(() => {
-  //   console.log(seconds);
+  useEffect(() => {
+    console.log(seconds);
 
-  //   if (seconds < 1 && isInfoShowing && !isAdPlaying && isAdPlayedRef) {
-  //     console.log("start ad");
-  //     setIsInfoShwoing(false);
-  //     showAd();
-  //   }
-  //   if (seconds <= 1 && !isInfoShowing && isAdPlayedRef) {
-  //     console.log("start info again");
-  //     showInfo();
-  //     setShowTimer(false);
-  //     stopTimer();
-  //   }
-  // }, [seconds]);
+    if (seconds < 1 && isInfoShowing && !isAdPlaying && isAdPlayedRef) {
+      console.log("start ad");
+      setIsInfoShwoing(false);
+      showAd();
+    }
+    if (seconds <= 1 && !isInfoShowing && isAdPlayedRef) {
+      console.log("start info again");
+      showInfo();
+      setShowTimer(false);
+      stopTimer();
+    }
+  }, [seconds]);
 
   function showInfo() {
     setIsInfoShwoing(true);
@@ -68,11 +68,11 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     return getRandomLongAd();
   }, [selectedMovie]);
 
-  if (!isAdPlaying) {
+  if (isAdPlaying) {
     return (
       <section className={styles["long-ad-container"]}>
         <div className={styles["long-ad-image"]}>
-          <Img src={adImage} />
+          <img src={adImage} />
         </div>
         {showTimer && (
           <p className={styles["timer"]}>

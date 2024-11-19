@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { JSX } from "react/jsx-runtime";
 
 export function withAdvertisement(WrappedComponent) {
-  return function EnhancedComp(props) {
+  return function EnhancedComp(props: JSX.IntrinsicAttributes) {
     const [seconds, setSeconds] = useState(null);
     const intervalRef = useRef();
 
-    function startTimer(duration) {
+    function startTimer(duration: null) {
       setSeconds((prev) => {
         if (prev != null && prev > 1) {
           return prev;
@@ -33,7 +34,6 @@ export function withAdvertisement(WrappedComponent) {
     function stopTimer() {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
-        console.log("hhhh");
       }
 
       intervalRef.current = null;

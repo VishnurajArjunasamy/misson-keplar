@@ -8,7 +8,7 @@ import { withAdvertisement } from "../../helper/withAdvertisement";
 import { getRandomLongAd } from "../../utils/adsUtils";
 
 const longAdDuration = 2;
-const infoDuration = 5;
+const infoDuration = 10;
 
 interface MoviesDescContainerProps {
   selectedMovie: AllMoviesIF | undefined;
@@ -27,6 +27,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   const isAdPlayedRef = useRef(false);
 
   useEffect(() => {
+    stopTimer();
     showInfo();
     console.info("Info showing");
     setIsInfoShwoing(true);
@@ -43,7 +44,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
       setIsInfoShwoing(false);
       showAd();
     }
-    if (seconds <= 1 && !isInfoShowing && isAdPlayedRef) {
+    if (seconds < 1 && !isInfoShowing && isAdPlayedRef) {
       console.log("start info again");
       showInfo();
       setShowTimer(false);

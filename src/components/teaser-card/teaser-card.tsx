@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { FC, forwardRef, useEffect, useMemo, useRef, useState } from "react";
 import { ShortTeasersIF } from "../../modals/teaserModal";
 import styles from "./teaser-card.module.scss";
 import Video from "../video/video";
@@ -14,12 +14,12 @@ interface TeaserCardProps {
   teaserData: ShortTeasersIF;
 }
 
-export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
-  ({ teaserData, timer, startTimer, stopTimer, seconds }) => {
+export const TCard: FC<TeaserCardProps> = forwardRef(
+  ({ teaserData, timer, startTimer, stopTimer, seconds }, videoRef) => {
     const [isVideoPlaying, setVideoIsPlaying] = useState(false);
     const [isAdPlaying, setIsAdPlaying] = useState(false);
     const [showTimer, setShowTimer] = useState(false);
-    const videoRef = useRef();
+    // const videoRef = useRef();
     const isAdPlayedRef = useRef(false);
 
     /**
@@ -49,6 +49,14 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
       }
     }, [seconds, isAdPlaying, isVideoPlaying]);
 
+    /***
+     * Gets a Random Short size Ad Image only when the isAdPlaying state changed
+     * i.e For New add only
+     */
+    const adImage = useMemo(() => {
+      return getRandomShortAd();
+    }, [isAdPlaying]);
+
     /**
      * Strats timer for Video and once the timer is about to finish
      * it executes the callback
@@ -56,7 +64,8 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
     const startVideoTimer = () => {
       setVideoIsPlaying(true);
       setIsAdPlaying(false);
-      if (!isAdPlayedRef.current) startTimer(videoDuration);
+      if (!isAdPlayedRef.current)
+        startTimer(seconds > 0 ? seconds : videoDuration);
     };
 
     /**
@@ -87,14 +96,6 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
         }
       }
     };
-
-    /***
-     * Gets a Random Short size Ad Image only when the isAdPlaying state changed
-     * i.e For New add only
-     */
-    const adImage = useMemo(() => {
-      return getRandomShortAd();
-    }, [isAdPlaying]);
 
     const videoBtn = isVideoPlaying ? (
       <PlayPauseBtn type="pause" />
@@ -131,3 +132,5 @@ export const TeaserCard: FC<TeaserCardProps> = withAdvertisement(
     );
   }
 );
+
+export const TeaserCard = withAdvertisement(TCard);

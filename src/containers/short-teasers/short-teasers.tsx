@@ -1,14 +1,15 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import styles from "./short-teasers.module.scss";
 import { SHORT_TEASERS } from "../../constants/app-constants";
 import { TeaserCard } from "../../components/teaser-card/teaser-card";
 import { ShortTeasersIF } from "../../modals/teaserModal";
 import { getShortTeasers } from "../../services/getShortTeasers";
-import { withAdvertisement } from "../../helper/withAdvertisement";
+// import { withAdvertisement } from "../../helper/withAdvertisement";
 
 const ShortTeasers = () => {
   const [teasers, setTeasers] = useState<ShortTeasersIF[]>([]);
   const [errors, setErrors] = useState();
+  const videoRef = useRef();
 
   useEffect(() => {
     async function fetchTeasers() {
@@ -30,7 +31,11 @@ const ShortTeasers = () => {
   const teaserContainer = (
     <div className={styles["teasers-container"]}>
       {teasers.map((teaser) => (
-        <TeaserCard teaserData={teaser} key={teaser.movieName} />
+        <TeaserCard
+          teaserData={teaser}
+          key={teaser.movieName}
+          videoRef={videoRef}
+        />
       ))}
     </div>
   );
@@ -43,4 +48,4 @@ const ShortTeasers = () => {
   );
 };
 
-export default ShortTeasers;
+export default memo(ShortTeasers);

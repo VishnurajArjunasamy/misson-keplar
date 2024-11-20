@@ -29,6 +29,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   const [isAdPlaying, setIsAdPlaying] = useState(false);
   const [showTimer, setShowTimer] = useState(true);
   const isAdPlayedRef = useRef(false);
+  let movieDesContainer;
 
   useEffect(() => {
     stopTimer();
@@ -40,11 +41,17 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   }, [selectedMovie]);
 
   useEffect(() => {
-    if (seconds < 1 && isInfoShowing && !isAdPlaying && isAdPlayedRef) {
+    if (
+      seconds != null &&
+      seconds < 1 &&
+      isInfoShowing &&
+      !isAdPlaying &&
+      isAdPlayedRef
+    ) {
       setIsInfoShwoing(false);
       showAd();
     }
-    if (seconds < 1 && !isInfoShowing && isAdPlayedRef) {
+    if (seconds != null && seconds < 1 && !isInfoShowing && isAdPlayedRef) {
       showInfo();
       setShowTimer(false);
       stopTimer();
@@ -72,8 +79,10 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     return getRandomLongAd();
   }, [selectedMovie?.id]);
 
-  if (isAdPlaying) {
-    return (
+  if (isAdPlaying && !isInfoShowing) {
+    console.log("ffff");
+
+    movieDesContainer = (
       <section className={styles["long-ad-container"]}>
         <div className={styles["long-ad-image"]}>
           <img src={adImage} />
@@ -89,39 +98,43 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
 
   const likes = movies?.find((movie) => movie.id == selectedMovie?.id)?.likes;
 
-  return (
-    <section className={styles["movies-desc-container"]}>
-      <div className={styles["title"]}>
-        <h1>{selectedMovie?.name}</h1>
-        <div
-          className={styles["thumbs-up"]}
-          onClick={() => handleLike(selectedMovie?.id)}
-        >
-          <ThumbsUp />
+  if (!isAdPlaying && isInfoShowing) {
+    movieDesContainer = (
+      <section className={styles["movies-desc-container"]}>
+        <div className={styles["title"]}>
+          <h1>{selectedMovie?.name}</h1>
+          <div
+            className={styles["thumbs-up"]}
+            onClick={() => handleLike(selectedMovie?.id)}
+          >
+            <ThumbsUp />
+          </div>
         </div>
-      </div>
-      <h2
-        className={styles["likes-txt"]}
-      >{`${likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
-      <div className={styles["movie-img"]}>
-        <Img src={selectedMovie?.imgUrl} />
-      </div>
-      <p className={styles["movie-desc"]}>{selectedMovie?.description}</p>
-      <div className={styles["actors-section"]}>
-        <h1>{ALL_MOVIES.ACTORS_TXT}</h1>
-        {selectedMovie?.actors.map((actor) => (
-          <span className={styles["actor-txt"]} key={actor}>
-            {actor}
-          </span>
-        ))}
-      </div>
-      {showTimer && (
-        <p className={styles["timer"]}>
-          {`${SHORT_TEASERS.ADVERTISEMENT_TXT} ${timer}`}
-        </p>
-      )}
-    </section>
-  );
+        <h2
+          className={styles["likes-txt"]}
+        >{`${likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
+        <div className={styles["movie-img"]}>
+          <Img src={selectedMovie?.imgUrl} />
+        </div>
+        <p className={styles["movie-desc"]}>{selectedMovie?.description}</p>
+        <div className={styles["actors-section"]}>
+          <h1>{ALL_MOVIES.ACTORS_TXT}</h1>
+          {selectedMovie?.actors.map((actor) => (
+            <span className={styles["actor-txt"]} key={actor}>
+              {actor}
+            </span>
+          ))}
+        </div>
+        {showTimer && (
+          <p className={styles["timer"]}>
+            {`${SHORT_TEASERS.ADVERTISEMENT_TXT} ${timer}`}
+          </p>
+        )}
+      </section>
+    );
+  }
+
+  return movieDesContainer;
 };
 
 export default memo(withAdvertisement(MoviesDescContainer));

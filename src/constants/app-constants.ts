@@ -67,6 +67,7 @@ export const SHORT_TEASERS = {
 
 export const OTHER_LANGUAGES = {
   HEADING: "View in Other Languages",
+  SYMBOLS:['E','ह','த'],
 };
 
 export const NOW_SHOWING = {

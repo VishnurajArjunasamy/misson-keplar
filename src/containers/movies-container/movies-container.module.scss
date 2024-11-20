@@ -1,13 +1,23 @@
- .movie-container {
+ .movie-section {
      display: flex;
-     flex-wrap: wrap;
-     gap: 40px;
+     flex-direction: column;
+     align-items: flex-start;
+     padding: 0 5% 3%;
      width: 60%;
      height: calc(100vh - 77px - 155px);
-     padding: 0 5% 5%;
      overflow-y: scroll;
+
+
+     .movie-container {
+         display: flex;
+         flex-wrap: wrap;
+         padding-bottom: 50px;
+         gap: 40px;
+         width: 100%;
+     }
+
  }
 
- .movie-container::-webkit-scrollbar {
+ .movie-section::-webkit-scrollbar {
      display: none;
  }

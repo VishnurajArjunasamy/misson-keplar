@@ -7,10 +7,15 @@ import { ALL_MOVIES } from "../../constants/app-constants";
 
 interface MovieCardProps {
   movieData: AllMoviesIF;
+  handleLike: (id: number) => void;
   onMovieSelect: () => void;
 }
 
-const MovieCard: FC<MovieCardProps> = ({ movieData, onMovieSelect }) => {
+const MovieCard: FC<MovieCardProps> = ({
+  movieData,
+  onMovieSelect,
+  handleLike,
+}) => {
   return (
     <div className={styles["movie-card"]} onClick={onMovieSelect}>
       <div className={styles["movie-img"]}>
@@ -23,7 +28,7 @@ const MovieCard: FC<MovieCardProps> = ({ movieData, onMovieSelect }) => {
             {movieData.likes} {ALL_MOVIES.LIKES_TXT}
           </span>
         </div>
-        <ThumbsUp onClick={() => {}} />
+        <ThumbsUp onClick={() => handleLike(movieData.id)} />
       </div>
     </div>
   );

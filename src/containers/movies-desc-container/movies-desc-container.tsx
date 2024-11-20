@@ -11,11 +11,15 @@ const longAdDuration = 2;
 const infoDuration = 10;
 
 interface MoviesDescContainerProps {
+  movies: AllMoviesIF[] | undefined;
   selectedMovie: AllMoviesIF | undefined;
+  handleLike: (id: number) => void;
 }
 
 const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   selectedMovie,
+  movies,
+  handleLike,
   timer,
   startTimer,
   stopTimer,
@@ -29,7 +33,6 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   useEffect(() => {
     stopTimer();
     showInfo();
-    console.info("Info showing");
     setIsInfoShwoing(true);
     setIsAdPlaying(false);
     setShowTimer(true);
@@ -37,15 +40,11 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   }, [selectedMovie]);
 
   useEffect(() => {
-    console.log(seconds);
-
     if (seconds < 1 && isInfoShowing && !isAdPlaying && isAdPlayedRef) {
-      console.log("start ad");
       setIsInfoShwoing(false);
       showAd();
     }
     if (seconds < 1 && !isInfoShowing && isAdPlayedRef) {
-      console.log("start info again");
       showInfo();
       setShowTimer(false);
       stopTimer();
@@ -71,7 +70,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
    */
   const adImage = useMemo(() => {
     return getRandomLongAd();
-  }, [selectedMovie]);
+  }, [selectedMovie?.id]);
 
   if (isAdPlaying) {
     return (
@@ -88,17 +87,22 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     );
   }
 
+  const likes = movies?.find((movie) => movie.id == selectedMovie?.id)?.likes;
+
   return (
     <section className={styles["movies-desc-container"]}>
       <div className={styles["title"]}>
         <h1>{selectedMovie?.name}</h1>
-        <div className={styles["thumbs-up"]}>
-          <ThumbsUp onClick={() => {}} />
+        <div
+          className={styles["thumbs-up"]}
+          onClick={() => handleLike(selectedMovie?.id)}
+        >
+          <ThumbsUp />
         </div>
       </div>
       <h2
         className={styles["likes-txt"]}
-      >{`${selectedMovie?.likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
+      >{`${likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
       <div className={styles["movie-img"]}>
         <Img src={selectedMovie?.imgUrl} />
       </div>

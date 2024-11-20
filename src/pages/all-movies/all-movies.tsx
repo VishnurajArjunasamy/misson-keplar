@@ -10,6 +10,7 @@ const AllMovies = () => {
   const [movies, setMovies] = useState<AllMoviesIF[]>();
   const [isLoadng, setIsLoading] = useState<boolean>(true);
   const [selectedMovie, setSelectedMovie] = useState<AllMoviesIF>();
+  const [mvToDispaly, setMvToDisplay] = useState<number>(6);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,6 +26,14 @@ const AllMovies = () => {
     fetchData();
   }, []);
 
+  const handleMovieLike = (id: number) => {
+    setMovies(
+      movies?.map((movie) =>
+        movie.id == id ? { ...movie, likes: movie.likes + 1 } : movie
+      )
+    );
+  };
+
   if (isLoadng) {
     return <p>Loading...</p>;
   }
@@ -32,8 +41,18 @@ const AllMovies = () => {
     <section className={styles["all-movies-page"]}>
       <h1 className={styles["all-movies-heading"]}>{ALL_MOVIES.HEADING}</h1>
       <div className={styles["movie-and-desc"]}>
-        <MoviesContainer movies={movies} setSelectedMovie={setSelectedMovie} />
-        <MoviesDescContainer selectedMovie={selectedMovie} />
+        <MoviesContainer
+          movies={movies}
+          setSelectedMovie={setSelectedMovie}
+          handleLike={handleMovieLike}
+          mvToDisplay={mvToDispaly}
+          setMvToDisplay={setMvToDisplay}
+        />
+        <MoviesDescContainer
+          movies={movies}
+          selectedMovie={selectedMovie}
+          handleLike={handleMovieLike}
+        />
       </div>
     </section>
   );

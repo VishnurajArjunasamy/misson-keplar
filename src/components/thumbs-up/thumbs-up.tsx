@@ -3,7 +3,7 @@ import thumbsUp from "../../assets/logos/thumb-up.png";
 import styles from "./thumbs-up.module.scss";
 
 interface ThumbsUpProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ThumbsUp: FC<ThumbsUpProps> = ({ onClick }) => {

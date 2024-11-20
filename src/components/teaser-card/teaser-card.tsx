@@ -27,6 +27,7 @@ export const TCard: FC<TeaserCardProps> = forwardRef(
      */
     useEffect(() => {
       console.log(seconds);
+
       if (
         seconds <= 0 &&
         isVideoPlaying == true &&

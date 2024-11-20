@@ -22,6 +22,7 @@ const ShortTeasers = () => {
     }
 
     fetchTeasers();
+    
   }, []);
 
   if (errors) {

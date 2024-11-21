@@ -1,7 +1,18 @@
 .lottery-form {
     display: flex;
     gap: 20px;
-    align-items: center;
+    align-items: flex-start;   
+    padding-top: 10px; 
+    
+
+    .inp-error-box{
+        .error{
+            font-size: 14px;
+            font-weight: 400;
+            color: #fa0606;
+            padding-top: 2px;
+        }
+    }
 }
 
 .lottery-msg {

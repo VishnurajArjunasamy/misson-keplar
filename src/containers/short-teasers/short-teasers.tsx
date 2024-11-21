@@ -9,7 +9,7 @@ import { getShortTeasers } from "../../services/getShortTeasers";
 const ShortTeasers = () => {
   const [teasers, setTeasers] = useState<ShortTeasersIF[]>([]);
   const [errors, setErrors] = useState();
-  const videoRef = useRef();
+  const [nowPlaying, setNowPlaying] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchTeasers() {
@@ -22,7 +22,6 @@ const ShortTeasers = () => {
     }
 
     fetchTeasers();
-    
   }, []);
 
   if (errors) {
@@ -35,7 +34,8 @@ const ShortTeasers = () => {
         <TeaserCard
           teaserData={teaser}
           key={teaser.movieName}
-          videoRef={videoRef}
+          nowPlaying={nowPlaying}
+          setNowPlaying={setNowPlaying}
         />
       ))}
     </div>

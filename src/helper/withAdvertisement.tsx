@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useRef, useState } from "react";
 import { JSX } from "react/jsx-runtime";
 
 export const withAdvertisement = (WrappedComponent) => {
-  const EnhancedComp = (props: JSX.IntrinsicAttributes, videoRef) => {
+  const EnhancedComp = (props: JSX.IntrinsicAttributes) => {
     const [seconds, setSeconds] = useState(null);
     const intervalRef = useRef();
 
@@ -57,9 +57,8 @@ export const withAdvertisement = (WrappedComponent) => {
         startTimer={startTimer}
         stopTimer={stopTimer}
         seconds={seconds}
-        videoRef={videoRef}
       />
     );
   };
-  return forwardRef(EnhancedComp);
+  return EnhancedComp;
 };

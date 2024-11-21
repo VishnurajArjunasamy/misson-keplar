@@ -7,8 +7,8 @@ import { ALL_MOVIES, SHORT_TEASERS } from "../../constants/app-constants";
 import { withAdvertisement } from "../../helper/withAdvertisement";
 import { getRandomLongAd } from "../../utils/adsUtils";
 
-const longAdDuration = 2;
-const infoDuration = 10;
+const longAdDuration = 5;
+const infoDuration = 15;
 
 interface MoviesDescContainerProps {
   movies: AllMoviesIF[] | undefined;

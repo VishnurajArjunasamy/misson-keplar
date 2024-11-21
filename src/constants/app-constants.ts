@@ -47,6 +47,7 @@ export const LOTTERY = {
   BTN_TXT: "I'm Feeling Lucky",
   WIN_MSG: "Hurray! You Won a free ticket to Blind Date on Wednseday",
   LOST_MDG: "Sorry :( Better Luck Next Time",
+  MOBILE_REGEX: /^[7-9][0-9]{9}$/,
 };
 
 export const TRAILERS = {
@@ -67,7 +68,7 @@ export const SHORT_TEASERS = {
 
 export const OTHER_LANGUAGES = {
   HEADING: "View in Other Languages",
-  SYMBOLS:['E','ह','த'],
+  SYMBOLS: ["E", "ह", "த", "മ", "తె"],
 };
 
 export const NOW_SHOWING = {

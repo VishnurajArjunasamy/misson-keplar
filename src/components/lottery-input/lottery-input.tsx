@@ -7,12 +7,19 @@ import styles from "./lottery-input.module.scss";
 const LotteryInput = () => {
   const [triggerError, setTriggerError] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [errors, setErrors] = useState<string | null>(null);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const mobNum = Number(formData.get("mobNumber"));
+    const mobNum = formData.get("mobNumber");
 
-    if (mobNum % 2 === 0) {
+    if (!LOTTERY.MOBILE_REGEX.test(mobNum)) {
+      console.log("hhh");
+      setErrors("Enter a valid Mobile Number");
+      return;
+    }
+    setErrors(null);
+    if (Number(mobNum) % 2 === 0) {
       console.log("Won lottery");
       setIsClicked(true);
     } else {
@@ -26,7 +33,14 @@ const LotteryInput = () => {
 
   const fromElement = (
     <form onSubmit={handleSubmit} className={styles["lottery-form"]}>
-      <Input placeholder="Enter Mobile Number" type="number" name="mobNumber" />
+      <div className={styles["inp-error-box"]}>
+        <Input
+          placeholder="Enter Mobile Number"
+          type="number"
+          name="mobNumber"
+        />
+        {errors && <p className={styles["error"]}>{errors}</p>}
+      </div>
       <Button size="sm">{LOTTERY.BTN_TXT}</Button>
     </form>
   );

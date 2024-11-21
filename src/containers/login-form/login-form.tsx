@@ -25,7 +25,6 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
     const validationErrors = validate(formCreds);
 
     if (Object.keys(validationErrors).length > 0) {
-      console.log(validationErrors);
       setErr(validationErrors);
       return;
     }
@@ -45,7 +44,6 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
       throw new Error("Invalid UserName or Password");
     } catch (err) {
       setErr({ validCred: err.message });
-      console.log("Invalid User");
     }
   };
 

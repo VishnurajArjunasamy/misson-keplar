@@ -14,13 +14,11 @@ const LotteryInput = () => {
     const mobNum = formData.get("mobNumber");
 
     if (!LOTTERY.MOBILE_REGEX.test(mobNum)) {
-      console.log("hhh");
       setErrors("Enter a valid Mobile Number");
       return;
     }
     setErrors(null);
     if (Number(mobNum) % 2 === 0) {
-      console.log("Won lottery");
       setIsClicked(true);
     } else {
       setTriggerError(true);

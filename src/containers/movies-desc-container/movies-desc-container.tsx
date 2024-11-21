@@ -80,8 +80,6 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   }, [selectedMovie?.id]);
 
   if (isAdPlaying && !isInfoShowing) {
-    console.log("ffff");
-
     movieDesContainer = (
       <section className={styles["long-ad-container"]}>
         <div className={styles["long-ad-image"]}>

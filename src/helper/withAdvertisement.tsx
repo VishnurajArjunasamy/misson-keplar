@@ -3,16 +3,11 @@ import { JSX } from "react/jsx-runtime";
 
 export const withAdvertisement = (WrappedComponent) => {
   const EnhancedComp = (props: JSX.IntrinsicAttributes) => {
-    const [seconds, setSeconds] = useState(null);
+    const [seconds, setSeconds] = useState<null | number>(null);
     const intervalRef = useRef();
 
     function startTimer(duration: null) {
-      setSeconds((prev) => {
-        // if (prev != null && prev > 1) {
-        //   return prev;
-        // }
-        return duration;
-      });
+      setSeconds(duration);
 
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
@@ -20,7 +15,7 @@ export const withAdvertisement = (WrappedComponent) => {
       }
 
       intervalRef.current = setInterval(() => {
-        setSeconds((prev) => {
+        setSeconds((prev: number | null) => {
           if (prev != null && prev < 1) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
@@ -57,6 +52,7 @@ export const withAdvertisement = (WrappedComponent) => {
         startTimer={startTimer}
         stopTimer={stopTimer}
         seconds={seconds}
+        setSeconds={setSeconds}
       />
     );
   };

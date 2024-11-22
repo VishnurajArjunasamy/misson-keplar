@@ -1,5 +1,5 @@
 import { FC, forwardRef, useEffect, useMemo, useRef, useState } from "react";
-import { ShortTeasersIF } from "../../modals/teaserModal";
+import { NowPlayingIF, TeaserWithIDIF } from "../../modals/teaserModal";
 import styles from "./teaser-card.module.scss";
 import Video from "../video/video";
 import { withAdvertisement } from "../../helper/withAdvertisement";
@@ -11,9 +11,9 @@ const shortAdDuration = 3;
 const videoDuration = 5;
 
 interface TeaserCardProps {
-  teaserData: ShortTeasersIF;
-  nowPlaying: string | null;
-  setNowPlayig: React.Dispatch<React.SetStateAction<number | null>>;
+  teaserData: TeaserWithIDIF;
+  nowPlaying: NowPlayingIF;
+  setNowPlayig: React.Dispatch<React.SetStateAction<NowPlayingIF>>;
 }
 
 export const TCard: FC<TeaserCardProps> = ({
@@ -24,6 +24,7 @@ export const TCard: FC<TeaserCardProps> = ({
   startTimer,
   stopTimer,
   seconds,
+  setSeconds,
 }) => {
   const [isVideoPlaying, setVideoIsPlaying] = useState(false);
   const [isAdPlaying, setIsAdPlaying] = useState(false);
@@ -32,14 +33,17 @@ export const TCard: FC<TeaserCardProps> = ({
   const isAdPlayedRef = useRef(false);
 
   useEffect(() => {
-    // setNowPlaying(teaserData.movieName);
-    // stopTimer();
-
-    // setIsAdPlaying(false);
-    // setVideoIsPlaying(false);
-    // videoRef.current.pause();
-    // console.log('video changed');
-    console.log("now Playing", nowPlaying);
+    if (!nowPlaying[teaserData.id]) {
+      // console.log(teaserData.id, "playing");
+      // console.log(nowPlaying);
+      stopTimer();
+      videoRef.current.pause();
+      setVideoIsPlaying(false);
+      setIsAdPlaying(false);
+      setShowTimer(false);
+      setSeconds(null);
+      isAdPlayedRef.current = false;
+    }
   }, [nowPlaying]);
 
   /**
@@ -103,8 +107,12 @@ export const TCard: FC<TeaserCardProps> = ({
    * Toggles between playing and pausing the video
    */
   const toggleVideo = () => {
-
-    setNowPlaying(teaserData.movieName);
+    setNowPlaying((prev: NowPlayingIF) => {
+      return Object.keys(prev).reduce((toggledObj: NowPlayingIF, key) => {
+        toggledObj[key] = key == teaserData.id;
+        return toggledObj;
+      }, {});
+    });
 
     if (videoRef.current) {
       if (isVideoPlaying) {

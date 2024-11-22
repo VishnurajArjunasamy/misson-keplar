@@ -1,21 +1,25 @@
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import styles from "./short-teasers.module.scss";
 import { SHORT_TEASERS } from "../../constants/app-constants";
 import { TeaserCard } from "../../components/teaser-card/teaser-card";
-import { ShortTeasersIF } from "../../modals/teaserModal";
+import { NowPlayingIF, TeaserWithIDIF } from "../../modals/teaserModal";
 import { getShortTeasers } from "../../services/getShortTeasers";
-// import { withAdvertisement } from "../../helper/withAdvertisement";
+import { addIdToTeasers } from "../../utils/addIdToTeasers";
 
 const ShortTeasers = () => {
-  const [teasers, setTeasers] = useState<ShortTeasersIF[]>([]);
+  const [teasers, setTeasers] = useState<TeaserWithIDIF[]>([]);
   const [errors, setErrors] = useState();
-  const [nowPlaying, setNowPlaying] = useState<string | null>(null);
+  const [nowPlaying, setNowPlaying] = useState<NowPlayingIF>({
+    teaser_1: false,
+    teaser_2: false,
+    teaser_3: false,
+  });
 
   useEffect(() => {
     async function fetchTeasers() {
       try {
         const response = await getShortTeasers();
-        setTeasers(response);
+        setTeasers(addIdToTeasers(response));
       } catch (e) {
         setErrors(e);
       }

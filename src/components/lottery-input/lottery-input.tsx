@@ -11,7 +11,7 @@ const LotteryInput = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const mobNum = formData.get("mobNumber");
+    const mobNum = formData.get("mobNumber") as string;
 
     if (!LOTTERY.MOBILE_REGEX.test(mobNum)) {
       setErrors("Enter a valid Mobile Number");

@@ -4,6 +4,7 @@ import pauseBtn from "../../../assets/logos/pause-button.png";
 
 interface PlayPauseBtnProps {
   type: "play" | "pause";
+  onClick?: () => void;
 }
 
 const PlayPauseBtn: FC<PlayPauseBtnProps> = ({ type, onClick }) => {

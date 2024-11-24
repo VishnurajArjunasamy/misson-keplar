@@ -1,10 +1,10 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { JSX } from "react/jsx-runtime";
 
 export const withAdvertisement = (WrappedComponent) => {
   const EnhancedComp = (props: JSX.IntrinsicAttributes) => {
     const [seconds, setSeconds] = useState<null | number>(null);
-    const intervalRef = useRef();
+    const intervalRef = useRef<number | NodeJS.Timeout | null>(null);
 
     function startTimer(duration: null) {
       setSeconds(duration);
@@ -21,7 +21,7 @@ export const withAdvertisement = (WrappedComponent) => {
             intervalRef.current = null;
             return 0;
           }
-          return prev - 1;
+          return prev && prev - 1;
         });
       }, 1000);
     }

@@ -4,7 +4,7 @@ import styles from "./lottery-section.module.scss";
 import { memo } from "react";
 
 const LotterySection = () => {
-  function fallbackRender({ error }) {
+  function fallbackRender({ error }: { error: { message: string } }) {
     return <span className={styles["lottery-msg"]}>{error.message}</span>;
   }
   return (

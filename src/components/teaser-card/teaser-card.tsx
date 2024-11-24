@@ -1,4 +1,4 @@
-import { FC, forwardRef, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { NowPlayingIF, TeaserWithIDIF } from "../../modals/teaserModal";
 import styles from "./teaser-card.module.scss";
 import Video from "../video/video";
@@ -13,7 +13,12 @@ const videoDuration = 5;
 interface TeaserCardProps {
   teaserData: TeaserWithIDIF;
   nowPlaying: NowPlayingIF;
-  setNowPlayig: React.Dispatch<React.SetStateAction<NowPlayingIF>>;
+  setNowPlaying: React.Dispatch<React.SetStateAction<NowPlayingIF>>;
+  timer: string;
+  startTimer: (duration: number) => void;
+  stopTimer: () => void;
+  seconds: number;
+  setSeconds: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 export const TCard: FC<TeaserCardProps> = ({
@@ -29,15 +34,13 @@ export const TCard: FC<TeaserCardProps> = ({
   const [isVideoPlaying, setVideoIsPlaying] = useState(false);
   const [isAdPlaying, setIsAdPlaying] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
-  const videoRef = useRef();
+  const videoRef = useRef<HTMLVideoElement>(null);
   const isAdPlayedRef = useRef(false);
 
   useEffect(() => {
-    if (!nowPlaying[teaserData.id]) {
-      // console.log(teaserData.id, "playing");
-      // console.log(nowPlaying);
+    if (!nowPlaying[teaserData.id as keyof NowPlayingIF]) {
       stopTimer();
-      videoRef.current.pause();
+      videoRef.current?.pause();
       setVideoIsPlaying(false);
       setIsAdPlaying(false);
       setShowTimer(false);
@@ -60,13 +63,13 @@ export const TCard: FC<TeaserCardProps> = ({
     ) {
       console.log("Start Ad");
       setVideoIsPlaying(false);
-      videoRef.current.pause();
+      videoRef.current?.pause();
       startAdTimer();
     }
     if (seconds <= 0 && isVideoPlaying == false && isAdPlaying == true) {
       console.log("Start video");
       setVideoIsPlaying(true);
-      videoRef.current.play();
+      videoRef.current?.play();
       isAdPlayedRef.current = true;
       stopTimer();
       setShowTimer(false);
@@ -109,9 +112,9 @@ export const TCard: FC<TeaserCardProps> = ({
   const toggleVideo = () => {
     setNowPlaying((prev: NowPlayingIF) => {
       return Object.keys(prev).reduce((toggledObj: NowPlayingIF, key) => {
-        toggledObj[key] = key == teaserData.id;
+        toggledObj[key as keyof NowPlayingIF] = key == teaserData.id;
         return toggledObj;
-      }, {});
+      }, {} as NowPlayingIF);
     });
 
     if (videoRef.current) {

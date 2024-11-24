@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+
 const Button: FC<ButtonProps> = ({ children, size, onClick }) => {
   const style = size == "lg" ? styles["lg-btn"] : styles["sm-btn"];
   return (

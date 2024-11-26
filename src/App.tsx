@@ -2,12 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./containers/navbar/navbar";
 import { MENUS } from "./constants/app-constants";
 import { SESSION } from "./constants/app-constants";
-import Login from "./pages/login/login";
-import Home from "./pages/home/ home";
-import NowShowing from "./pages/now-showing/now-showing";
 import { AuthProvider } from "./context/auth-context";
 import PrivateRoute from "./helper/privateRoute";
-import AllMovies from "./pages/all-movies/all-movies";
+import React from "react";
+
+const Home = React.lazy(() => import("./pages/home/ home"));
+const AllMovies = React.lazy(() => import("./pages/all-movies/all-movies"));
+const NowShowing = React.lazy(() => import("./pages/now-showing/now-showing"));
+const Login = React.lazy(() => import("./pages/login/login"));
 
 const { HOME, ALLMOVIES, NOWSHOWING } = MENUS;
 const { LOGIN } = SESSION;
@@ -17,14 +19,37 @@ function App() {
     <AuthProvider>
       <Routes>
         <Route element={<Navbar />}>
-          <Route path={HOME.ROUTE} element={<Home />} />
-          <Route path={ALLMOVIES.ROUTE} element={<AllMovies />} />
-          <Route path={LOGIN.ROUTE} element={<Login />} />
+          <Route
+            path={HOME.ROUTE}
+            element={
+              <React.Suspense fallback={<>Loading..</>}>
+                <Home />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path={ALLMOVIES.ROUTE}
+            element={
+              <React.Suspense fallback={<>Loading..</>}>
+                <AllMovies />
+              </React.Suspense>
+            }
+          />
+          <Route
+            path={LOGIN.ROUTE}
+            element={
+              <React.Suspense fallback={<>Loading..</>}>
+                <Login />
+              </React.Suspense>
+            }
+          />
           <Route
             path={NOWSHOWING.ROUTE}
             element={
               <PrivateRoute>
-                <NowShowing />
+                <React.Suspense fallback={<>Loading..</>}>
+                  <NowShowing />
+                </React.Suspense>
               </PrivateRoute>
             }
           />

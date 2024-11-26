@@ -1,11 +1,25 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
+import { AuthIF } from "../modals/authModal";
 
-const AuthContext = createContext();
+// const authDefaultValue = {
+//   user: null,
+//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+//   saveUser: (user: string) => {},
+//   logOut: () => {},
+// };
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(localStorage.getItem("user") || null);
+const AuthContext = createContext({} as AuthIF);
 
-  const saveUser = (user) => {
+interface AuthPropIF {
+  children: ReactNode;
+}
+
+export const AuthProvider = ({ children }: AuthPropIF) => {
+  const [user, setUser] = useState<string | null>(
+    localStorage.getItem("user") || null
+  );
+
+  const saveUser = (user: string) => {
     localStorage.setItem("user", JSON.stringify(user));
     setUser(user);
   };

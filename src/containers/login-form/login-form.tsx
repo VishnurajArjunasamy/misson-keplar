@@ -8,21 +8,28 @@ import { LOGIN, MENUS } from "../../constants/app-constants";
 import Button from "../../components/button/button";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
-
+import { AuthIF } from "../../modals/authModal";
 
 interface LoginFormProps {
-  err: object;
+  err: {
+    message?: string;
+    email?: string;
+    password?: string;
+    validCred?: string;
+  };
   setErr: React.Dispatch<React.SetStateAction<object>>;
 }
 const HOME_ROUTE = MENUS.HOME.ROUTE;
 const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
-  const auth = useAuth();
+  const auth = useAuth() as AuthIF;
   const navigate = useNavigate();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const formCreds = Object.fromEntries(formData.entries());
-    const validationErrors = validate(formCreds);
+    const validationErrors = validate(
+      formCreds as { email: string; password: string }
+    );
 
     if (Object.keys(validationErrors).length > 0) {
       setErr(validationErrors);
@@ -35,15 +42,17 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
     setErr({});
 
     try {
-      const response = loginService(formCreds);
+      const response = loginService(
+        formCreds as { email: string; password: string }
+      );
       if (response.status == "success") {
-        auth.saveUser(response.user);
+        if (response.user) auth.saveUser(response.user);
         navigate(HOME_ROUTE != "" ? HOME_ROUTE : "/");
         return;
       }
       throw new Error("Invalid UserName or Password");
-    } catch (err) {
-      setErr({ validCred: err.message });
+    } catch (err: unknown) {
+      if (err instanceof Error) setErr({ validCred: err.message });
     }
   };
 

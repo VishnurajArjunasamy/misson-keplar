@@ -53,21 +53,17 @@ export const TCard: FC<TeaserCardProps> = ({
    * When second becomes less than 1 start and stop video, ads accordingly
    */
   useEffect(() => {
-    console.log(seconds);
-
     if (
       seconds <= 0 &&
       isVideoPlaying == true &&
       isAdPlaying == false &&
       isAdPlayedRef.current == false
     ) {
-      console.log("Start Ad");
       setVideoIsPlaying(false);
       videoRef.current?.pause();
       startAdTimer();
     }
     if (seconds <= 0 && isVideoPlaying == false && isAdPlaying == true) {
-      console.log("Start video");
       setVideoIsPlaying(true);
       videoRef.current?.play();
       isAdPlayedRef.current = true;

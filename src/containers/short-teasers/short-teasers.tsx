@@ -8,7 +8,7 @@ import { addIdToTeasers } from "../../utils/addIdToTeasers";
 
 const ShortTeasers = () => {
   const [teasers, setTeasers] = useState<TeaserWithIDIF[]>([]);
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState<Error>();
   const [nowPlaying, setNowPlaying] = useState<NowPlayingIF>({
     teaser_1: false,
     teaser_2: false,
@@ -20,8 +20,8 @@ const ShortTeasers = () => {
       try {
         const response = await getShortTeasers();
         setTeasers(addIdToTeasers(response));
-      } catch (e) {
-        setErrors(e);
+      } catch (e: unknown) {
+        if (e instanceof Error) setErrors(e);
       }
     }
 
@@ -37,7 +37,7 @@ const ShortTeasers = () => {
       {teasers.map((teaser) => (
         <TeaserCard
           teaserData={teaser}
-          key={teaser.movieName}
+          key={teaser.id}
           nowPlaying={nowPlaying}
           setNowPlaying={setNowPlaying}
         />

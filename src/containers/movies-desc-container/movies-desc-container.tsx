@@ -14,6 +14,11 @@ interface MoviesDescContainerProps {
   movies: AllMoviesIF[] | undefined;
   selectedMovie: AllMoviesIF | undefined;
   handleLike: (id: number) => void;
+  timer: string;
+  startTimer: (duration: number) => void;
+  stopTimer: () => void;
+  seconds: number;
+  setSeconds: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
@@ -31,6 +36,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   const isAdPlayedRef = useRef(false);
   let movieDesContainer;
 
+  // Initially Start the Timer to display Ad after selectedMovie changes
   useEffect(() => {
     stopTimer();
     showInfo();
@@ -40,6 +46,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     isAdPlayedRef.current = false;
   }, [selectedMovie]);
 
+  //Start Stop Ad if the seconds reach 0
   useEffect(() => {
     if (
       seconds != null &&
@@ -103,7 +110,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
           <h1>{selectedMovie?.name}</h1>
           <div
             className={styles["thumbs-up"]}
-            onClick={() => handleLike(selectedMovie?.id)}
+            onClick={() => handleLike(selectedMovie?.id as number)}
           >
             <ThumbsUp />
           </div>
@@ -112,7 +119,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
           className={styles["likes-txt"]}
         >{`${likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
         <div className={styles["movie-img"]}>
-          <Img src={selectedMovie?.imgUrl} />
+          <Img src={selectedMovie?.imgUrl as string} />
         </div>
         <p className={styles["movie-desc"]}>{selectedMovie?.description}</p>
         <div className={styles["actors-section"]}>

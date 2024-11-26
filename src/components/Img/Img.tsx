@@ -1,12 +1,23 @@
 import { FC } from "react";
 import styles from "./Img.module.scss";
+import emptyImage from "../../assets/images/empty-image.png";
 
 interface ImgProps {
   src: string;
 }
 
 const Img: FC<ImgProps> = ({ src }) => {
-  return <img src={src} className={styles['img-style']}/>;
+  return (
+    <img
+      src={src}
+      alt={"Movie"}
+      className={styles["img-style"]}
+      onError={(e) => {
+        e.currentTarget.src = emptyImage;
+        console.log("err");
+      }}
+    />
+  );
 };
 
 export default Img;

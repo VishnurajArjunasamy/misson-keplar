@@ -5,6 +5,7 @@ import styles from "./all-movies.module.scss";
 import { AllMoviesIF } from "../../modals/allMoviesModal";
 import { getAllMovies } from "../../services/getAllMovies";
 import { ALL_MOVIES } from "../../constants/app-constants";
+import { Loader } from "../../components/loader/loader";
 
 const AllMovies = () => {
   const [movies, setMovies] = useState<AllMoviesIF[]>();
@@ -35,7 +36,11 @@ const AllMovies = () => {
   };
 
   if (isLoadng) {
-    return <p>Loading...</p>;
+    return (
+      <div className={styles["loader-container"]}>
+        <Loader />
+      </div>
+    );
   }
   return (
     <section className={styles["all-movies-page"]}>

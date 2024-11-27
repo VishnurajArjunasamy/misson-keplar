@@ -5,11 +5,11 @@ export const MENUS = {
   },
   ALLMOVIES: {
     NAME: "ALL MOVIES",
-    ROUTE: "allMovies",
+    ROUTE: "all-movies",
   },
   NOWSHOWING: {
     NAME: "NOW SHOWING",
-    ROUTE: "showTime",
+    ROUTE: "showtime",
   },
 };
 

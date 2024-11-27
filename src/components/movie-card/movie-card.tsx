@@ -17,8 +17,8 @@ const MovieCard: FC<MovieCardProps> = ({
   handleLike,
 }) => {
   return (
-    <div className={styles["movie-card"]} onClick={onMovieSelect}>
-      <div className={styles["movie-img"]}>
+    <div className={styles["movie-card"]}>
+      <div className={styles["movie-img"]} onClick={onMovieSelect}>
         <Img src={movieData.imgUrl} />
       </div>
       <div className={styles["movie-details"]}>
@@ -28,7 +28,10 @@ const MovieCard: FC<MovieCardProps> = ({
             {movieData.likes} {ALL_MOVIES.LIKES_TXT}
           </span>
         </div>
-        <ThumbsUp onClick={() => handleLike(movieData.id)} />
+        <ThumbsUp
+          liked={movieData.liked as boolean}
+          onClick={() => handleLike(movieData.id)}
+        />
       </div>
     </div>
   );

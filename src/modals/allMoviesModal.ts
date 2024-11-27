@@ -5,4 +5,5 @@ export interface AllMoviesIF {
   actors: string[];
   imgUrl: string;
   likes: number;
+  liked?:boolean
 }

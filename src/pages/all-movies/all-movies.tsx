@@ -30,7 +30,13 @@ const AllMovies = () => {
   const handleMovieLike = (id: number) => {
     setMovies(
       movies?.map((movie) =>
-        movie.id == id ? { ...movie, likes: movie.likes + 1 } : movie
+        movie.id == id
+          ? {
+              ...movie,
+              likes: movie.liked ? movie.likes - 1 : movie.likes + 1,
+              liked: !movie.liked,
+            }
+          : movie
       )
     );
   };

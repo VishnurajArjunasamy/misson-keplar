@@ -102,6 +102,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   }
 
   const likes = movies?.find((movie) => movie.id == selectedMovie?.id)?.likes;
+  const liked = movies?.find((movie) => movie.id == selectedMovie?.id)?.liked;
 
   if (!isAdPlaying && isInfoShowing) {
     movieDesContainer = (
@@ -112,7 +113,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
             className={styles["thumbs-up"]}
             onClick={() => handleLike(selectedMovie?.id as number)}
           >
-            <ThumbsUp />
+            <ThumbsUp liked={liked} />
           </div>
         </div>
         <h2

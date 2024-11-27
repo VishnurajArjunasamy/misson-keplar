@@ -1,14 +1,10 @@
+import { VideoRefIF } from "../../modals/videoModal";
 import styles from "./video.module.scss";
 import React, { useImperativeHandle, useRef } from "react";
 
 interface VideoProps {
   src: string;
   poster?: string;
-}
-
-interface VideoRefIF {
-  play: () => void;
-  pause: () => void;
 }
 
 const Video = React.forwardRef<VideoRefIF, VideoProps>(
@@ -21,6 +17,12 @@ const Video = React.forwardRef<VideoRefIF, VideoProps>(
       },
       pause: () => {
         videoElementRef.current?.pause();
+      },
+      currentTime: videoElementRef.current?.currentTime,
+      resetTime: () => {
+        if (videoElementRef != null) {
+          videoElementRef.current.currentTime = 0;
+        }
       },
     }));
 

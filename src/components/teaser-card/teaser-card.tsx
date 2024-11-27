@@ -6,8 +6,9 @@ import { withAdvertisement } from "../../helper/withAdvertisement";
 import PlayPauseBtn from "../video-controls/play-pause-btn/play-pause-btn";
 import { SHORT_TEASERS } from "../../constants/app-constants";
 import { getRandomShortAd } from "../../utils/adsUtils";
+import { VideoRefIF } from "../../modals/videoModal";
 
-const shortAdDuration = 3;
+const shortAdDuration = 2;
 const videoDuration = 5;
 
 interface TeaserCardProps {
@@ -34,7 +35,7 @@ export const TCard: FC<TeaserCardProps> = ({
   const [isVideoPlaying, setVideoIsPlaying] = useState(false);
   const [isAdPlaying, setIsAdPlaying] = useState(false);
   const [showTimer, setShowTimer] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<VideoRefIF>(null);
   const isAdPlayedRef = useRef(false);
 
   useEffect(() => {
@@ -46,6 +47,8 @@ export const TCard: FC<TeaserCardProps> = ({
       setShowTimer(false);
       setSeconds(null);
       isAdPlayedRef.current = false;
+      videoRef.current.resetTime();
+
     }
   }, [nowPlaying]);
 

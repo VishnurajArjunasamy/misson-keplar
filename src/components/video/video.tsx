@@ -18,7 +18,7 @@ const Video = React.forwardRef<VideoRefIF, VideoProps>(
       pause: () => {
         videoElementRef.current?.pause();
       },
-      currentTime: videoElementRef.current?.currentTime,
+      load: () => videoElementRef.current?.load(),
       resetTime: () => {
         if (videoElementRef != null) {
           videoElementRef.current.currentTime = 0;

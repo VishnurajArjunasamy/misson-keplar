@@ -30,6 +30,9 @@ const MoviesContainer: FC<MoviesContainerProps> = ({
   function handleMovieLoad() {
     setMvToDisplay((prev) => prev + 6);
   }
+
+  console.log("movies");
+
   return (
     <div className={styles["movie-section"]}>
       <section className={styles["movie-container"]}>

@@ -140,6 +140,9 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     );
   }
 
+  console.log('desc');
+  
+
   return movieDesContainer;
 };
 

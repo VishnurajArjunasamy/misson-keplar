@@ -47,8 +47,8 @@ export const TCard: FC<TeaserCardProps> = ({
       setShowTimer(false);
       setSeconds(null);
       isAdPlayedRef.current = false;
-      videoRef.current.resetTime();
-
+      if (nowPlaying[teaserData.id as keyof NowPlayingIF] != null)
+        videoRef.current?.load();
     }
   }, [nowPlaying]);
 

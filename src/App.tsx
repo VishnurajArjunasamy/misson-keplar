@@ -5,6 +5,7 @@ import { SESSION } from "./constants/app-constants";
 import { AuthProvider } from "./context/auth-context";
 import PrivateRoute from "./helper/privateRoute";
 import React from "react";
+import { Loader } from "./components/loader/loader";
 
 const Home = React.lazy(() => import("./pages/home/ home"));
 const AllMovies = React.lazy(() => import("./pages/all-movies/all-movies"));
@@ -22,7 +23,13 @@ function App() {
           <Route
             path={HOME.ROUTE}
             element={
-              <React.Suspense fallback={<>Loading..</>}>
+              <React.Suspense
+                fallback={
+                  <div className={"fallback-spinner"}>
+                    <Loader />
+                  </div>
+                }
+              >
                 <Home />
               </React.Suspense>
             }
@@ -30,7 +37,13 @@ function App() {
           <Route
             path={ALLMOVIES.ROUTE}
             element={
-              <React.Suspense fallback={<>Loading..</>}>
+              <React.Suspense
+                fallback={
+                  <div className={"fallback-spinner"}>
+                    <Loader />
+                  </div>
+                }
+              >
                 <AllMovies />
               </React.Suspense>
             }
@@ -38,7 +51,13 @@ function App() {
           <Route
             path={LOGIN.ROUTE}
             element={
-              <React.Suspense fallback={<>Loading..</>}>
+              <React.Suspense
+                fallback={
+                  <div className={"fallback-spinner"}>
+                    <Loader />
+                  </div>
+                }
+              >
                 <Login />
               </React.Suspense>
             }
@@ -47,7 +66,13 @@ function App() {
             path={NOWSHOWING.ROUTE}
             element={
               <PrivateRoute>
-                <React.Suspense fallback={<>Loading..</>}>
+                <React.Suspense
+                  fallback={
+                    <div className={"fallback-spinner"}>
+                      <Loader />
+                    </div>
+                  }
+                >
                   <NowShowing />
                 </React.Suspense>
               </PrivateRoute>

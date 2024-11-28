@@ -11,3 +11,9 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+
+.fallback-spinner {
+  width: 100vw;
+  height: 100vh;
+  background-color: #151515;
+}

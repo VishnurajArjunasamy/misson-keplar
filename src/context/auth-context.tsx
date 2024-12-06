@@ -1,12 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 import { AuthIF } from "../modals/authModal";
 
-// const authDefaultValue = {
-//   user: null,
-//   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-//   saveUser: (user: string) => {},
-//   logOut: () => {},
-// };
+
 
 const AuthContext = createContext({} as AuthIF);
 

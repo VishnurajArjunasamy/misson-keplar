@@ -11,7 +11,7 @@ interface ButtonProps {
 const Button: FC<ButtonProps> = ({ children, size, onClick }) => {
   const style = size == "lg" ? styles["lg-btn"] : styles["sm-btn"];
   return (
-    <button onClick={onClick} className={style}>
+    <button data-testid='login-btn' onClick={onClick} className={style}>
       {children}
     </button>
   );

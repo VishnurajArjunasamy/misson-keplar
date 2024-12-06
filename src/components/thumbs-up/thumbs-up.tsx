@@ -8,9 +8,9 @@ interface ThumbsUpProps {
   liked?: boolean;
 }
 
-const ThumbsUp: FC<ThumbsUpProps> = ({ onClick, liked }) => {
+const ThumbsUp: FC<ThumbsUpProps> = ({ onClick, liked, ...props }) => {
   return (
-    <div onClick={onClick} className={styles["thumbs-up"]}>
+    <div onClick={onClick} className={styles["thumbs-up"]} {...props}>
       {liked ? <img src={thumbsLiked} /> : <img src={thumbsUp} />}
     </div>
   );

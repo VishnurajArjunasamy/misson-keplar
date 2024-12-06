@@ -14,11 +14,11 @@ interface MoviesDescContainerProps {
   movies: AllMoviesIF[] | undefined;
   selectedMovie: AllMoviesIF | undefined;
   handleLike: (id: number) => void;
-  timer: string;
-  startTimer: (duration: number) => void;
-  stopTimer: () => void;
-  seconds: number;
-  setSeconds: React.Dispatch<React.SetStateAction<number | null>>;
+  timer?: string;
+  startTimer?: (duration: number) => void;
+  stopTimer?: () => void;
+  seconds?: number;
+  setSeconds?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
@@ -26,8 +26,8 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
   movies,
   handleLike,
   timer,
-  startTimer,
-  stopTimer,
+  startTimer = () => {},
+  stopTimer = () => {},
   seconds,
 }) => {
   const [isInfoShowing, setIsInfoShwoing] = useState(true);
@@ -113,14 +113,17 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
             className={styles["thumbs-up"]}
             onClick={() => handleLike(selectedMovie?.id as number)}
           >
-            <ThumbsUp liked={liked} />
+            <ThumbsUp data-testid="thumbs-up" liked={liked} />
           </div>
         </div>
         <h2
           className={styles["likes-txt"]}
         >{`${likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
         <div className={styles["movie-img"]}>
-          <Img src={selectedMovie?.imgUrl as string} />
+          <Img
+            data-testid="image-poster"
+            src={selectedMovie?.imgUrl as string}
+          />
         </div>
         <p className={styles["movie-desc"]}>{selectedMovie?.description}</p>
         <div className={styles["actors-section"]}>
@@ -139,9 +142,6 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
       </section>
     );
   }
-
-  console.log('desc');
-  
 
   return movieDesContainer;
 };

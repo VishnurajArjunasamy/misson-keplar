@@ -6,7 +6,7 @@ interface ImgProps {
   src: string;
 }
 
-const Img: FC<ImgProps> = ({ src }) => {
+const Img: FC<ImgProps> = ({ src, ...props }) => {
   return (
     <img
       src={src}
@@ -16,6 +16,7 @@ const Img: FC<ImgProps> = ({ src }) => {
         e.currentTarget.src = emptyImage;
         console.log("err");
       }}
+      {...props}
     />
   );
 };

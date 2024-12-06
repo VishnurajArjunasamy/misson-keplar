@@ -2,9 +2,12 @@ import { useState } from "react";
 import { LOGIN } from "../../constants/app-constants";
 import styles from "./login.module.scss";
 import LoginForm from "../../containers/login-form/login-form";
+import { FormErrors } from "../../modals/formModals";
+
+
 
 const Login = () => {
-  const [err, setErr] = useState({
+  const [err, setErr] = useState<FormErrors>({
     email: undefined,
     password: undefined,
     validCred: undefined,

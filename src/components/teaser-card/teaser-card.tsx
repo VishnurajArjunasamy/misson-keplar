@@ -15,11 +15,11 @@ interface TeaserCardProps {
   teaserData: TeaserWithIDIF;
   nowPlaying: NowPlayingIF;
   setNowPlaying: React.Dispatch<React.SetStateAction<NowPlayingIF>>;
-  timer: string;
-  startTimer: (duration: number) => void;
-  stopTimer: () => void;
-  seconds: number;
-  setSeconds: React.Dispatch<React.SetStateAction<number | null>>;
+  timer?: string;
+  startTimer?: (duration: number) => void;
+  stopTimer?: () => void;
+  seconds?: number;
+  setSeconds?: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 export const TCard: FC<TeaserCardProps> = ({

@@ -19,7 +19,7 @@ const PlayPauseBtn: FC<PlayPauseBtnProps> = ({ type, onClick }) => {
     );
   }
   return (
-    <div className={styles["outer-circle"]} onClick={onClick}>
+    <div className={styles["outer-circle"]} onClick={onClick} data-testid='play-pause-btn'>
       {icon}
     </div>
   );

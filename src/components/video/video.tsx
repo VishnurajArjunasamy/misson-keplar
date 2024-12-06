@@ -18,12 +18,7 @@ const Video = React.forwardRef<VideoRefIF, VideoProps>(
       pause: () => {
         videoElementRef.current?.pause();
       },
-      load: () => videoElementRef.current?.load(),
-      resetTime: () => {
-        if (videoElementRef != null) {
-          videoElementRef.current.currentTime = 0;
-        }
-      },
+      load: () => videoElementRef.current?.load()
     }));
 
     return (
@@ -32,6 +27,7 @@ const Video = React.forwardRef<VideoRefIF, VideoProps>(
         poster={poster}
         ref={videoElementRef}
         className={styles["video"]}
+        data-testid='video-element'
       ></video>
     );
   }

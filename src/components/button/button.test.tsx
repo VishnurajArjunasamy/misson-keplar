@@ -1,19 +1,21 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Button from "./button";
 
-it("onClick should be called on button click", () => {
-  const onClick = jest.fn();
-  const buttonText = "Click";
+describe("Button Component", () => {
+  test("onClick should be called on button click", () => {
+    const onClick = jest.fn();
+    const buttonText = "Click";
 
-  render(
-    <Button size="lg" onClick={onClick}>
-      {buttonText}
-    </Button>
-  );
+    render(
+      <Button size="lg" onClick={onClick}>
+        {buttonText}
+      </Button>
+    );
 
-  const btnElement = screen.getByText(buttonText);
+    const btnElement = screen.getByText(buttonText);
 
-  fireEvent.click(btnElement);
+    fireEvent.click(btnElement);
 
-  expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 });

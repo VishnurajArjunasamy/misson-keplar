@@ -2,7 +2,7 @@ import { useAuth } from "../context/auth-context";
 import { SESSION } from "../constants/app-constants";
 import { Navigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { user } = useAuth();
 
   return user ? (

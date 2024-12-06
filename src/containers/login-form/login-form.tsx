@@ -9,15 +9,20 @@ import Button from "../../components/button/button";
 import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import { AuthIF } from "../../modals/authModal";
+import { FormErrors } from "../../modals/formModals";
+
+
 
 interface LoginFormProps {
-  err: {
-    message?: string;
-    email?: string;
-    password?: string;
-    validCred?: string;
-  };
-  setErr: React.Dispatch<React.SetStateAction<object>>;
+  err: FormErrors;
+  setErr: React.Dispatch<
+    React.SetStateAction<{
+      email?: undefined | string;
+      password?: undefined | string;
+      validCred?: undefined | string;
+      message?: string;
+    }>
+  >;
 }
 const HOME_ROUTE = MENUS.HOME.ROUTE;
 const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
@@ -57,7 +62,12 @@ const LoginForm: FC<LoginFormProps> = ({ err, setErr }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} noValidate className={styles["login-form"]}>
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className={styles["login-form"]}
+      data-testid="login-form"
+    >
       <div className={styles["inpBox"]}>
         <Label htmlFor="email" name={LOGIN.FORM.EMAIL.NAME} />
         <Input id="email" type="email" name="email" variant="styled-inp" />

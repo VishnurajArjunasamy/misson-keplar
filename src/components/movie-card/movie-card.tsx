@@ -17,7 +17,7 @@ const MovieCard: FC<MovieCardProps> = ({
   handleLike,
 }) => {
   return (
-    <div className={styles["movie-card"]}>
+    <div className={styles["movie-card"]} data-testid='movie-card'>
       <div className={styles["movie-img"]} onClick={onMovieSelect}>
         <Img src={movieData.imgUrl} />
       </div>

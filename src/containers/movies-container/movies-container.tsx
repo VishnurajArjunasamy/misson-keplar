@@ -31,7 +31,6 @@ const MoviesContainer: FC<MoviesContainerProps> = ({
     setMvToDisplay((prev) => prev + 6);
   }
 
-  console.log("movies");
 
   return (
     <div className={styles["movie-section"]}>

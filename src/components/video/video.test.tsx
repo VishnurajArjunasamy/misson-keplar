@@ -1,19 +1,25 @@
-import React, { useRef } from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Video from "./video";
+import { VideoRefIF } from "../../modals/videoModal";
+import React from "react";
 
-const TestComponent = () => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const src = "sample.video.com";
-  const poster = "sample.potser.com";
-  return <Video  src={src} poster={poster} ref={videoRef} />;
-};
+jest.mock("../../modals/videoModal", () => ({
+  VideoRefIF: jest.fn(),
+}));
 
-it("Check if video componenet renders", () => {
-  render(<TestComponent />);
-//   const videoElement = screen.getByRole("video");
-//   expect(videoElement).toBeInTheDocument();
-//   expect(videoElement).toHaveAttribute("src", "example.mp4");
-//   expect(videoElement).toHaveAttribute("poster", "example.jpg");
+test("Video component renders and exposes methods correctly", () => {
+  const videoProps = {
+    src: "test-video-url.mp4",
+    poster: "test-poster-image.jpg",
+  };
+
+  const videoRef = React.createRef<VideoRefIF>();
+
+  render(<Video {...videoProps} ref={videoRef} />);
+
+  const videoElement = screen.getByTestId("video-element");
+  expect(videoElement).toBeInTheDocument();
+  expect(videoElement).toHaveAttribute("src", videoProps.src);
+  expect(videoElement).toHaveAttribute("poster", videoProps.poster);
 });

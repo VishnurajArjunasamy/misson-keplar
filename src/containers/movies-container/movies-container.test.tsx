@@ -1,24 +1,3 @@
-// import { render, screen } from "@testing-library/react";
-// import "@testing-library/jest-dom";
-// import MoviesContainer from "./movies-container";
-// import { AllMoviesIF } from "../../modals/allMoviesModal";
-
-// it("renders movie cards based on the movies prop", () => {
-//   render(
-//     <MoviesContainer
-//       movies={mockMovies}
-//       mvToDisplay={2}
-//       handleLike={()=>{}}
-//       setSelectedMovie={()=>{}}
-//       setMvToDisplay={()=>{}}
-//     />
-//   );
-
-//   expect(screen.getByText("Movie 1")).toBeInTheDocument();
-//   expect(screen.getByText("Movie 2")).toBeInTheDocument();
-//   expect(screen.queryByText("Movie 3")).not.toBeInTheDocument();
-// });
-
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import MoviesContainer from "./movies-container";
@@ -59,26 +38,6 @@ describe("MoviesContainer Component", () => {
       imgUrl: "movie4.com",
     },
   ];
-
-  // jest.mock("../../components/movie-card/movie-card", () => {
-  //   return ({
-  //     movieData,
-  //     onMovieSelect,
-  //     handleLike,
-  //   }: {
-  //     movieData: AllMoviesIF;
-  //     onMovieSelect: () => void;
-  //     handleLike: (id: number) => void;
-  //   }) => (
-  //     <article
-  //       data-testid={`movie-card-${movieData.id}`}
-  //       onClick={onMovieSelect}
-  //     >
-  //       <h2>{movieData.name}</h2>
-  //       <button onClick={() => handleLike(movieData.id)}>Like</button>
-  //     </article>
-  //   );
-  // });
 
   const mockSetSelectedMovie = jest.fn();
   const mockSetMvToDisplay = jest.fn();

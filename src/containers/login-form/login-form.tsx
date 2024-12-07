@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import styles from "./login-form.module.scss";
-import { loginService } from "../../services/loginService";
+import { loginService } from "../../services/loginService/loginService";
 import { validate } from "../../utils/formUtils";
 import Label from "../../components/label/label";
 import Input from "../../components/input/input";
@@ -10,8 +10,6 @@ import { useAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import { AuthIF } from "../../modals/authModal";
 import { FormErrors } from "../../modals/formModals";
-
-
 
 interface LoginFormProps {
   err: FormErrors;

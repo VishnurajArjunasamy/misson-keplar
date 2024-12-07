@@ -3,7 +3,7 @@ import MoviesContainer from "../../containers/movies-container/movies-container"
 import MoviesDescContainer from "../../containers/movies-desc-container/movies-desc-container";
 import styles from "./all-movies.module.scss";
 import { AllMoviesIF } from "../../modals/allMoviesModal";
-import { getAllMovies } from "../../services/getAllMovies";
+import { getAllMovies } from "../../services/getAllMovies/getAllMovies";
 import { ALL_MOVIES } from "../../constants/app-constants";
 import { Loader } from "../../components/loader/loader";
 

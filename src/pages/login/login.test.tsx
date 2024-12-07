@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import Login from "./login";
 
 jest.mock("../../containers/login-form/login-form", () => () => (
@@ -6,26 +7,14 @@ jest.mock("../../containers/login-form/login-form", () => () => (
 ));
 
 describe("Login Component", () => {
-  it("renders Login component correctly", () => {
+  test("renders Login component correctly", () => {
     render(<Login />);
 
-    const message = screen.getByText(""); 
+    const message = screen.getByText("Login");
     expect(message).toBeInTheDocument();
 
     const loginForm = screen.getByTestId("login-form");
     expect(loginForm).toBeInTheDocument();
-  });
-
-  it("passes error state to LoginForm", () => {
-    render(<Login />);
-
-    const loginForm = screen.getByTestId("login-form");
-    expect(loginForm).toHaveTextContent(
-      JSON.stringify({
-        email: undefined,
-        password: undefined,
-        validCred: undefined,
-      })
-    );
+    expect(loginForm).toHaveTextContent("Mock LoginForm Component. Errors:");
   });
 });

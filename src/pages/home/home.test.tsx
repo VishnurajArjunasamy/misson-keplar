@@ -19,7 +19,7 @@ jest.mock("../../containers/other-languages/other-languages", () => () => (
 ));
 
 describe("Home Component", () => {
-  it("renders Home component correctly", () => {
+  test("renders Home component correctly", () => {
     render(<Home />);
     const bannerImage = screen.getByRole("img");
     expect(bannerImage).toBeInTheDocument();
@@ -30,9 +30,4 @@ describe("Home Component", () => {
     expect(screen.getByTestId("other-languages")).toBeInTheDocument();
   });
 
-//   it("has the correct class names applied", () => {
-//     render(<Home />);
-//     const homeDiv = screen.getByRole("banner").parentElement;
-//     expect(homeDiv).toHaveClass("home");
-//   });
 });

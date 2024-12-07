@@ -3,7 +3,7 @@ import styles from "./short-teasers.module.scss";
 import { SHORT_TEASERS } from "../../constants/app-constants";
 import { TeaserCard } from "../../components/teaser-card/teaser-card";
 import { NowPlayingIF, TeaserWithIDIF } from "../../modals/teaserModal";
-import { getShortTeasers } from "../../services/getShortTeasers";
+import { getShortTeasers } from "../../services/getShortTeasers/getShortTeasers";
 import { addIdToTeasers } from "../../utils/addIdToTeasers";
 
 const ShortTeasers = () => {

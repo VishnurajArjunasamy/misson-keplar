@@ -1,25 +1,6 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { TCard } from "./teaser-card";
-import Video from "../video/video";
-
-// test("renders TCard component", () => {
-//   render(
-//     <TCard
-//       teaserData={mockTeaserData}
-//       nowPlaying={nowPlaying}
-//       setNowPlaying={jest.fn()}
-//       timer={'00 : 00'}
-//       startTimer={jest.fn()}
-//       stopTimer={jest.fn()}
-//       seconds={10}
-//       setSeconds={jest.fn()}
-//     />
-//   );
-
-//   expect(screen.getByText("Mock Movie")).toBeInTheDocument();
-// });
-
 jest.mock("../../helper/withAdvertisement", () => ({
   withAdvertisement: (Component: { Component: React.ReactNode }) => Component,
 }));
@@ -157,10 +138,6 @@ describe("TeaserCard Component", () => {
         setSeconds={mockSetSeconds}
       />
     );
-    // fireEvent.click(playBtn)
-
-
-    // expect(screen.getByText("Video in 00:10")).toBeInTheDocument();
   });
 
   test("pauses video when ad starts", () => {

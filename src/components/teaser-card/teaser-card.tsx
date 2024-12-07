@@ -27,8 +27,8 @@ export const TCard: FC<TeaserCardProps> = ({
   nowPlaying,
   setNowPlaying,
   timer,
-  startTimer,
-  stopTimer,
+  startTimer = () => {},
+  stopTimer = () => {},
   seconds,
   setSeconds,
 }) => {

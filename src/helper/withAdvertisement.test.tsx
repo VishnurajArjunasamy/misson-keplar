@@ -3,7 +3,6 @@ import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { withAdvertisement } from "./withAdvertisement";
 
-// Mock a simple component to wrap
 const MockComponent: React.FC<{
   timer?: string;
   startTimer?: (duration: number) => void;

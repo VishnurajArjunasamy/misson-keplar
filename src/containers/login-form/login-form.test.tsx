@@ -1,10 +1,9 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import LoginForm from "./login-form";
-import { loginService } from "../../services/loginService";
+import { loginService } from "../../services/loginService/loginService";
 
-// Mocking dependencies
-jest.mock("../../services/loginService", () => ({
+jest.mock("../../services/loginService/loginService", () => ({
   loginService: jest.fn(),
 }));
 

@@ -3,7 +3,6 @@ import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import PrivateRoute from "./privateRoute";
-import { SESSION } from "../constants/app-constants";
 
 jest.mock("../context/auth-context", () => ({
   useAuth: jest.fn(),

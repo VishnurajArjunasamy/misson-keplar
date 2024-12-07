@@ -1,17 +1,6 @@
-// import { render, screen } from "@testing-library/react";
-// import "@testing-library/jest-dom";
-// import MoviesDescContainer from "./movies-desc-container";
-
-// it("Check Movie description container renders", () => {
-//   render(<MoviesDescContainer/>);
-
-//   expect(screen.queryAllByRole("img")).toHaveLength(2);
-// });
-
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import MoviesDescContainer from "./movies-desc-container";
-import { withAdvertisement } from "../../helper/withAdvertisement";
 
 jest.mock("../../helper/withAdvertisement", () => ({
   withAdvertisement: (Component: any) => Component,

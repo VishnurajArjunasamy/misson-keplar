@@ -5,10 +5,11 @@ import MOVIE_POSTER_URL from "../../assets/images/sindel-background.png";
 import styles from "./now-showing.module.scss";
 import { useRef, useState } from "react";
 import PlayPauseBtn from "../../components/video-controls/play-pause-btn/play-pause-btn";
+import { VideoRefIF } from "../../modals/videoModal";
 
 const NowShowing = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef();
+  const videoRef = useRef<VideoRefIF>(null);
 
   const videoBtn = isPlaying ? (
     <PlayPauseBtn type="pause" />

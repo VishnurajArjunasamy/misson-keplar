@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import styles from "./short-teasers.module.scss";
 import { SHORT_TEASERS } from "../../constants/app-constants";
 import { TeaserCard } from "../../components/teaser-card/teaser-card";
@@ -28,13 +28,15 @@ const ShortTeasers = () => {
     fetchTeasers();
   }, []);
 
+  const memoizedTeaser = useMemo(() => teasers, [teasers]) as TeaserWithIDIF[];
+
   if (errors) {
     throw new Error("Error fetching Teasers");
   }
 
   const teaserContainer = (
     <div className={styles["teasers-container"]}>
-      {teasers.map((teaser) => (
+      {memoizedTeaser.map((teaser) => (
         <TeaserCard
           teaserData={teaser}
           key={teaser.id}

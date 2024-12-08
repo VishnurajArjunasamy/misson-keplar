@@ -1,12 +1,11 @@
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { NowPlayingIF, TeaserWithIDIF } from "../../modals/teaserModal";
 import styles from "./teaser-card.module.scss";
-import Video from "../video/video";
 import { withAdvertisement } from "../../helper/withAdvertisement";
-import PlayPauseBtn from "../video-controls/play-pause-btn/play-pause-btn";
-import { SHORT_TEASERS } from "../../constants/app-constants";
 import { getRandomShortAd } from "../../utils/adsUtils";
 import { VideoRefIF } from "../../modals/videoModal";
+import TimerCard from "../timer-card/timer-card";
+import VideoWithAd from "../video-wtih-ad/video-with-ad";
 
 const shortAdDuration = 2;
 const videoDuration = 5;
@@ -108,7 +107,7 @@ export const TCard: FC<TeaserCardProps> = ({
   /**
    * Toggles between playing and pausing the video
    */
-  const toggleVideo = () => {
+  const toggleVideo = useCallback(() => {
     setNowPlaying((prev: NowPlayingIF) => {
       return Object.keys(prev).reduce((toggledObj: NowPlayingIF, key) => {
         toggledObj[key as keyof NowPlayingIF] = key == teaserData.id;
@@ -129,39 +128,25 @@ export const TCard: FC<TeaserCardProps> = ({
         startVideoTimer();
       }
     }
-  };
-
-  const videoBtn = isVideoPlaying ? (
-    <PlayPauseBtn type="pause" />
-  ) : (
-    <PlayPauseBtn type="play" />
-  );
+  }, [isVideoPlaying, teaserData.id]);
 
   return (
     <div className={styles["teaser-card"]}>
-      <div className={styles["video-section"]}>
-        <Video
-          ref={videoRef}
-          src={teaserData.videoUrl}
-          poster={teaserData.posterImg}
+      {
+        <VideoWithAd
+          isVideoPlaying={isVideoPlaying}
+          teaserData={teaserData}
+          isAdPlaying={isAdPlaying}
+          adImage={adImage}
+          videoRef={videoRef}
+          toggleVideo={toggleVideo}
         />
-        {isAdPlaying && (
-          <div className={styles["ad-poster"]}>{<img src={adImage} />}</div>
-        )}
-        {!isAdPlaying && (
-          <div className={styles["pl-ps-logo"]} onClick={toggleVideo}>
-            {videoBtn}
-          </div>
-        )}
-      </div>
-      <h1>{teaserData.movieName}</h1>
-      {showTimer && (
-        <p className={styles["timer"]}>
-          {isAdPlaying
-            ? `${SHORT_TEASERS.VIDEO_TXT} ${timer}`
-            : `${SHORT_TEASERS.ADVERTISEMENT_TXT} ${timer}`}
-        </p>
-      )}
+      }
+      <TimerCard
+        showTimer={showTimer}
+        isAdPlaying={isAdPlaying}
+        timer={timer}
+      />
     </div>
   );
 };

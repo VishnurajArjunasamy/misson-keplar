@@ -1,11 +1,11 @@
 import { FC, memo, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./movies-desc-container.module.scss";
 import { AllMoviesIF } from "../../modals/allMoviesModal";
-import ThumbsUp from "../../components/thumbs-up/thumbs-up";
-import Img from "../../components/Img/Img";
-import { ALL_MOVIES, SHORT_TEASERS } from "../../constants/app-constants";
+import {  SHORT_TEASERS } from "../../constants/app-constants";
 import { withAdvertisement } from "../../helper/withAdvertisement";
 import { getRandomLongAd } from "../../utils/adsUtils";
+import TimerCard from "../../components/timer-card/timer-card";
+import MovieDetails from "../movie-details/movie-details";
 
 const longAdDuration = 5;
 const infoDuration = 15;
@@ -86,6 +86,7 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
     return getRandomLongAd();
   }, [selectedMovie?.id]);
 
+
   if (isAdPlaying && !isInfoShowing) {
     movieDesContainer = (
       <section className={styles["long-ad-container"]}>
@@ -106,40 +107,20 @@ const MoviesDescContainer: FC<MoviesDescContainerProps> = ({
 
   if (!isAdPlaying && isInfoShowing) {
     movieDesContainer = (
-      <section className={styles["movies-desc-container"]}>
-        <div className={styles["title"]}>
-          <h1>{selectedMovie?.name}</h1>
-          <div
-            className={styles["thumbs-up"]}
-            onClick={() => handleLike(selectedMovie?.id as number)}
-          >
-            <ThumbsUp data-testid="thumbs-up" liked={liked} />
-          </div>
-        </div>
-        <h2
-          className={styles["likes-txt"]}
-        >{`${likes} ${ALL_MOVIES.LIKES_TXT}`}</h2>
-        <div className={styles["movie-img"]}>
-          <Img
-            data-testid="image-poster"
-            src={selectedMovie?.imgUrl as string}
-          />
-        </div>
-        <p className={styles["movie-desc"]}>{selectedMovie?.description}</p>
-        <div className={styles["actors-section"]}>
-          <h1>{ALL_MOVIES.ACTORS_TXT}</h1>
-          {selectedMovie?.actors.map((actor) => (
-            <span className={styles["actor-txt"]} key={actor}>
-              {actor}
-            </span>
-          ))}
-        </div>
-        {showTimer && (
-          <p className={styles["timer"]}>
-            {`${SHORT_TEASERS.ADVERTISEMENT_TXT} ${timer}`}
-          </p>
-        )}
-      </section>
+      <div className={styles["movie-timer-wrapper"]}>
+        <MovieDetails
+          liked={liked}
+          likes={likes}
+          selectedMovie={selectedMovie}
+          handleLike={handleLike}
+        />
+        <TimerCard
+          showTimer={showTimer}
+          isAdPlaying={isAdPlaying}
+          timer={timer}
+          hasVideo={false}
+        />
+      </div>
     );
   }
 

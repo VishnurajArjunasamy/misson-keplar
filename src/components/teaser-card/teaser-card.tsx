@@ -146,6 +146,7 @@ export const TCard: FC<TeaserCardProps> = ({
         showTimer={showTimer}
         isAdPlaying={isAdPlaying}
         timer={timer}
+        
       />
     </div>
   );

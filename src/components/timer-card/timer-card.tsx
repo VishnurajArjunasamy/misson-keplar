@@ -6,7 +6,7 @@ interface TimercardProps {
   showTimer: boolean;
   isAdPlaying: boolean;
   timer: string | undefined;
-  hasVideo: boolean;
+  hasVideo?: boolean;
 }
 
 const TimerCard: FC<TimercardProps> = ({

@@ -27,7 +27,6 @@ const VideoWithAd: FC<VideoWithAdProps> = ({
   ) : (
     <PlayPauseBtn type="play" />
   );
-  console.log("video");
 
   return (
     <>

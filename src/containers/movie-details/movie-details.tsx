@@ -17,7 +17,6 @@ const MovieDetails: FC<MovieDetailsProps> = ({
   liked,
   likes,
 }) => {
-  console.log("movie desc");
 
   return (
     <section className={styles["movies-desc-container"]}>

@@ -3,18 +3,18 @@ const path = require("path");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   output: {
     filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: "ts-loader",
       },
       {
         test: /\.css$/,
@@ -35,12 +35,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    port: "5000",
-    static: {
-      directory: path.join(__dirname, "dist"),
-    },
-    hot: true,
+    static: path.join(__dirname, "dist"),
+    compress: true,
+    port: 3000,
     open: true,
-    liveReload: true,
+    hot: true,
+    // liveReload: true,
   },
 };

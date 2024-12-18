@@ -11,14 +11,10 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: ["style-loader", "css-loader"],
-      // },
-      // {
-      //   test: /\.scss$/,
-      //   use: ["style-loader", "css-loader", "sass-loader"],
-      // },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
       {
         test: /\.module\.scss$/,
         use: [
@@ -27,20 +23,20 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: {
-                namedExport: false,
+                namedExport: false, // to enable module exports from scss
               },
             },
           },
           "sass-loader",
         ],
       },
+      // {
+      //   test: /\.scss$/,
+      //   use: ["style-loader", "css-loader", "sass-loader"],
+      // },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader",
-          },
-        ],
+        type: "asset/resource",
       },
       {
         test: /\.tsx?$/,
@@ -50,7 +46,17 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss"],
+    extensions: [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx",
+      ".css",
+      ".scss",
+      "jpeg",
+      "png",
+      "jpg",
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,9 +1,19 @@
 .notFound {
     width: 100vw;
     height: 100vh;
-    background-image: url('../../assets/images/lost.jpg');
+    background-image: url('~../../assets/images/lost.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: center;
-    background-color: aqua;
+    position: relative;
+
+    h1 {
+        color: #fff;
+        font-family: 'Roboto Slab';
+        font-size: 52px;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+    }
 }

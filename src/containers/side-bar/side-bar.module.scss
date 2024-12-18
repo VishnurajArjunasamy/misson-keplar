@@ -1,0 +1,46 @@
+.sideBar {
+    flex: 0 1 16%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+
+    .heading {
+        display: flex;
+        gap: 10px;
+
+        span {
+            font-family: 'Roboto Slab';
+            font-size: 28px;
+            font-weight: 400;
+        }
+    }
+}
+
+.light {
+    // background-color: #fff;
+    background-color: aquamarine;
+
+    .heading {
+        span:first-child {
+            color: #a75ab2;
+        }
+
+        span:last-child {
+            font-weight: 500;
+        }
+    }
+
+
+
+}
+
+.dark {
+    background-color: #fff;
+
+    .heading {
+        span {
+            color: #fff;
+        }
+    }
+}

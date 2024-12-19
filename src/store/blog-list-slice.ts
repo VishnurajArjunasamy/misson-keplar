@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { BlogListState } from "../modals/blog-list-modal";
 import { fetchBlogList } from "../services/blog-list";
 import { getAvailableFilters } from "../utils/getAvailableFilters";
+import { ERROR_MSG } from "../constants/app.constants";
 
 export const fetchBlogs = createAsyncThunk("blogList/fetchData", async () => {
   return fetchBlogList();
@@ -35,10 +36,10 @@ const blogListSlice = createSlice({
       })
       .addCase(fetchBlogs.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Something went wrong";
+        state.error = action.error.message || ERROR_MSG.MESSAGE;
       });
   },
 });
 
-export const {changeFilter} = blogListSlice.actions;
+export const { changeFilter } = blogListSlice.actions;
 export default blogListSlice.reducer;

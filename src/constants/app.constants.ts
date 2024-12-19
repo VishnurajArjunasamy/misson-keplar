@@ -7,3 +7,7 @@ export const SIDE_BAR = {
   BOOK: "Book",
   FILTER: "FILTER",
 };
+
+export const ERROR_MSG={
+  MESSAGE:"Something went wrong"
+}

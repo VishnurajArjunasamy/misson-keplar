@@ -1,5 +1,7 @@
+import { BlogListState } from "./blog-list-modal";
 import { SideBarState } from "./sideBarModal";
 
 export interface StoreIF {
-  [key: string]: SideBarState;
+  sideBar: SideBarState;
+  blogList: BlogListState;
 }

@@ -9,10 +9,15 @@ interface CheckBoxProps {
 
 const CheckBox: FC<CheckBoxProps> = ({ label, value = true, handleChange }) => {
   return (
-    <label className={classes.label}>
-      {label}
-      <input type="checkbox" checked={value} onChange={handleChange} />
-    </label>
+    <div className={classes.checkBoxWrapper}>
+      <input
+        id={label}
+        type="checkbox"
+        checked={value}
+        onChange={handleChange}
+      />
+      <label htmlFor={label}>{label}</label>
+    </div>
   );
 };
 

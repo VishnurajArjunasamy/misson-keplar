@@ -12,9 +12,11 @@
   "description": "",
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.7.9",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.0.2",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",

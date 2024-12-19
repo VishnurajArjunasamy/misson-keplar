@@ -1,0 +1,11 @@
+.filterSection {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    h1 {
+        font-family: 'IBM Plex Sans';
+        font-size: 18px;
+        font-weight: 500;
+    }
+}

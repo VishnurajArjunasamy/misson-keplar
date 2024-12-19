@@ -5,4 +5,5 @@ export const NOT_FOUND = {
 export const SIDE_BAR = {
   LITTLE: "Little",
   BOOK: "Book",
+  FILTER: "FILTER",
 };

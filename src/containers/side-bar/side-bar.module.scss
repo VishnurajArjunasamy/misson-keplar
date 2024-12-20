@@ -31,14 +31,6 @@
             font-weight: 500;
         }
     }
-
-    .members {
-        position: fixed;
-        width: 600px;
-        height: 100%;
-        top: 0;
-        right: 0;
-    }
 }
 
 .light {
@@ -59,15 +51,10 @@
             color: #000;
         }
     }
-
-    .members {
-        background-color: #fff;
-
-    }
 }
 
 .dark {
-    background-color:#0a1c2d;
+    background-color: #0a1c2d;
 
     .heading {
         span {
@@ -79,9 +66,5 @@
         h2 {
             color: #fff;
         }
-    }
-
-    .members {
-        background-color: #000;
     }
 }

@@ -41,11 +41,9 @@ const SideBar: FC<SideBarProps> = ({}) => {
         <h2 onClick={handleDarkMode}>{SIDE_BAR.SWITCH_DARK}</h2>
       </div>
       {showMembers && (
-        <div className={classes.members}>
-          <Modal>
-            <MemebersSection />
-          </Modal>
-        </div>
+        <Modal closeModal={handleViewMemebers}>
+          <MemebersSection />
+        </Modal>
       )}
     </section>
   );

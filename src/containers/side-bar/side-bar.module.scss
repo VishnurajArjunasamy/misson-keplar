@@ -42,8 +42,7 @@
 }
 
 .light {
-    // background-color: #fff;
-    background-color: aquamarine;
+    background-color: #fff;
 
     .heading {
         span:first-child {
@@ -55,18 +54,29 @@
         }
     }
 
+    .actions {
+        h2 {
+            color: #000;
+        }
+    }
+
     .members {
-        // background-color: #fff;
-        background-color: #a75ab2;
+        background-color: #fff;
 
     }
 }
 
 .dark {
-    background-color: #fff;
+    background-color: #000;
 
     .heading {
         span {
+            color: #fff;
+        }
+    }
+
+    .actions {
+        h2 {
             color: #fff;
         }
     }

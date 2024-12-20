@@ -18,4 +18,5 @@ export interface BlogListState {
   loading: boolean;
   error: string | null;
   filters: FiltersApplied;
+  searchQuery: string | null;
 }

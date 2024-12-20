@@ -1,15 +1,47 @@
 .blogList {
     flex: 0 1 35%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    overflow: scroll;
-    gap: 20px;
+    padding: 2% 2% 0;
+    position: relative;
+
+    .blogFeatures {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+
+        .newBtn {
+            width: 25%;
+            height: 100%;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 400;
+
+            background-color: #a75ab2;
+            color: #f5f6fa
+        }
+    }
+
+    section {
+        width: 100%;
+        height: calc(100% - 80px);
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        gap: 20px;
+    }
+
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .light {
-    background-color: #f5f6fa
+    background-color: #f5f6fa;
 }
 
 .dark {

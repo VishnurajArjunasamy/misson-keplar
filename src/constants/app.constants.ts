@@ -10,6 +10,11 @@ export const SIDE_BAR = {
   SWITCH_DARK: "Switch to Dark Mode",
 };
 
+export const BLOG_LIST = {
+  SEARCH_TXT: "Search Blogs",
+  NEW_BTN: "NEW",
+};
+
 export const ERROR_MSG = {
   MESSAGE: "Something went wrong",
 };

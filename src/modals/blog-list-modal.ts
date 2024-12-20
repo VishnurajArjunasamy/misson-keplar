@@ -1,5 +1,3 @@
-
-
 export interface FiltersApplied {
   [key: string]: boolean;
 }
@@ -16,6 +14,7 @@ export interface BlogWithIdIF extends BlogIF {
 
 export interface BlogListState {
   data: BlogWithIdIF[] | null;
+  selectedBlog: string | null;
   loading: boolean;
   error: string | null;
   filters: FiltersApplied;

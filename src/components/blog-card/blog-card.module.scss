@@ -43,10 +43,11 @@
         color: #000;
     }
 
-    .active {
-        background-color: #a7e0f2;
+}
 
-    }
+.light.active {
+    background-color: #a7e0f2;
+
 }
 
 .dark {
@@ -60,8 +61,8 @@
         color: #fff
     }
 
-    .active {
-        background-color: #081828;
+}
 
-    }
+.dark.active {
+    background-color: #081828;
 }

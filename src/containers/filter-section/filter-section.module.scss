@@ -3,9 +3,22 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
     h1 {
         font-family: 'IBM Plex Sans';
         font-size: 18px;
         font-weight: 500;
+    }
+}
+
+.light {
+    h1 {
+        color: #000;
+    }
+}
+
+.dark {
+    h1 {
+        color: #fff;
     }
 }

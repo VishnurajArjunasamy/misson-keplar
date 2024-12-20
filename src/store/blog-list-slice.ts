@@ -10,6 +10,7 @@ export const fetchBlogs = createAsyncThunk("blogList/fetchData", async () => {
 
 const initialState: BlogListState = {
   data: null,
+  selectedBlog: null,
   loading: false,
   error: null,
   filters: {},
@@ -23,6 +24,9 @@ const blogListSlice = createSlice({
       const id: string = action.payload;
       state.filters[id] = !state.filters[id];
     },
+    setSelectedBlogs: (state, action) => {
+      state.selectedBlog = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -32,6 +36,7 @@ const blogListSlice = createSlice({
       .addCase(fetchBlogs.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        state.selectedBlog = action.payload[0].id;
         state.filters = getAvailableFilters(action.payload);
       })
       .addCase(fetchBlogs.rejected, (state, action) => {
@@ -41,5 +46,5 @@ const blogListSlice = createSlice({
   },
 });
 
-export const { changeFilter } = blogListSlice.actions;
+export const { changeFilter, setSelectedBlogs } = blogListSlice.actions;
 export default blogListSlice.reducer;

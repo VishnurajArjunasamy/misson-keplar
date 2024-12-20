@@ -7,6 +7,6 @@ import { MembersIF } from "../modals/members-modal";
  */
 
 export async function getMemebers() {
-  const response = await axios.get<MembersIF[]>(MEMBERS_URL);
+  const response = await axios.get<MembersIF[]>(`${MEMBERS_URL}/.json`);
   return response.data;
 }

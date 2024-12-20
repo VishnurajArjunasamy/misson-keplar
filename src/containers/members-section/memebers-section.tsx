@@ -25,8 +25,6 @@ const MemebersSection: FC<MemebersSectionProps> = ({}) => {
     return error;
   }
 
-  console.log(members);
-
   return (
     <div className={classes.members}>
       {members?.map((member) => (

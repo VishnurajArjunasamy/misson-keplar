@@ -2,12 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: 'https://little-book-33934-default-rtdb.firebaseio.com/',
-  authDomain: "*****",
-  databaseURL: "*****",
-  projectId: "little-book-33934",
-
+  databaseURL: "https://little-book-33934-default-rtdb.firebaseio.com",
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+export const database = getDatabase(app);

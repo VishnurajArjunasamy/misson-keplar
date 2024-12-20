@@ -28,6 +28,15 @@ const sideBarSlice = createSlice({
     toggleDarkMode: (state) => {
       state.isDarkMode = !state.isDarkMode;
     },
+    setMembers: (state, action) => {
+      state.members = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -45,6 +54,12 @@ const sideBarSlice = createSlice({
   },
 });
 
-export const { toggleDarkMode, toggleShowMembers } = sideBarSlice.actions;
+export const {
+  toggleDarkMode,
+  toggleShowMembers,
+  setMembers,
+  setLoading,
+  setError,
+} = sideBarSlice.actions;
 
 export default sideBarSlice.reducer;

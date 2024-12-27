@@ -15,6 +15,7 @@ const initialState: BlogListState = {
   selectedBlog: null,
   searchQuery: null,
   filters: {},
+  showNewBlogModal: false,
 };
 
 const blogListSlice = createSlice({
@@ -30,6 +31,9 @@ const blogListSlice = createSlice({
     },
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+    },
+    setShowNewBlogModal: (state, action) => {
+      state.showNewBlogModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -50,6 +54,10 @@ const blogListSlice = createSlice({
   },
 });
 
-export const { changeFilter, setSelectedBlogs, setSearchQuery } =
-  blogListSlice.actions;
+export const {
+  changeFilter,
+  setSelectedBlogs,
+  setSearchQuery,
+  setShowNewBlogModal,
+} = blogListSlice.actions;
 export default blogListSlice.reducer;

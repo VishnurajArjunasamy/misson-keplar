@@ -24,7 +24,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     <div className={style}>
       <Input
         type="text"
-        value={searchQuery}
+        value={searchQuery || ""}
         placeholder={BLOG_LIST.SEARCH_TXT}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           handleSearchQuery(e);

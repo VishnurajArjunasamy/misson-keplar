@@ -9,6 +9,7 @@ interface inputProps {
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
+  name?: string;
 }
 
 const Input: FC<inputProps> = ({
@@ -16,7 +17,7 @@ const Input: FC<inputProps> = ({
   value,
   placeholder,
   onChange,
-  defaultValue,
+  name,
 }) => {
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
   const style = `${classes.input} ${isDark ? classes.dark : classes.light}`;
@@ -27,7 +28,7 @@ const Input: FC<inputProps> = ({
       value={value}
       className={style}
       placeholder={placeholder}
-      defaultValue={defaultValue}
+      name={name}
     />
   );
 };

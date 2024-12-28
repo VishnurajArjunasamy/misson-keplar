@@ -1,10 +1,6 @@
 import { FC, memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchBlogs,
-  setSelectedBlogs,
-  setShowNewBlogModal,
-} from "../../store/blog-list-slice";
+import { fetchBlogs, setSelectedBlogs } from "../../store/blog-list-slice";
 import { AppDispatch, RootState } from "../../store";
 import BlogCard from "../../components/blog-card/blog-card";
 import classes from "./blog-list.module.scss";
@@ -14,19 +10,14 @@ import { BLOG_LIST } from "../../constants/app.constants";
 import { BlogWithIdIF } from "../../modals/blog-list-modal";
 import Modal from "../../components/modal/modal";
 import NewBlog from "../new-blog/new-blog";
+import { setShowNewBlogModal } from "../../store/new-blog-slice";
 
 interface BlogListProps {}
 
 const BlogList: FC<BlogListProps> = ({}) => {
-  const {
-    data,
-    loading,
-    error,
-    filters,
-    selectedBlog,
-    searchQuery,
-    showNewBlogModal,
-  } = useSelector((state: RootState) => state.blogList);
+  const { data, loading, error, filters, selectedBlog, searchQuery } =
+    useSelector((state: RootState) => state.blogList);
+  const { showNewBlogModal } = useSelector((state: RootState) => state.newBlog);
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
   const dispatch = useDispatch<AppDispatch>();
 

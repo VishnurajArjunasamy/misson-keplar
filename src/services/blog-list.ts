@@ -12,6 +12,10 @@ import { addUUID } from "../utils/addUUID";
   type: string;
  */
 export const fetchBlogList = async () => {
-  const response = await axios.get<BlogIF[]>(`${BASE_URL}/${BLOGS}`);
+  // const response = await axios.get<BlogIF[]>(`${BASE_URL}/${BLOGS}`);
+  const response = await axios.get<BlogIF[]>(
+    `https://littlebook-60555-default-rtdb.firebaseio.com/.${"json"}`
+  );
+
   return addUUID(response.data) as BlogWithIdIF[];
 };

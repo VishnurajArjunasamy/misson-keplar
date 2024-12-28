@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, MEMBERS_URL, USERS } from "../constants/url.constants";
+import { MEMBERS_URL } from "../constants/url.constants";
 import { MembersIF } from "../modals/members-modal";
 
 /**

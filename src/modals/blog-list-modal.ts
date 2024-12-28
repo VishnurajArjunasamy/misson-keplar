@@ -19,5 +19,4 @@ export interface BlogListState {
   error: string | null;
   filters: FiltersApplied;
   searchQuery: string | null;
-  showNewBlogModal: boolean;
 }

@@ -2,7 +2,7 @@ import { FC } from "react";
 import classes from "./button.module.scss";
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
   label: string;
 }
 

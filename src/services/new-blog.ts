@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getDatabase, ref, set, update } from "firebase/database";
+import { getDatabase, ref, set, get } from "firebase/database";
 import { BlogsDatabase } from "./firebase";
 import { NewBlogIF } from "../modals/new-blog-modal";
 import { BlogWithIdIF } from "../modals/blog-list-modal";
@@ -14,4 +14,14 @@ export const postNewBlog = async (data: BlogWithIdIF[]) => {
   console.log("Before setting data...");
   const d = await set(hobbiesRef, data);
   console.log(d);
+  const snapshot = await get(hobbiesRef);
+
+  if (snapshot.exists()) {
+    const updatedData = snapshot.val();
+    console.log("Updated Data:", updatedData);
+    return updatedData;
+  } else {
+    console.log("No data found!");
+    return null;
+  }
 };

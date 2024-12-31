@@ -53,9 +53,9 @@ module.exports = {
       ".tsx",
       ".css",
       ".scss",
-      "jpeg",
-      "png",
-      "jpg",
+      ".jpeg",
+      ".png",
+      ".jpg",
     ],
   },
   plugins: [

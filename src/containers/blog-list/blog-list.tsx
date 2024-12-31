@@ -17,7 +17,9 @@ interface BlogListProps {}
 const BlogList: FC<BlogListProps> = ({}) => {
   const { data, loading, error, filters, selectedBlog, searchQuery } =
     useSelector((state: RootState) => state.blogList);
-  const { showNewBlogModal } = useSelector((state: RootState) => state.newBlog);
+  const { showNewBlogModal, isAdded } = useSelector(
+    (state: RootState) => state.newBlog
+  );
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -68,7 +70,7 @@ const BlogList: FC<BlogListProps> = ({}) => {
         </div>
       </div>
 
-      <section>
+      <section className={classes.blogs}>
         {filteredBlogs?.map((blog) => (
           <BlogCard
             key={blog.id}

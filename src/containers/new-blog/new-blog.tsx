@@ -4,15 +4,27 @@ import classes from "./new-blog.module.scss";
 import { AppDispatch, RootState } from "../../store";
 import TextArea from "../../components/text-area/text-area";
 import Button from "../../components/button/button";
-import { NewBlogIF, ValidationErrors } from "../../modals/new-blog-modal";
-import { addNewBlog } from "../../store/new-blog-slice";
-import { setBlogs } from "../../store/blog-list-slice";
+import { ValidationErrors } from "../../modals/new-blog-modal";
+import {
+  addNewBlog,
+  setNewBlogError,
+  setShowNewBlogModal,
+} from "../../store/new-blog-slice";
 import { BlogWithIdIF } from "../../modals/blog-list-modal";
+import { useEffect } from "react";
+import { setBlogs } from "../../store/blog-list-slice";
 
 const NewBlog = () => {
   const existingBlogs = useSelector((state: RootState) => state.blogList.data);
-
+  const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
+  const error = useSelector((state: RootState) => state.newBlog.error);
   const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    return () => {
+      dispatch(setNewBlogError(null));
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +32,7 @@ const NewBlog = () => {
     const blogData = {
       title: formData.get("title"),
       details: formData.get("details"),
-      photo: "",
+      photo: formData.get("photo"),
       type: "Local",
       id: crypto.randomUUID(),
     };
@@ -35,8 +47,11 @@ const NewBlog = () => {
 
     if (Object.keys(validationErrors).length > 0) {
       console.log(validationErrors);
+      dispatch(setNewBlogError(validationErrors));
       return;
     }
+
+    dispatch(setNewBlogError(validationErrors));
 
     const withNewBlogs: BlogWithIdIF[] = JSON.parse(
       JSON.stringify(existingBlogs)
@@ -45,24 +60,33 @@ const NewBlog = () => {
 
     try {
       dispatch(addNewBlog(withNewBlogs));
-      // dispatch(setBlogs(blogData))
+      // dispatch(setBlogs(withNewBlogs));
+      dispatch(setShowNewBlogModal(false));
     } catch (error) {
       console.log(error);
     }
   };
-  const style = classes.newBlog;
+  const style = `${classes.newBlog} ${isDark ? classes.dark : classes.light}`;
   return (
     <div className={style}>
       <h1>{"Add New Blog"}</h1>
       <form onSubmit={handleSubmit}>
-        <div className={classes.titleInput}>
+        <div className={classes.input}>
           <Input type="string" placeholder={"Name your blog"} name="title" />
+          {(error as ValidationErrors)?.title && (
+            <p className={classes.error}>{(error as ValidationErrors).title}</p>
+          )}
         </div>
-        {/* <div className={classes.blogImage}>
+        <div className={classes.blogImage}>
           <Input type="string" placeholder={"Blog Image URL"} name="photo" />
-        </div> */}
-        <div className={classes.textArea}>
+        </div>
+        <div className={classes.blogDetails}>
           <TextArea placeholder={"Write Content Here .."} name="details" />
+          {(error as ValidationErrors)?.details && (
+            <p className={classes.error}>
+              {(error as ValidationErrors).details}
+            </p>
+          )}
         </div>
         <div className={classes.button}>
           <Button label={"ADD"} />

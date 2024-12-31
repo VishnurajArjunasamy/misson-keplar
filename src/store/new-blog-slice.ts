@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BlogIF, BlogWithIdIF } from "../modals/blog-list-modal";
 import { postNewBlog } from "../services/new-blog";
-import { NewBlogIF } from "../modals/new-blog-modal";
+import { ValidationErrors } from "../modals/new-blog-modal";
+import { toast } from "react-toastify";
+
 
 export const addNewBlog = createAsyncThunk(
   "newBlog/addNewBlog",
@@ -12,15 +14,15 @@ export const addNewBlog = createAsyncThunk(
 
 interface NewBlogState {
   loading: boolean;
-  error: string | null;
-  data: BlogIF[] | [];
+  error: string | null | ValidationErrors;
+  isAdded: boolean;
   showNewBlogModal: boolean;
 }
 
 const initialState: NewBlogState = {
   loading: false,
   error: null,
-  data: [],
+  isAdded: false,
   showNewBlogModal: false,
 };
 
@@ -31,6 +33,9 @@ const newBlogSlice = createSlice({
     setShowNewBlogModal: (state, action) => {
       state.showNewBlogModal = action.payload;
     },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,15 +45,17 @@ const newBlogSlice = createSlice({
       })
       .addCase(addNewBlog.fulfilled, (state, action) => {
         state.loading = false;
-        // state.data.push(action.payload);
+        toast.success("New blog added successfully");
       })
       .addCase(addNewBlog.rejected, (state, action) => {
         state.loading = false;
         state.error =
           (action.payload as string) || "Error while adding new blog";
+        toast.error(state.error);
       });
   },
 });
 
-export const {setShowNewBlogModal} = newBlogSlice.actions;
+export const { setShowNewBlogModal, setError: setNewBlogError } =
+  newBlogSlice.actions;
 export default newBlogSlice.reducer;

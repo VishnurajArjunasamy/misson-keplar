@@ -10,6 +10,7 @@ interface inputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   defaultValue?: string;
   name?: string;
+  isReadOnly?: boolean;
 }
 
 const Input: FC<inputProps> = ({
@@ -18,6 +19,8 @@ const Input: FC<inputProps> = ({
   placeholder,
   onChange,
   name,
+  defaultValue,
+  isReadOnly
 }) => {
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
   const style = `${classes.input} ${isDark ? classes.dark : classes.light}`;
@@ -29,6 +32,8 @@ const Input: FC<inputProps> = ({
       className={style}
       placeholder={placeholder}
       name={name}
+      defaultValue={defaultValue}
+      readOnly={isReadOnly}
     />
   );
 };

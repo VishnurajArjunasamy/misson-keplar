@@ -12,17 +12,10 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    color:inherit
 }
 
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     font-size: 14px;
-}
-
-.light {
-    color: #000
-}
-
-.dark {
-    color: #fff
 }

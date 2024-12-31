@@ -15,20 +15,102 @@
         display: flex;
         flex-direction: column;
         gap: 60px;
-        
+        color: inherit;
 
-        .titleInput {
+
+        .input {
             width: 100%;
             height: 30px;
             font-family: 'Roboto Slab';
             font-size: 26px;
+            color: inherit;
 
 
             ::-webkit-input-placeholder {
                 /* Chrome/Opera/Safari */
                 font-size: 26px;
+                font-family: 'Roboto Slab';
             }
+        }
+
+        .blogImage {
+            width: 100%;
+            height: 25px;
+            font-family: 'Roboto Slab';
+            font-size: 20px;
+            color: inherit;
+
+            ::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                font-size: 20px;
+                font-family: 'Roboto Slab';
+            }
+        }
+
+        .blogDetails {
+            width: 100%;
+            height: 500px;
+            font-family: 'Roboto Slab';
+            font-size: 20px;
+            color: inherit;
+
+            ::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                font-size: 20px;
+                font-family: 'Roboto Slab';
+            }
+        }
+
+        .button {
+            width: 140px;
+            height: 50px;
+            border-radius: 50px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #a75ab2;
+            align-self: flex-end;
+
         }
     }
 
+    .error {
+        font-size: 14px;
+
+    }
+
+}
+
+.light {
+    h1 {
+        color: #000000;
+    }
+
+    form {
+        color: #000000
+    }
+
+    .error {
+        color: #ec5008
+    }
+
+    ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: rgba($color: #000000, $alpha: 0.2);
+
+    }
+}
+
+.dark {
+    h1 {
+        color: #fff;
+    }
+
+    form {
+        color: #fff
+    }
+
+    .error {
+        color: #fdb100;
+
+    }
 }

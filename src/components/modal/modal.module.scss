@@ -13,6 +13,9 @@
         width: 600px;
         height: 100%;
         padding: 85px 55px;
+        animation-name: slider;
+        animation-duration: 500ms;
+        animation-timing-function: ease-in-out;
     }
 
 }
@@ -20,12 +23,21 @@
 .light {
     .content {
         background-color: #fff;
-
     }
 }
 
 .dark {
     .content {
         background-color: #000;
+    }
+}
+
+@keyframes slider {
+    0% {
+        right: -600px;
+    }
+
+    100% {
+        right: 0;
     }
 }

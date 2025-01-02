@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { BlogIF, BlogWithIdIF } from "../modals/blog-list-modal";
-import { postNewBlog } from "../services/new-blog";
+import { updateBlogs } from "../services/blog-add-update";
 import { ValidationErrors } from "../modals/new-blog-modal";
 import { toast } from "react-toastify";
-
 
 export const addNewBlog = createAsyncThunk(
   "newBlog/addNewBlog",
   async (newBlog: BlogWithIdIF[]) => {
-    return postNewBlog(newBlog);
+    return updateBlogs(newBlog);
   }
 );
 

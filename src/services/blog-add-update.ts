@@ -1,10 +1,8 @@
-import axios from "axios";
-import { getDatabase, ref, set, get } from "firebase/database";
+import { ref, set, get } from "firebase/database";
 import { BlogsDatabase } from "./firebase";
-import { NewBlogIF } from "../modals/new-blog-modal";
 import { BlogWithIdIF } from "../modals/blog-list-modal";
 
-export const postNewBlog = async (data: BlogWithIdIF[]) => {
+export const updateBlogs = async (data: BlogWithIdIF[]) => {
   console.log("Before getting database instance...");
   const db = BlogsDatabase;
   console.log("Database instance retrieved:", db);

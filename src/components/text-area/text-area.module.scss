@@ -1,10 +1,11 @@
 .textArea {
     width: 100%;
     height: 100%;
+    line-height: inherit;
     border-radius: inherit;
-    font-family: 'IBM Plex Sans';
+    font-family: inherit;
     font-size: inherit;
-    font-weight: 400;
+    font-weight: inherit;
     background: transparent;
     border: none;
     outline: none;
@@ -19,4 +20,3 @@
     /* Chrome/Opera/Safari */
     font-size: 16px;
 }
-

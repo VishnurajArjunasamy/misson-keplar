@@ -12,7 +12,6 @@ import {
 } from "../../store/new-blog-slice";
 import { BlogWithIdIF } from "../../modals/blog-list-modal";
 import { useEffect } from "react";
-import { setBlogs } from "../../store/blog-list-slice";
 
 const NewBlog = () => {
   const existingBlogs = useSelector((state: RootState) => state.blogList.data);
@@ -60,7 +59,6 @@ const NewBlog = () => {
 
     try {
       dispatch(addNewBlog(withNewBlogs));
-      // dispatch(setBlogs(withNewBlogs));
       dispatch(setShowNewBlogModal(false));
     } catch (error) {
       console.log(error);

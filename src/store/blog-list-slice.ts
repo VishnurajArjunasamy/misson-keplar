@@ -4,6 +4,7 @@ import { fetchBlogList } from "../services/blog-list";
 import { getAvailableFilters } from "../utils/getAvailableFilters";
 import { ERROR_MSG } from "../constants/app.constants";
 import { addNewBlog } from "./new-blog-slice";
+import { updateBlog } from "./blog-details-slice";
 
 export const fetchBlogs = createAsyncThunk("blogList/fetchData", async () => {
   return fetchBlogList();
@@ -50,8 +51,13 @@ const blogListSlice = createSlice({
       .addCase(fetchBlogs.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || ERROR_MSG.MESSAGE;
-      }).addCase(addNewBlog.fulfilled, (state, action) => { 
-        state.data = action.payload});
+      })
+      .addCase(addNewBlog.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
+      .addCase(updateBlog.fulfilled, (state, action) => {
+        state.data = action.payload;
+      });
   },
 });
 

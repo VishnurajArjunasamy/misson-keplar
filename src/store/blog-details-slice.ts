@@ -3,6 +3,7 @@ import { BlogIF, BlogWithIdIF } from "../modals/blog-list-modal";
 import { toast } from "react-toastify";
 import { set } from "firebase/database";
 import { updateBlogs } from "../services/blog-add-update";
+import { ValidationErrors } from "../modals/new-blog-modal";
 
 export const updateBlog = createAsyncThunk(
   "updateBlog",
@@ -13,7 +14,7 @@ export const updateBlog = createAsyncThunk(
 
 interface BlogDetailsState {
   isReadOnly: boolean;
-  error: string | null;
+  error: string | null | ValidationErrors;
   loading: boolean;
 }
 

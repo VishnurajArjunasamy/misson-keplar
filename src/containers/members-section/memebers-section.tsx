@@ -11,6 +11,9 @@ const MemebersSection: FC<MemebersSectionProps> = ({}) => {
   const members = useSelector((state: RootState) => state.sideBar.members);
   const loading = useSelector((state: RootState) => state.sideBar.loading);
   const error = useSelector((state: RootState) => state.sideBar.error);
+  const isDarkMode = useSelector(
+    (state: RootState) => state.sideBar.isDarkMode
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -26,15 +29,18 @@ const MemebersSection: FC<MemebersSectionProps> = ({}) => {
   }
 
   return (
-    <div className={classes.members}>
-      {members?.map((member) => (
-        <MemberCard
-          key={member.id}
-          image={member.photo}
-          name={member.name}
-          city={member.company.location}
-        />
-      ))}
+    <div className={`${classes.members} ${isDarkMode ? classes.dark : ""}`}>
+      <h1 className={classes.title}>{"Members"}</h1>
+      <div className={classes.membersContainer}>
+        {members?.map((member) => (
+          <MemberCard
+            key={member.id}
+            image={member.photo}
+            name={member.name}
+            city={member.company.location}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -64,6 +64,13 @@
         background-color: #90f4f4;
         color: #000;
     }
+
+    .error {
+        font-size: 14px;
+        margin: 10px 0;
+        font-family: 'Roboto Slab', sans-serif;
+        font-weight: 600;
+    }
 }
 
 .light {
@@ -73,6 +80,10 @@
         color: #000
     }
 
+    .error {
+        color: #ec5008
+    }
+
 }
 
 .dark {
@@ -80,5 +91,10 @@
 
     form {
         color: #fff
+    }
+
+    .error {
+        color: #fdb100;
+
     }
 }

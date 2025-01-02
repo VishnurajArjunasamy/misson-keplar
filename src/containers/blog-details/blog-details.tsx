@@ -25,7 +25,9 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
     (state: RootState) => state.blogList.data
   ) as BlogWithIdIF[];
 
-  const { isReadOnly } = useSelector((state: RootState) => state.blogDetails);
+  const { isReadOnly, error } = useSelector(
+    (state: RootState) => state.blogDetails
+  );
   const isDarkMode = useSelector(
     (state: RootState) => state.sideBar.isDarkMode
   );
@@ -43,7 +45,7 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
     const blogData = {
       title: formData.get("title"),
       details: formData.get("details"),
-      photo: formData.get("photo"),
+      // photo: formData.get("photo"),
       type: selectedBlog?.type,
       id: selectedBlog?.id,
     };
@@ -67,16 +69,18 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
     dispatch(setUpdateBlogError(validationErrors));
 
     //creating  a deep copy of the blogs array
-    let withNewBlogs: BlogWithIdIF[] = JSON.parse(JSON.stringify(blogs));
-    const index = withNewBlogs.findIndex((blog) => blog.id === selectedBlogId);
-    withNewBlogs[index] = blogData as BlogWithIdIF;
+    let withUpdatedBlogs: BlogWithIdIF[] = JSON.parse(JSON.stringify(blogs));
+    const index = withUpdatedBlogs.findIndex((blog) => blog.id === selectedBlogId);
+    withUpdatedBlogs[index] = blogData as BlogWithIdIF;
 
     //calling async function to update the blog
     try {
-      dispatch(updateBlog(withNewBlogs));
+      dispatch(updateBlog(withUpdatedBlogs));
     } catch (error) {
       console.log(error);
     }
+    dispatch(setIsReadOnly(true));
+    console.log("here");
   };
 
   const editButton = (
@@ -105,13 +109,7 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
 
   const saveButton = (
     <div className={`${classes.button} ${classes.purpleBg}`}>
-      <Button
-        type="submit"
-        onClick={() => {
-          dispatch(setIsReadOnly(true));
-        }}
-        label={"SAVE"}
-      />
+      <Button type="submit" label={"SAVE"} />
     </div>
   );
 
@@ -131,7 +129,6 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
     isDarkMode ? classes.dark : classes.light
   }`;
 
-
   return (
     <section className={style}>
       <div className={classes.blogImage}>
@@ -145,6 +142,9 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
             name={"title"}
             isReadOnly={isReadOnly}
           />
+          {(error as ValidationErrors)?.title && (
+            <p className={classes.error}>{(error as ValidationErrors).title}</p>
+          )}
         </div>
         <div className={classes.blogContent}>
           <TextArea
@@ -152,6 +152,11 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
             name={"details"}
             isReadOnly={isReadOnly}
           />
+          {(error as ValidationErrors)?.details && (
+            <p className={classes.error}>
+              {(error as ValidationErrors).details}
+            </p>
+          )}
         </div>
         {buttons}
       </form>

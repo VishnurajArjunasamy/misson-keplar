@@ -33,8 +33,9 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
 
   //find the selected blog
   const selectedBlog = blogs?.find((blog) => blog.id === selectedBlogId);
-  const blogImage =
-    selectedBlog?.photo != "" ? selectedBlog?.photo : placeholder;
+
+  //set a placeholder image if the blog has no image
+  const blogImage = selectedBlog?.photo ? selectedBlog?.photo : placeholder;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -55,18 +56,22 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
       validationErrors["details"] = "Details is required";
     }
 
+    // set the error if there is any
     if (Object.keys(validationErrors).length > 0) {
       console.log(validationErrors);
       dispatch(setUpdateBlogError(validationErrors));
       return;
     }
 
+    // remove the setted error if there is no error
     dispatch(setUpdateBlogError(validationErrors));
 
+    //creating  a deep copy of the blogs array
     let withNewBlogs: BlogWithIdIF[] = JSON.parse(JSON.stringify(blogs));
     const index = withNewBlogs.findIndex((blog) => blog.id === selectedBlogId);
     withNewBlogs[index] = blogData as BlogWithIdIF;
 
+    //calling async function to update the blog
     try {
       dispatch(updateBlog(withNewBlogs));
     } catch (error) {
@@ -122,7 +127,10 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
     );
   }
 
-  const style = `${classes.blogDetails} ${isDarkMode ? classes.dark : classes.light}`;
+  const style = `${classes.blogDetails} ${
+    isDarkMode ? classes.dark : classes.light
+  }`;
+
 
   return (
     <section className={style}>

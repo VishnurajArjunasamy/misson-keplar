@@ -20,7 +20,7 @@ const MemberCard: FC<MemberCardProps> = ({ image, name, city }) => {
         isDarkMode ? classes.dark : classes.light
       }`}
     >
-      <Img src={image} alt={name} />
+      <Img src={image} alt={name} isUser={true} />
       <h1>{name}</h1>
       <h2>{city}</h2>
     </div>

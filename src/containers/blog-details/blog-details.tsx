@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, use, useEffect } from "react";
 import Img from "../../components/Img/img";
 import { AppDispatch, RootState } from "../../store";
 import { BlogWithIdIF } from "../../modals/blog-list-modal";
@@ -14,6 +14,7 @@ import {
   updateBlog,
 } from "../../store/blog-details-slice";
 import { ValidationErrors } from "../../modals/new-blog-modal";
+import React from "react";
 
 interface BlogDetailsProps {}
 
@@ -33,11 +34,32 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
   );
   const dispatch = useDispatch<AppDispatch>();
 
+  const titleRef = React.createRef<HTMLInputElement>();
+  const detailsRef = React.createRef<HTMLTextAreaElement>();
+
   //find the selected blog
   const selectedBlog = blogs?.find((blog) => blog.id === selectedBlogId);
 
   //set a placeholder image if the blog has no image
   const blogImage = selectedBlog?.photo ? selectedBlog?.photo : placeholder;
+
+  const setInputValues = () => {
+    if (titleRef.current) {
+      titleRef.current.value = selectedBlog?.title || "";
+    }
+    if (detailsRef.current) {
+      detailsRef.current.value = selectedBlog?.details || "";
+    }
+  };
+
+  useEffect(() => {
+    if (!isReadOnly) {
+      dispatch(setIsReadOnly(true));
+    }
+
+    //setting the value of the input fields for the selected blog
+    setInputValues();
+  }, [selectedBlog]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,7 +92,9 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
 
     //creating  a deep copy of the blogs array
     let withUpdatedBlogs: BlogWithIdIF[] = JSON.parse(JSON.stringify(blogs));
-    const index = withUpdatedBlogs.findIndex((blog) => blog.id === selectedBlogId);
+    const index = withUpdatedBlogs.findIndex(
+      (blog) => blog.id === selectedBlogId
+    );
     withUpdatedBlogs[index] = blogData as BlogWithIdIF;
 
     //calling async function to update the blog
@@ -80,7 +104,6 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
       console.log(error);
     }
     dispatch(setIsReadOnly(true));
-    console.log("here");
   };
 
   const editButton = (
@@ -98,9 +121,10 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
   const cancelButton = (
     <div className={`${classes.button} ${classes.blueBg}`}>
       <Button
-        type="reset"
+        type="button"
         onClick={() => {
           dispatch(setIsReadOnly(true));
+          setInputValues();
         }}
         label={"CANCEL"}
       />
@@ -138,20 +162,16 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
         <div className={classes.blogTitle}>
           <Input
             type="text"
-            defaultValue={selectedBlog?.title}
             name={"title"}
             isReadOnly={isReadOnly}
+            ref={titleRef}
           />
           {(error as ValidationErrors)?.title && (
             <p className={classes.error}>{(error as ValidationErrors).title}</p>
           )}
         </div>
         <div className={classes.blogContent}>
-          <TextArea
-            defaultValue={selectedBlog?.details}
-            name={"details"}
-            isReadOnly={isReadOnly}
-          />
+          <TextArea name={"details"} isReadOnly={isReadOnly} ref={detailsRef} />
           {(error as ValidationErrors)?.details && (
             <p className={classes.error}>
               {(error as ValidationErrors).details}

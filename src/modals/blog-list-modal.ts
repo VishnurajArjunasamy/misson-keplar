@@ -15,6 +15,7 @@ export interface BlogWithIdIF extends BlogIF {
 export interface BlogListState {
   data: BlogWithIdIF[] | null;
   selectedBlog: string | null;
+  bufferBlogId: string | null;
   loading: boolean;
   error: string | null;
   filters: FiltersApplied;

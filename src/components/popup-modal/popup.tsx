@@ -7,9 +7,15 @@ import Button from "../button/button";
 
 interface PopupProps {
   closeModal?: () => void;
+  handleBlogSwitch?: () => void;
+  handleCancel?: () => void;
 }
 
-const PopUp: FC<PopupProps> = ({ closeModal }) => {
+const PopUp: FC<PopupProps> = ({
+  closeModal,
+  handleBlogSwitch,
+  handleCancel,
+}) => {
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
 
   function handleModalClose() {
@@ -27,10 +33,10 @@ const PopUp: FC<PopupProps> = ({ closeModal }) => {
         <p>{POPUP.ALERT_MSG}</p>
         <div className={classes.buttons}>
           <div className={classes.button}>
-            <Button onClick={handleModalClose} label={POPUP.YES} />
+            <Button onClick={handleBlogSwitch} label={POPUP.YES} />
           </div>
           <div className={classes.button}>
-            <Button onClick={handleModalClose} label={POPUP.NO} />
+            <Button onClick={handleCancel} label={POPUP.NO} />
           </div>
         </div>
       </div>

@@ -181,7 +181,6 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
         </div>
         {buttons}
       </form>
-      <PopUp/>
     </section>
   );
 };

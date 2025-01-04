@@ -1,6 +1,10 @@
 import { FC, memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBlogs, setSelectedBlogs } from "../../store/blog-list-slice";
+import {
+  fetchBlogs,
+  setBufferBlogId,
+  setSelectedBlogs,
+} from "../../store/blog-list-slice";
 import { AppDispatch, RootState } from "../../store";
 import BlogCard from "../../components/blog-card/blog-card";
 import classes from "./blog-list.module.scss";
@@ -11,14 +15,24 @@ import { BlogWithIdIF } from "../../modals/blog-list-modal";
 import Modal from "../../components/modal/modal";
 import NewBlog from "../new-blog/new-blog";
 import { setShowNewBlogModal } from "../../store/new-blog-slice";
+import PopUp from "../../components/popup-modal/popup";
+import { setShowPopUPModal } from "../../store/blog-details-slice";
 
 interface BlogListProps {}
 
 const BlogList: FC<BlogListProps> = ({}) => {
-  const { data, loading, error, filters, selectedBlog, searchQuery } =
-    useSelector((state: RootState) => state.blogList);
-  const { showNewBlogModal, isAdded } = useSelector(
-    (state: RootState) => state.newBlog
+  const {
+    data,
+    loading,
+    error,
+    filters,
+    selectedBlog,
+    searchQuery,
+    bufferBlogId,
+  } = useSelector((state: RootState) => state.blogList);
+  const { showNewBlogModal } = useSelector((state: RootState) => state.newBlog);
+  const { isReadOnly, showPopUPModal } = useSelector(
+    (state: RootState) => state.blogDetails
   );
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
   const dispatch = useDispatch<AppDispatch>();
@@ -52,7 +66,12 @@ const BlogList: FC<BlogListProps> = ({}) => {
   }
 
   const handleBlogSelect = (id: string): void => {
-    dispatch(setSelectedBlogs(id));
+    dispatch(setBufferBlogId(id));
+    if (isReadOnly) {
+      dispatch(setSelectedBlogs(id));
+    } else {
+      dispatch(setShowPopUPModal(true));
+    }
   };
 
   function handleNewBlog() {
@@ -91,6 +110,16 @@ const BlogList: FC<BlogListProps> = ({}) => {
         <Modal closeModal={() => dispatch(setShowNewBlogModal(false))}>
           {<NewBlog />}
         </Modal>
+      )}
+      {showPopUPModal && (
+        <PopUp
+          closeModal={() => dispatch(setShowPopUPModal(false))}
+          handleBlogSwitch={() => {
+            dispatch(setSelectedBlogs(bufferBlogId));
+            dispatch(setShowPopUPModal(false));
+          }}
+          handleCancel={() => dispatch(setShowPopUPModal(false))}
+        />
       )}
     </div>
   );

@@ -16,12 +16,14 @@ interface BlogDetailsState {
   isReadOnly: boolean;
   error: string | null | ValidationErrors;
   loading: boolean;
+  showPopUPModal: boolean;
 }
 
 const initialState: BlogDetailsState = {
   error: null,
   loading: false,
   isReadOnly: true,
+  showPopUPModal: false,
 };
 
 const blogDetailsSlice = createSlice({
@@ -33,6 +35,9 @@ const blogDetailsSlice = createSlice({
     },
     setError(state, action) {
       state.error = action.payload;
+    },
+    setShowPopUPModal(state, action) {
+      state.showPopUPModal = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -52,6 +57,6 @@ const blogDetailsSlice = createSlice({
   },
 });
 
-export const { setIsReadOnly, setError: setUpdateBlogError } =
+export const { setIsReadOnly, setError: setUpdateBlogError,setShowPopUPModal } =
   blogDetailsSlice.actions;
 export default blogDetailsSlice.reducer;

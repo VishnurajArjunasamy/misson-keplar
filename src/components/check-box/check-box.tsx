@@ -9,7 +9,7 @@ interface CheckBoxProps {
   handleChange: () => void;
 }
 
-const CheckBox: FC<CheckBoxProps> = ({ label, value = true, handleChange }) => {
+const CheckBox: FC<CheckBoxProps> = ({ label, value, handleChange }) => {
   const isDark = useSelector((state: RootState) => state.sideBar.isDarkMode);
 
   const style = `${classes.checkBoxWrapper} ${

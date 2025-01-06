@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Img Component falls back to emptyUser image for user images on error 1`] = `
+<DocumentFragment>
+  <img
+    alt="User Image"
+    class="img"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`Img Component falls back to placeholder blog image for non-user images on error 1`] = `
+<DocumentFragment>
+  <img
+    alt="Blog Image"
+    class="img"
+    src="test-file-stub"
+  />
+</DocumentFragment>
+`;
+
+exports[`Img Component renders correctly with provided src and alt 1`] = `
+<DocumentFragment>
+  <img
+    alt="Test Image"
+    class="img"
+    src="https://example.com/image.jpg"
+  />
+</DocumentFragment>
+`;
+
+exports[`Img Component uses default alt text when alt is not provided 1`] = `
+<DocumentFragment>
+  <img
+    alt="image"
+    class="img"
+    src="https://example.com/image.jpg"
+  />
+</DocumentFragment>
+`;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogCard Component applies the active class when active prop is true 1`] = `
+<DocumentFragment>
+  <div
+    class="blogCard light active"
+  >
+    <h1>
+      Test Blog
+    </h1>
+    <h2>
+      Tech
+    </h2>
+    <p>
+      This is a test blog.
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`BlogCard Component calls the onClick function when clicked 1`] = `
+<DocumentFragment>
+  <div
+    class="blogCard light false"
+  >
+    <h1>
+      Test Blog
+    </h1>
+    <h2>
+      Tech
+    </h2>
+    <p>
+      This is a test blog.
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`BlogCard Component renders BlogCard with dark mode styles 1`] = `
+<DocumentFragment>
+  <div
+    class="blogCard dark false"
+  >
+    <h1>
+      Test Blog
+    </h1>
+    <h2>
+      Tech
+    </h2>
+    <p>
+      This is a test blog.
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`BlogCard Component renders BlogCard with light mode styles 1`] = `
+<DocumentFragment>
+  <div
+    class="blogCard light false"
+  >
+    <h1>
+      Test Blog
+    </h1>
+    <h2>
+      Tech
+    </h2>
+    <p>
+      This is a test blog.
+    </p>
+  </div>
+</DocumentFragment>
+`;

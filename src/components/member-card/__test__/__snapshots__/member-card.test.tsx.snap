@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Member Card Component renders member card with dark mode styles 1`] = `
+<DocumentFragment>
+  <div
+    class="member dark"
+  >
+    <img
+      alt="user1"
+      class="img"
+      src="smaple-img"
+    />
+    <h1>
+      user1
+    </h1>
+    <h2>
+      chennai
+    </h2>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Member Card Component renders member card with image, name and city 1`] = `
+<DocumentFragment>
+  <div
+    class="member light"
+  >
+    <img
+      alt="user1"
+      class="img"
+      src="smaple-img"
+    />
+    <h1>
+      user1
+    </h1>
+    <h2>
+      chennai
+    </h2>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Member Card Component renders member card with light mode styles 1`] = `
+<DocumentFragment>
+  <div
+    class="member light"
+  >
+    <img
+      alt="user1"
+      class="img"
+      src="smaple-img"
+    />
+    <h1>
+      user1
+    </h1>
+    <h2>
+      chennai
+    </h2>
+  </div>
+</DocumentFragment>
+`;

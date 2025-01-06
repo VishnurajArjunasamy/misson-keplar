@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Component applies default value correctly 1`] = `
+<DocumentFragment>
+  <input
+    class="input light"
+    placeholder="Test Placeholder"
+    type="text"
+    value="Default Value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input Component forwards ref to the input element 1`] = `
+<DocumentFragment>
+  <input
+    class="input light"
+    placeholder="Test Ref Placeholder"
+    type="text"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input Component handles onChange events 1`] = `
+<DocumentFragment>
+  <input
+    class="input light"
+    placeholder="Test Placeholder"
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Input Component renders as read-only when isReadOnly is true 1`] = `
+<DocumentFragment>
+  <input
+    class="input light"
+    placeholder="Read-Only Placeholder"
+    readonly=""
+    type="text"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input Component renders correctly with provided props 1`] = `
+<DocumentFragment>
+  <input
+    class="input light"
+    name="testName"
+    placeholder="Test Placeholder"
+    type="text"
+    value="Test Value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input Component renders input with dark mode styles 1`] = `
+<DocumentFragment>
+  <input
+    class="input dark"
+    name="testName"
+    placeholder="Test Placeholder"
+    type="text"
+    value="Test Value"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input Component renders input with light mode styles 1`] = `
+<DocumentFragment>
+  <input
+    class="input light"
+    name="testName"
+    placeholder="Test Placeholder"
+    type="text"
+    value="Test Value"
+  />
+</DocumentFragment>
+`;

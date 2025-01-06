@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component applies the default type 'button' if no type is provided 1`] = `
+<DocumentFragment>
+  <button
+    class="button"
+    type="button"
+  >
+    Click Me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button Component applies the provided type attribute 1`] = `
+<DocumentFragment>
+  <button
+    class="button"
+    type="submit"
+  >
+    Submit
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button Component calls the onClick function when clicked 1`] = `
+<DocumentFragment>
+  <button
+    class="button"
+    type="button"
+  >
+    Click Me
+  </button>
+</DocumentFragment>
+`;
+
+exports[`Button Component renders the button with the provided label 1`] = `
+<DocumentFragment>
+  <button
+    class="button"
+    type="button"
+  >
+    Click Me
+  </button>
+</DocumentFragment>
+`;

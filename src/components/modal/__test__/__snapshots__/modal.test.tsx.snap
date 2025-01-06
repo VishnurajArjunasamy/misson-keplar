@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Member Card Component calls closeModal when background is clicked 1`] = `
+<DocumentFragment>
+  <div
+    class="modal light"
+  >
+    <div
+      class="content"
+    >
+      <div>
+        Content
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Member Card Component does not call closeModal when content is clicked 1`] = `
+<DocumentFragment>
+  <div
+    class="modal light"
+  >
+    <div
+      class="content"
+    >
+      <div>
+        Content
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Member Card Component renders modal with dark mode styles 1`] = `
+<DocumentFragment>
+  <div
+    class="modal dark"
+  >
+    <div
+      class="content"
+    >
+      <div>
+        Content
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

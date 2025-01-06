@@ -7,7 +7,7 @@ interface ButtonProps {
   type?: "button" | "submit" | "reset";
 }
 
-const Button: FC<ButtonProps> = ({ onClick, label, type }) => {
+const Button: FC<ButtonProps> = ({ onClick, label, type='button' }) => {
   return (
     <button type={type} onClick={onClick} className={classes.button}>
       {label}

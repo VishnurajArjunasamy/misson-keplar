@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox Component applies dark mode styles when isDarkMode is true 1`] = `
+<DocumentFragment>
+  <div
+    class="checkBoxWrapper dark"
+  >
+    <input
+      checked=""
+      id="Test Checkbox"
+      type="checkbox"
+    />
+    <label
+      for="Test Checkbox"
+    >
+      Test Checkbox
+    </label>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CheckBox Component reflects the correct checked state based on the value prop 1`] = `
+<DocumentFragment>
+  <div
+    class="checkBoxWrapper light"
+  >
+    <input
+      id="Test Checkbox"
+      type="checkbox"
+    />
+    <label
+      for="Test Checkbox"
+    >
+      Test Checkbox
+    </label>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CheckBox Component renders the checkbox with the correct label and default light mode 1`] = `
+<DocumentFragment>
+  <div
+    class="checkBoxWrapper light"
+  >
+    <input
+      id="Test Checkbox"
+      type="checkbox"
+    />
+    <label
+      for="Test Checkbox"
+    >
+      Test Checkbox
+    </label>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CheckBox Component triggers handleChange function when checkbox state changes 1`] = `
+<DocumentFragment>
+  <div
+    class="checkBoxWrapper light"
+  >
+    <input
+      id="Test Checkbox"
+      type="checkbox"
+    />
+    <label
+      for="Test Checkbox"
+    >
+      Test Checkbox
+    </label>
+  </div>
+</DocumentFragment>
+`;

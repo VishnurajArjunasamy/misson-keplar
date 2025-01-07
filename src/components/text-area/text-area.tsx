@@ -1,4 +1,4 @@
-import { FC, forwardRef, Ref } from "react";
+import { forwardRef, Ref } from "react";
 import classes from "./text-area.module.scss";
 
 interface TextAreaProps {
@@ -8,10 +8,11 @@ interface TextAreaProps {
   defaultValue?: string;
   isReadOnly?: boolean;
   ref?: Ref<HTMLTextAreaElement>;
+  onChange?: () => void;
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ value, placeholder, name, defaultValue, isReadOnly }, ref) => {
+  ({ value, placeholder, name, defaultValue, isReadOnly, onChange }, ref) => {
     return (
       <textarea
         value={value}
@@ -21,6 +22,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         defaultValue={defaultValue}
         readOnly={isReadOnly}
         ref={ref}
+        onChange={onChange}
       ></textarea>
     );
   }

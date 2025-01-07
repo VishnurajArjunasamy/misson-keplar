@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogDetails Component matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="blogDetails light"
+  >
+    <div
+      class="blogImage"
+    >
+      <img
+        alt="image"
+        class="img"
+        src="test-file-stub"
+      />
+    </div>
+    <form>
+      <div
+        class="blogTitle"
+      >
+        <input
+          class="input light"
+          name="title"
+          readonly=""
+          type="text"
+        />
+      </div>
+      <div
+        class="blogContent"
+      >
+        <textarea
+          class="textArea"
+          name="details"
+          readonly=""
+        />
+      </div>
+      <div
+        class="button blueBg"
+      >
+        <button
+          class="button"
+          type="button"
+        >
+          EDIT CONTENT
+        </button>
+      </div>
+    </form>
+  </section>
+</DocumentFragment>
+`;

@@ -15,7 +15,6 @@ import {
 } from "../../store/blog-details-slice";
 import { ValidationErrors } from "../../modals/new-blog-modal";
 import React from "react";
-import PopUp from "../../components/popup-modal/popup";
 
 interface BlogDetailsProps {}
 

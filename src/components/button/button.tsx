@@ -9,7 +9,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({ onClick, label, type='button' }) => {
   return (
-    <button type={type} onClick={onClick} className={classes.button}>
+    <button type={type} onClick={onClick} className={classes.button} data-testid='cancelBtn' >
       {label}
     </button>
   );

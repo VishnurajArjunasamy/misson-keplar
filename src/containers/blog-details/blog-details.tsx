@@ -127,13 +127,14 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
           setInputValues();
         }}
         label={"CANCEL"}
+        testid={"CANCEL"}
       />
     </div>
   );
 
   const saveButton = (
     <div className={`${classes.button} ${classes.purpleBg}`}>
-      <Button type="submit" label={"SAVE"} />
+      <Button type="submit" label={"SAVE"} testid={"SAVE"} />
     </div>
   );
 

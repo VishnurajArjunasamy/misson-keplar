@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogList Component Matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="blogList light"
+  >
+    <div
+      class="blogFeatures"
+    >
+      <div
+        class="searchBar light"
+      >
+        <input
+          class="input light"
+          placeholder="Search Blogs"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="newBtn"
+      >
+        <button
+          class="button"
+          type="button"
+        >
+          NEW
+        </button>
+      </div>
+    </div>
+    <section
+      class="blogs"
+    >
+      <div
+        class="blogCard light false"
+      >
+        <h1>
+          Blog 1
+        </h1>
+        <h2>
+          tech
+        </h2>
+        <p>
+          Details 1
+        </p>
+      </div>
+      <div
+        class="blogCard light false"
+      >
+        <h1>
+          Blog 2
+        </h1>
+        <h2>
+          lifestyle
+        </h2>
+        <p>
+          Details 2
+        </p>
+      </div>
+    </section>
+  </div>
+</DocumentFragment>
+`;

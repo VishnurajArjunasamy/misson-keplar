@@ -10,4 +10,4 @@ node_modules
 # Ignore logs
 *.log
 
-/coverage
+coverage

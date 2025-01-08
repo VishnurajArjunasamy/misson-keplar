@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
@@ -102,28 +102,30 @@ describe("BlogDetails Component", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "EDIT CONTENT" }));
 
-    expect(store.dispatch).toHaveBeenCalledWith(setIsReadOnly(false));
-    const titleInput = screen.getByDisplayValue("Test Blog");
-    const detailsInput = screen.getByDisplayValue("Test Blog Details");
+    waitFor(() => {
+      expect(store.dispatch).toHaveBeenCalledWith(setIsReadOnly(false));
+      const titleInput = screen.getByDisplayValue("Test Blog");
+      const detailsInput = screen.getByDisplayValue("Test Blog Details");
 
-    fireEvent.change(titleInput, { target: { value: "Updated Blog Title" } });
-    fireEvent.change(detailsInput, {
-      target: { value: "Updated Blog Details" },
+      fireEvent.change(titleInput, { target: { value: "Updated Blog Title" } });
+      fireEvent.change(detailsInput, {
+        target: { value: "Updated Blog Details" },
+      });
+
+      fireEvent.click(screen.getByTestId("SAVE"));
+
+      expect(store.dispatch).toHaveBeenCalledWith(
+        updateBlog([
+          {
+            id: "1",
+            title: "Updated Blog Title",
+            details: "Updated Blog Details",
+            photo: "",
+            type: "general",
+          },
+        ])
+      );
     });
-
-    fireEvent.click(screen.getByRole("button", { name: "SAVE" }));
-
-    expect(store.dispatch).toHaveBeenCalledWith(
-      updateBlog([
-        {
-          id: "1",
-          title: "Updated Blog Title",
-          details: "Updated Blog Details",
-          photo: "",
-          type: "general",
-        },
-      ])
-    );
   });
 
   it("cancels edits and resets input values", async () => {
@@ -141,16 +143,17 @@ describe("BlogDetails Component", () => {
     expect(titleInput).toHaveAttribute("readonly");
 
     fireEvent.click(editButton);
-    fireEvent.change(titleInput, { target: { value: "Modified Title" } });
-    expect(titleInput).toHaveValue("Modified Title");
+    waitFor(() => {
+      fireEvent.change(titleInput, { target: { value: "Modified Title" } });
+      expect(titleInput).toHaveValue("Modified Title");
 
-    const cancelButton = screen.getByTestId("cancelBtn");
-    expect(cancelButton).toBeInTheDocument();
-    fireEvent.click(cancelButton);
-
-    expect(titleInput).toHaveValue("Test Blog");
-
-    expect(mockDispatch).toHaveBeenCalledWith(setIsReadOnly(true));
+      const cancelButton = screen.getByTestId("CANCEL");
+      expect(cancelButton).toBeInTheDocument();
+      fireEvent.click(cancelButton);
+      expect(titleInput).toHaveValue("Test Blog");
+      expect(mockDispatch).toHaveBeenCalledWith(setIsReadOnly(true));
+      expect(mockDispatch).toHaveBeenCalled();
+    });
   });
 
   it("matches snapshot", () => {

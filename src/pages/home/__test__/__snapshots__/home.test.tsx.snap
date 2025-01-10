@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="home"
+  >
+    <div>
+      Mocked SideBar
+    </div>
+    <div>
+      Mocked BlogList
+    </div>
+    <div>
+      Mocked BlogDetails
+    </div>
+    <section
+      aria-atomic="false"
+      aria-label="Notifications Alt+T"
+      aria-live="polite"
+      aria-relevant="additions text"
+      class="Toastify"
+    />
+  </div>
+</DocumentFragment>
+`;

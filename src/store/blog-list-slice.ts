@@ -10,7 +10,7 @@ export const fetchBlogs = createAsyncThunk("blogList/fetchData", async () => {
   return fetchBlogList();
 });
 
-const initialState: BlogListState = {
+export const initialState: BlogListState = {
   data: null,
   loading: false,
   error: null,

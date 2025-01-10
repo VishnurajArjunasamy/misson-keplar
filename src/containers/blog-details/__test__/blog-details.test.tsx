@@ -8,6 +8,7 @@ import {
   setUpdateBlogError,
   updateBlog,
 } from "../../../store/blog-details-slice";
+import { setNewBlogError } from "../../../store/new-blog-slice";
 
 const mockStore = configureStore([]);
 
@@ -153,6 +154,32 @@ describe("BlogDetails Component", () => {
       expect(titleInput).toHaveValue("Test Blog");
       expect(mockDispatch).toHaveBeenCalledWith(setIsReadOnly(true));
       expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+
+  it("Sets Error", () => {
+    const mockDispatch = jest.fn();
+    store.dispatch = mockDispatch;
+
+    render(
+      <Provider store={store}>
+        <BlogDetails />
+      </Provider>
+    );
+    const titleInput = screen.getByDisplayValue("Test Blog");
+    const editButton = screen.getByRole("button", { name: "EDIT CONTENT" });
+
+    fireEvent.click(editButton);
+    waitFor(() => {
+      fireEvent.change(titleInput, { target: { value: "" } });
+      fireEvent.click(screen.getByRole("button", { name: "CANCEL" }));
+      expect(mockDispatch).toHaveBeenCalled();
+      expect(mockDispatch).toHaveBeenCalledWith(
+        setNewBlogError({
+          title: "Title is required",
+          details: "Details is required",
+        })
+      );
     });
   });
 

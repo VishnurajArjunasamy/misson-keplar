@@ -44,6 +44,7 @@ const NewBlog = () => {
       validationErrors["details"] = "Details is required";
     }
 
+
     if (Object.keys(validationErrors).length > 0) {
       console.log(validationErrors);
       dispatch(setNewBlogError(validationErrors));
@@ -87,7 +88,7 @@ const NewBlog = () => {
           )}
         </div>
         <div className={classes.button}>
-          <Button label={"ADD"} />
+          <Button type="submit" label={"ADD"} />
         </div>
       </form>
     </div>

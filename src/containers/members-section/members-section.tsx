@@ -7,7 +7,7 @@ import MemberCard from "../../components/member-card/member-card";
 
 interface MemebersSectionProps {}
 
-const MemebersSection: FC<MemebersSectionProps> = ({}) => {
+const MembersSection: FC<MemebersSectionProps> = ({}) => {
   const members = useSelector((state: RootState) => state.sideBar.members);
   const loading = useSelector((state: RootState) => state.sideBar.loading);
   const error = useSelector((state: RootState) => state.sideBar.error);
@@ -45,4 +45,4 @@ const MemebersSection: FC<MemebersSectionProps> = ({}) => {
   );
 };
 
-export default MemebersSection;
+export default MembersSection;

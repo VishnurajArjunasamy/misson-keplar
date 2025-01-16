@@ -17,7 +17,7 @@ jest.mock("../../filter-section/filter-section", () => () => (
 //     <div>{children}</div>
 //   </div>
 // ));
-jest.mock("../../members-section/memebers-section", () => () => (
+jest.mock("../../members-section/members-section", () => () => (
   <div>MembersSection</div>
 ));
 

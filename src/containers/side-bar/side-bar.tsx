@@ -5,7 +5,7 @@ import FilterSection from "../filter-section/filter-section";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDarkMode, toggleShowMembers } from "../../store/side-bar-slice";
 import Modal from "../../components/modal/modal";
-import MemebersSection from "../members-section/memebers-section";
+import MembersSection from "../members-section/members-section";
 import { AppDispatch, RootState } from "../../store";
 interface SideBarProps {}
 
@@ -42,7 +42,7 @@ const SideBar: FC<SideBarProps> = ({}) => {
       </div>
       {showMembers && (
         <Modal closeModal={handleViewMemebers}>
-          <MemebersSection />
+          <MembersSection />
         </Modal>
       )}
     </section>

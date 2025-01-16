@@ -18,7 +18,7 @@ const inititalState: SideBarState = {
   error: null,
 };
 
-const sideBarSlice = createSlice({
+export const sideBarSlice = createSlice({
   name: "SideBar",
   initialState: inititalState,
   reducers: {

@@ -8,6 +8,7 @@ export const SIDE_BAR = {
   FILTER: "FILTER",
   VIEW_MEMBERS: "View Members",
   SWITCH_DARK: "Switch to Dark Mode",
+  SWITCH_LIGHT: "Switch to Light Mode",
 };
 
 export const BLOG_LIST = {

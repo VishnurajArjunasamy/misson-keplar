@@ -38,7 +38,9 @@ const SideBar: FC<SideBarProps> = ({}) => {
       <FilterSection />
       <div className={classes.actions}>
         <h2 onClick={handleViewMemebers}>{SIDE_BAR.VIEW_MEMBERS}</h2>
-        <h2 onClick={handleDarkMode}>{SIDE_BAR.SWITCH_DARK}</h2>
+        <h2 onClick={handleDarkMode}>
+          {isDarkMode ? SIDE_BAR.SWITCH_LIGHT : SIDE_BAR.SWITCH_DARK}
+        </h2>
       </div>
       {showMembers && (
         <Modal closeModal={handleViewMemebers}>

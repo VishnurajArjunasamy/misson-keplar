@@ -43,6 +43,10 @@ module.exports = {
         exclude: /node_modules/,
         use: "ts-loader",
       },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
     ],
   },
   resolve: {
@@ -56,6 +60,7 @@ module.exports = {
       ".jpeg",
       ".png",
       ".jpg",
+      ".svg",
     ],
   },
   plugins: [

@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import classes from "./check-box.module.scss";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import tick from "../../assets/icons/tick.png";
 
 interface CheckBoxProps {
   label: string;
@@ -23,6 +24,9 @@ const CheckBox: FC<CheckBoxProps> = ({ label, value, handleChange }) => {
         checked={value}
         onChange={handleChange}
       />
+      <span className={classes.checkBox}>
+        <img src={tick} />
+      </span>
       <label htmlFor={label}>{label}</label>
     </div>
   );

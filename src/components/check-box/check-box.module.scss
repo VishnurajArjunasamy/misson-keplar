@@ -1,13 +1,39 @@
 .checkBoxWrapper {
+    display: flex;
     input {
-        margin-right: 15px;
-
+        appearance: none;
+        position: relative;
     }
+
+    input:checked+.checkBox {
+        background-color: #a75ab2;
+    }
+
+    .checkBox {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        background: #fff;
+        transition: 100ms ease-in;
+        cursor: pointer;
+        border: 1px solid #a75ab2;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+
+        img {
+            align-self: center;
+            width: 10px;
+            height: 10px;
+        }
+    }
+
 
     label {
         font-size: 15px;
         font-family: 'Roboto Slab';
         font-weight: 400;
+        margin-left: 35px;
     }
 
 }

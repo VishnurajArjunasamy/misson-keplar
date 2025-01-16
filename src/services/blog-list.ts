@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, BLOGS } from "../constants/url.constants";
+import { BASE_URL, BLOGS, BLOGS__JSON_URL } from "../constants/url.constants";
 import { BlogIF, BlogWithIdIF } from "../modals/blog-list-modal";
 import { addUUID } from "../utils/addUUID";
 
@@ -13,9 +13,7 @@ import { addUUID } from "../utils/addUUID";
  */
 export const fetchBlogList = async () => {
   // const response = await axios.get<BlogIF[]>(`${BASE_URL}/${BLOGS}`);
-  const response = await axios.get<BlogIF[]>(
-    `https://littlebook-60555-default-rtdb.firebaseio.com/.${"json"}`
-  );
+  const response = await axios.get<BlogIF[]>(BLOGS__JSON_URL);
 
   return addUUID(response.data) as BlogWithIdIF[];
 };

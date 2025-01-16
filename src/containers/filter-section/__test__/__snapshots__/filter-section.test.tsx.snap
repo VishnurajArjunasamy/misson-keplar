@@ -16,6 +16,13 @@ exports[`FilterSection Component Matches Snapshot 1`] = `
         id="Technology"
         type="checkbox"
       />
+      <span
+        class="checkBox"
+      >
+        <img
+          src="test-file-stub"
+        />
+      </span>
       <label
         for="Technology"
       >
@@ -29,6 +36,13 @@ exports[`FilterSection Component Matches Snapshot 1`] = `
         id="Lifestyle"
         type="checkbox"
       />
+      <span
+        class="checkBox"
+      >
+        <img
+          src="test-file-stub"
+        />
+      </span>
       <label
         for="Lifestyle"
       >
@@ -43,6 +57,13 @@ exports[`FilterSection Component Matches Snapshot 1`] = `
         id="Health"
         type="checkbox"
       />
+      <span
+        class="checkBox"
+      >
+        <img
+          src="test-file-stub"
+        />
+      </span>
       <label
         for="Health"
       >

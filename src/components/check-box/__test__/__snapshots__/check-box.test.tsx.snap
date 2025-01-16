@@ -10,6 +10,13 @@ exports[`CheckBox Component applies dark mode styles when isDarkMode is true 1`]
       id="Test Checkbox"
       type="checkbox"
     />
+    <span
+      class="checkBox"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </span>
     <label
       for="Test Checkbox"
     >
@@ -28,6 +35,13 @@ exports[`CheckBox Component reflects the correct checked state based on the valu
       id="Test Checkbox"
       type="checkbox"
     />
+    <span
+      class="checkBox"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </span>
     <label
       for="Test Checkbox"
     >
@@ -46,6 +60,13 @@ exports[`CheckBox Component renders the checkbox with the correct label and defa
       id="Test Checkbox"
       type="checkbox"
     />
+    <span
+      class="checkBox"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </span>
     <label
       for="Test Checkbox"
     >
@@ -64,6 +85,13 @@ exports[`CheckBox Component triggers handleChange function when checkbox state c
       id="Test Checkbox"
       type="checkbox"
     />
+    <span
+      class="checkBox"
+    >
+      <img
+        src="test-file-stub"
+      />
+    </span>
     <label
       for="Test Checkbox"
     >

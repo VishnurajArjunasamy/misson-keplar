@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemebersSection Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="members "
+  >
+    <h1
+      class="title"
+    >
+      Members
+    </h1>
+    <div
+      class="membersContainer"
+    />
+  </div>
+</DocumentFragment>
+`;

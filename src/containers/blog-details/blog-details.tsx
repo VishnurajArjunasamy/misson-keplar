@@ -15,6 +15,8 @@ import {
 } from "../../store/blog-details-slice";
 import { ValidationErrors } from "../../modals/new-blog-modal";
 import React from "react";
+import { BLOG_DETAILS } from "../../constants/app.constants";
+import { Loader } from "../../components/loader/loader";
 
 interface BlogDetailsProps {}
 
@@ -31,6 +33,10 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
   );
   const isDarkMode = useSelector(
     (state: RootState) => state.sideBar.isDarkMode
+  );
+
+  const isBlogsLoading = useSelector(
+    (state: RootState) => state.blogList.loading
   );
   const dispatch = useDispatch<AppDispatch>();
 
@@ -61,12 +67,26 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
     setInputValues();
   }, [selectedBlog]);
 
+  //If blogs are loading
+
+  if (isBlogsLoading) {
+    return (
+      <div
+        className={`${classes.loaderContainer} ${
+          isDarkMode ? classes.dark : classes.light
+        }`}
+      >
+        <Loader />
+      </div>
+    );
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const blogData = {
-      title: formData.get("title"),
-      details: formData.get("details"),
+      title: formData.get(BLOG_DETAILS.INPUT_TITLE.NAME),
+      details: formData.get(BLOG_DETAILS.INPUT_DETAILS.NAME),
       // photo: formData.get("photo"),
       type: selectedBlog?.type,
       id: selectedBlog?.id,
@@ -74,10 +94,10 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
 
     const validationErrors: ValidationErrors = {} as ValidationErrors;
     if (!blogData.title) {
-      validationErrors["title"] = "Title is required";
+      validationErrors["title"] = BLOG_DETAILS.INPUT_TITLE.ERROR;
     }
     if (!blogData.details) {
-      validationErrors["details"] = "Details is required";
+      validationErrors["details"] = BLOG_DETAILS.INPUT_DETAILS.ERROR;
     }
 
     // set the error if there is any
@@ -113,7 +133,7 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
         onClick={() => {
           dispatch(setIsReadOnly(false));
         }}
-        label={"EDIT CONTENT"}
+        label={BLOG_DETAILS.EDIT_CONTENT}
       />
     </div>
   );
@@ -126,15 +146,19 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
           dispatch(setIsReadOnly(true));
           setInputValues();
         }}
-        label={"CANCEL"}
-        testid={"CANCEL"}
+        label={BLOG_DETAILS.CANCEL}
+        testid={BLOG_DETAILS.CANCEL}
       />
     </div>
   );
 
   const saveButton = (
     <div className={`${classes.button} ${classes.purpleBg}`}>
-      <Button type="submit" label={"SAVE"} testid={"SAVE"} />
+      <Button
+        type="submit"
+        label={BLOG_DETAILS.SAVE}
+        testid={BLOG_DETAILS.SAVE}
+      />
     </div>
   );
 
@@ -163,7 +187,7 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
         <div className={classes.blogTitle}>
           <Input
             type="text"
-            name={"title"}
+            name={BLOG_DETAILS.INPUT_TITLE.NAME}
             isReadOnly={isReadOnly}
             ref={titleRef}
           />
@@ -172,7 +196,11 @@ const BlogDetails: FC<BlogDetailsProps> = ({}) => {
           )}
         </div>
         <div className={classes.blogContent}>
-          <TextArea name={"details"} isReadOnly={isReadOnly} ref={detailsRef} />
+          <TextArea
+            name={BLOG_DETAILS.INPUT_DETAILS.NAME}
+            isReadOnly={isReadOnly}
+            ref={detailsRef}
+          />
           {(error as ValidationErrors)?.details && (
             <p className={classes.error}>
               {(error as ValidationErrors).details}

@@ -12,6 +12,7 @@ import {
 } from "../../store/new-blog-slice";
 import { BlogWithIdIF } from "../../modals/blog-list-modal";
 import { useEffect } from "react";
+import { NEW_BLOG } from "../../constants/app.constants";
 
 const NewBlog = () => {
   const existingBlogs = useSelector((state: RootState) => state.blogList.data);
@@ -38,12 +39,11 @@ const NewBlog = () => {
 
     const validationErrors: ValidationErrors = {} as ValidationErrors;
     if (!blogData.title) {
-      validationErrors["title"] = "Title is required";
+      validationErrors["title"] = NEW_BLOG.INPUT_TITLE.ERROR;
     }
     if (!blogData.details) {
-      validationErrors["details"] = "Details is required";
+      validationErrors["details"] = NEW_BLOG.INPUT_DETAILS.ERROR;
     }
-
 
     if (Object.keys(validationErrors).length > 0) {
       console.log(validationErrors);
@@ -68,19 +68,30 @@ const NewBlog = () => {
   const style = `${classes.newBlog} ${isDark ? classes.dark : classes.light}`;
   return (
     <div className={style}>
-      <h1>{"Add New Blog"}</h1>
+      <h1>{NEW_BLOG.TITLE}</h1>
       <form onSubmit={handleSubmit}>
         <div className={classes.input}>
-          <Input type="string" placeholder={"Name your blog"} name="title" />
+          <Input
+            type="string"
+            placeholder={NEW_BLOG.INPUT_TITLE.PLACEHOLDER}
+            name={NEW_BLOG.INPUT_TITLE.NAME}
+          />
           {(error as ValidationErrors)?.title && (
             <p className={classes.error}>{(error as ValidationErrors).title}</p>
           )}
         </div>
         <div className={classes.blogImage}>
-          <Input type="string" placeholder={"Blog Image URL"} name="photo" />
+          <Input
+            type="string"
+            placeholder={NEW_BLOG.INPUT_IMAGE.PLACEHOLDER}
+            name={NEW_BLOG.INPUT_IMAGE.NAME}
+          />
         </div>
         <div className={classes.blogDetails}>
-          <TextArea placeholder={"Write Content Here .."} name="details" />
+          <TextArea
+            placeholder={NEW_BLOG.INPUT_DETAILS.PLACEHOLDER}
+            name={NEW_BLOG.INPUT_DETAILS.NAME}
+          />
           {(error as ValidationErrors)?.details && (
             <p className={classes.error}>
               {(error as ValidationErrors).details}
@@ -88,7 +99,7 @@ const NewBlog = () => {
           )}
         </div>
         <div className={classes.button}>
-          <Button type="submit" label={"ADD"} />
+          <Button type="submit" label={NEW_BLOG.ADD_BTN} />
         </div>
       </form>
     </div>

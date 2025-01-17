@@ -17,6 +17,7 @@ import NewBlog from "../new-blog/new-blog";
 import { setShowNewBlogModal } from "../../store/new-blog-slice";
 import PopUp from "../../components/popup-modal/popup";
 import { setShowPopUPModal } from "../../store/blog-details-slice";
+import { Loader } from "../../components/loader/loader";
 
 interface BlogListProps {}
 
@@ -59,7 +60,15 @@ const BlogList: FC<BlogListProps> = ({}) => {
   }, []);
 
   if (loading) {
-    return "Loading...";
+    return (
+      <div
+        className={`${classes.loaderContainer} ${
+          isDark ? classes.dark : classes.light
+        }`}
+      >
+        <Loader />
+      </div>
+    );
   }
   if (error) {
     return error;

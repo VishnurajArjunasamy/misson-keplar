@@ -73,6 +73,14 @@
     }
 }
 
+.loaderContainer {
+    flex: 0 1 49%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .light {
     background-color: #fff;
 

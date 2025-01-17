@@ -25,6 +25,41 @@ export const BLOG_DETAILS = {
   CANCEL: "CANCEL",
   SAVE: "SAVE",
   EDIT_CONTENT: "EDIT CONTENT",
+  INPUT_TITLE: {
+    PLACEHOLDER: "Name your blog",
+    NAME: "title",
+    ERROR: "Title is required",
+  },
+  INPUT_IMAGE: {
+    PLACEHOLDER: "Blog Image URL",
+    NAME: "photo",
+    ERROR: "",
+  },
+  INPUT_DETAILS: {
+    PLACEHOLDER: "Write Content Here ..",
+    NAME: "details",
+    ERROR: "Details is required",
+  },
+};
+
+export const NEW_BLOG = {
+  TITLE: "Add New Blog",
+  INPUT_TITLE: {
+    PLACEHOLDER: "Name your blog",
+    NAME: "title",
+    ERROR: "Title is required",
+  },
+  INPUT_IMAGE: {
+    PLACEHOLDER: "Blog Image URL",
+    NAME: "photo",
+    ERROR: "",
+  },
+  INPUT_DETAILS: {
+    PLACEHOLDER: "Write Content Here ..",
+    NAME: "details",
+    ERROR: "Details is required",
+  },
+  ADD_BTN: "ADD",
 };
 
 export const POPUP = {

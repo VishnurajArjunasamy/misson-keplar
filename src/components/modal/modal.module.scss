@@ -12,15 +12,25 @@
         width: 600px;
         height: 100%;
         padding: 85px 55px;
-        animation-name: slider;
         animation-duration: 500ms;
         animation-timing-function: ease-in-out;
+    }
+
+    .slideIn {
+        animation-name: slideIn;
+
+    }
+
+    .slideOut {
+        animation-name: slideOut;
+
     }
 
 }
 
 .light {
     background-color: rgba($color: #000000, $alpha: 0.7);
+
     .content {
         background-color: #fff;
     }
@@ -28,17 +38,28 @@
 
 .dark {
     background-color: rgba($color: #061329, $alpha: 0.5);
+
     .content {
         background-color: #000;
     }
 }
 
-@keyframes slider {
+@keyframes slideIn {
     0% {
         right: -600px;
     }
 
     100% {
         right: 0;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        right: 0;
+    }
+
+    100% {
+        right: -600px;
     }
 }

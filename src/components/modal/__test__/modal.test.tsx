@@ -6,7 +6,7 @@ import Modal from "../modal";
 
 const mockStore = configureStore([]);
 
-describe("Member Card Component", () => {
+describe("Model  Component", () => {
   let store: ReturnType<typeof mockStore>;
 
   beforeEach(() => {
@@ -30,12 +30,17 @@ describe("Member Card Component", () => {
         </Modal>
       </Provider>
     );
-    expect(screen.getByText("Content").parentNode?.parentNode).toHaveClass("dark");
-    expect(screen.getByText("Content").parentNode?.parentNode).not.toHaveClass("light");
+    expect(screen.getByText("Content").parentNode?.parentNode).toHaveClass(
+      "dark"
+    );
+    expect(screen.getByText("Content").parentNode?.parentNode).not.toHaveClass(
+      "light"
+    );
 
     expect(asFragment()).toMatchSnapshot();
   });
 
+  jest.useFakeTimers();
   test("calls closeModal when background is clicked", () => {
     const closeModalMock = jest.fn();
     const { asFragment } = render(
@@ -50,7 +55,7 @@ describe("Member Card Component", () => {
     if (backgroundDiv) {
       fireEvent.click(backgroundDiv);
     }
-
+    jest.advanceTimersByTime(500);
     expect(closeModalMock).toHaveBeenCalledTimes(1);
 
     expect(asFragment()).toMatchSnapshot();

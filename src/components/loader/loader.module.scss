@@ -9,6 +9,11 @@
         var(--_c) bottom;
     background-size: 12px 12px;
     animation: l7 1s infinite;
+
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: (-50%, -50%);
 }
 
 @keyframes l7 {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UsersArea from "../../Containers/UsersArea/UsersArea";
+import UsersArea from "../../containers/UsersArea/UsersArea";
 import Navbar from "../../Components/Navbar/Navbar";
 import { usersData } from "../../data/users";
 import findUsers from "../../utils/findUsers";

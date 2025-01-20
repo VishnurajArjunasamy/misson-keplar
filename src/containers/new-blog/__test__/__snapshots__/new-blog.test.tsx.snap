@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewBlog Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="newBlog light"
+  >
+    <h1>
+      Add New Blog
+    </h1>
+    <form>
+      <div
+        class="input"
+      >
+        <input
+          class="input light"
+          name="title"
+          placeholder="Name your blog"
+          type="string"
+        />
+      </div>
+      <div
+        class="blogImage"
+      >
+        <input
+          class="input light"
+          name="photo"
+          placeholder="Blog Image URL"
+          type="string"
+        />
+      </div>
+      <div
+        class="blogDetails"
+      >
+        <textarea
+          class="textArea"
+          name="details"
+          placeholder="Write Content Here .."
+        />
+      </div>
+      <div
+        class="button"
+      >
+        <button
+          class="button"
+          type="submit"
+        >
+          ADD
+        </button>
+      </div>
+    </form>
+  </div>
+</DocumentFragment>
+`;

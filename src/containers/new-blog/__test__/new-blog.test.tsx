@@ -52,7 +52,6 @@ describe("NewBlog Component", () => {
     expect(screen.getByText("ADD")).toBeInTheDocument();
   });
 
-
   it("shows validation errors if form fields are empty", async () => {
     render(
       <Provider store={store}>
@@ -112,5 +111,15 @@ describe("NewBlog Component", () => {
     unmount();
 
     expect(store.dispatch).toHaveBeenCalledWith(setNewBlogError(null));
+  });
+
+  it("matches snapshot", () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <NewBlog />
+      </Provider>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -36,4 +36,13 @@ describe("MemebersSection Component", () => {
 
     expect(store.dispatch).toHaveBeenCalledWith(fetchMembers());
   });
+
+  it("macthes snapshot", () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MembersSection />
+      </Provider>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

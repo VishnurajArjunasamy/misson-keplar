@@ -12,18 +12,9 @@ import sideBarReducer, {
 jest.mock("../../filter-section/filter-section", () => () => (
   <div>FilterSection</div>
 ));
-// jest.mock("../../components/modal/modal", () => ({ children, closeModal }) => (
-//   <div onClick={closeModal}>
-//     <div>{children}</div>
-//   </div>
-// ));
 jest.mock("../../members-section/members-section", () => () => (
   <div>MembersSection</div>
 ));
-
-// jest.mock("../../../store/side-bar-slice", () => ({
-//     toggleDarkMode: jest.fn(),
-//   }));
 
 let store = configureStore({
   reducer: { sideBar: sideBarReducer },
@@ -59,8 +50,7 @@ function updateStore(updatedValues: UpdatedValues) {
 }
 
 describe("SideBar Component", () => {
-  beforeEach(() => {
-  });
+  beforeEach(() => {});
 
   it("renders the component correctly", () => {
     render(
@@ -80,7 +70,7 @@ describe("SideBar Component", () => {
       </Provider>
     );
 
-    const mockDispatch = jest.fn(); 
+    const mockDispatch = jest.fn();
     fireEvent.click(screen.getByText("View Members"));
   });
 
@@ -90,7 +80,7 @@ describe("SideBar Component", () => {
         <SideBar />
       </Provider>
     );
-    const mockDispatch=jest.fn()
+    const mockDispatch = jest.fn();
     const darkModeButton = screen.getByText("Switch to Dark Mode");
     fireEvent.click(darkModeButton);
   });
@@ -117,37 +107,15 @@ describe("SideBar Component", () => {
     );
 
     expect(screen.getByText("FilterSection").parentElement).toHaveClass("dark");
+  });
 
-    //     store = updateStore({ isDarkMode: false });
+  it("macthes snapshot", () => {
+    const { asFragment } = render(
+      <Provider store={store}>
+        <SideBar />
+      </Provider>
+    );
 
-    //     render(
-    //       <Provider store={store}>
-    //         <SideBar />
-    //       </Provider>
-    //     );
-
-    //     expect(
-    //       screen.getByText("FilterSection").parentElement?.parentElement
-    //     ).toHaveClass("light");
+    expect(asFragment()).toMatchSnapshot();
   });
 });
-function mockStore(arg0: {
-  sideBar: { isDarkMode: boolean; showMembers: boolean };
-}): import("@reduxjs/toolkit").EnhancedStore<
-  { sideBar: import("../../../modals/sidebar-modal").SideBarState },
-  import("redux").UnknownAction,
-  import("@reduxjs/toolkit").Tuple<
-    [
-      import("redux").StoreEnhancer<{
-        dispatch: import("redux-thunk").ThunkDispatch<
-          { sideBar: import("../../../modals/sidebar-modal").SideBarState },
-          undefined,
-          import("redux").UnknownAction
-        >;
-      }>,
-      import("redux").StoreEnhancer
-    ]
-  >
-> {
-  throw new Error("Function not implemented.");
-}

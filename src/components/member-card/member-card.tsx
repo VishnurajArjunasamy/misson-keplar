@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import Img from "../Img/img";
 import classes from "./member-card.module.scss";
 import { useSelector } from "react-redux";
@@ -27,4 +27,4 @@ const MemberCard: FC<MemberCardProps> = ({ image, name, city }) => {
   );
 };
 
-export default MemberCard;
+export default memo(MemberCard);

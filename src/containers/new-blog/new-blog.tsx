@@ -11,7 +11,7 @@ import {
   setShowNewBlogModal,
 } from "../../store/new-blog-slice";
 import { BlogWithIdIF } from "../../modals/blog-list-modal";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { NEW_BLOG } from "../../constants/app.constants";
 
 const NewBlog = () => {
@@ -106,4 +106,4 @@ const NewBlog = () => {
   );
 };
 
-export default NewBlog;
+export default memo(NewBlog);

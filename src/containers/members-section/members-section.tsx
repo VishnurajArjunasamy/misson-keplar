@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, memo, useEffect } from "react";
 import classes from "./members-section.module.scss";
 import { AppDispatch, RootState } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,4 +45,4 @@ const MembersSection: FC<MemebersSectionProps> = ({}) => {
   );
 };
 
-export default MembersSection;
+export default memo(MembersSection);

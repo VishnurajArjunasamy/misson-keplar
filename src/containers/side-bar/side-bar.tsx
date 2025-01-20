@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { SIDE_BAR } from "../../constants/app.constants";
 import classes from "./side-bar.module.scss";
 import FilterSection from "../filter-section/filter-section";
@@ -51,4 +51,4 @@ const SideBar: FC<SideBarProps> = ({}) => {
   );
 };
 
-export default SideBar;
+export default memo(SideBar);

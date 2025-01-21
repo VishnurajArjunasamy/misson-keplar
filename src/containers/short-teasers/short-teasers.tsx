@@ -28,7 +28,8 @@ const ShortTeasers = () => {
     fetchTeasers();
   }, []);
 
-  const memoizedTeaser = useMemo(() => teasers, [teasers]) as TeaserWithIDIF[];
+  // const memoizedTeaser = useMemo(() => teasers, [teasers]) as TeaserWithIDIF[];
+  const memoizedTeaser = teasers;
 
   if (errors) {
     throw new Error("Error fetching Teasers");

@@ -10,7 +10,7 @@ export default function Navbar() {
   const { categoryId } = useParams();
   return (
     <>
-      <header className={styles.header}>
+      <nav className={styles.nav}>
         <h1>
           <Link to="/">{SITBACK}</Link>
         </h1>
@@ -32,7 +32,7 @@ export default function Navbar() {
           <p>Vizz</p>
           <img src={down} />
         </div>
-      </header>
+      </nav>
       <Outlet />
     </>
   );
